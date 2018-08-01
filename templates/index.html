@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <!-- To ensure proper rendering and touch zooming -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename="css/index.css")}}">
+        <title>Learn D3.js</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <h1>Interactive Box Plots</h1>
+            <div class="row">
+                <div class="col-lg-6" id="area1"></div>
+                <div class="col-lg-6" id="area2"></div>
+            </div>
+        </div>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script type="text/javascript">
+            let data_imported = {{data | safe}};
+        </script>
+        <script src="{{ url_for('static', filename="js/index.js")}}"></script>
+    </body>
+</html>
