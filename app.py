@@ -5,35 +5,23 @@ import pandas as pd
 
 app = Flask(__name__)
 
-@app.route('/bar', methods = ['POST'])
-def bar_worker():
-    column_received = request.form['column']
-    value_received = request.form['value']
-    switch_received = request.form['switch']
-    print(switch_received)
-    print(value_received)
-    return 'OK'
+def before_request():
+    app.jinja_env.cache = {}
 
-@app.route('/button', methods = ['POST'])
-def button_worker():
-    column_received = request.form['column']
-    switch_received = request.form['switch']
-    print(switch_received)
-    print(column_received)
-    return 'OK'
+app.before_request(before_request)
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+app.jinja_env.auto_reload = True
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 
-@app.route("/")
-def index():
-    data = pd.read_csv('dataset/systems_data.csv')
-    columns = list(data.columns)
-    data_tosend = {'columns': columns[:-1]}
+
+def calculations(filtered_data):
     max_cols = 0
     min_thp = 10000000000000000
     max_thp = 0
     for col in columns[:-1]:
         col_thp = [col]
         col_thp.append('Throughput')
-        df_grouped = pd.DataFrame(data[col_thp].groupby(col).describe()).reset_index()
+        df_grouped = pd.DataFrame(filtered_data[col_thp].groupby(col).describe()).reset_index()
         df_grouped['Max'] = df_grouped[('Throughput', 'max')]
         df_grouped['Min'] = df_grouped[('Throughput', 'min')]
         chart_df = df_grouped[[col, 'Max', 'Min']]
@@ -47,8 +35,44 @@ def index():
     data_tosend['Max Cols'] = max_cols
     data_tosend['Max Thp'] = max_thp
     data_tosend['Min Thp'] = min_thp
+
+    
+# @app.route('/button', methods = ['POST', 'GET'])
+# def button_worker():
+#     column_received = request.form['column']
+#     switch_received = request.form['switch']
+#     print(switch_received)
+#     print(column_received)
+#     return 'OK'
+    
+@app.route("/", methods = ['POST', 'GET'])
+def index():
+    if request.method == 'POST':
+        column_received = request.form['column']
+        value_received = request.form['value']
+        switch_received = request.form['switch']
+        filtered_data = data
+        # Modifying the values based on selected bars
+        if switch_received == 'off':
+            unique_values[column_received].remove(value_received)
+        else:
+            unique_values[column_received].append(value_received)
+        
+        for item in columns[:-1]:
+            filtered_data = filtered_data[filtered_data[item].isin(unique_values[item])]
+        calculations(filtered_data)
+    else:
+        calculations(data)
     return render_template("index.html", data=data_tosend)
 
 
 if __name__ == "__main__":
+    data = pd.read_csv('dataset/systems_data.csv')
+    columns = list(data.columns)
+    data_tosend = {'columns': columns[:-1]}
+    # Calculating unique values in each column
+    unique_values = {}
+    for item in columns[:-1]:
+        unique_items = list(data[item].unique())
+        unique_values[item] = unique_items
     app.run(debug=True)

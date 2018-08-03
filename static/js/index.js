@@ -4,6 +4,28 @@ let result_svg_width = 130;
 let result_bar_width = 120;
 let svgHeight = 300, barPadding = 25;
 
+
+function readBody(xhr) {
+    let text;
+    if (!xhr.responseType || xhr.responseType === "text") {
+        text = xhr.responseText;
+    } else if (xhr.responseType === "document") {
+        text = xhr.responseXML;
+    } else {
+        text = xhr.response;
+    }
+    return text;
+}
+
+let xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+        console.log(readBody(xhr));
+        $("html").html(readBody(xhr));
+    }
+}
+
+
 function redraw(){
 
     $('#area1').empty();   
@@ -55,7 +77,9 @@ function redraw(){
                     d3.select(this).style("opacity", 1);
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'on'};
                 }
-                $.post("bar", data_toserver, function(){});
+                $.post("", data_toserver, function(){})
+                xhr.open('GET', '', true);
+                xhr.send('');
             });
 
         let text = svg_elem.selectAll("text")
@@ -122,7 +146,7 @@ function redraw(){
             let translate = [result_bar_width * i, 0]; 
             return "translate("+ translate +")";
         });
-
+        
 
     let resultText = svg_result.selectAll("text")
         .data([data_imported['Max Thp'] - data_imported['Min Thp']])
