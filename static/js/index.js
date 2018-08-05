@@ -1,8 +1,8 @@
 let column = data_imported.columns;
 let result_svg_height = 500;
-let result_svg_width = 130;
-let result_bar_width = 120;
-let svgHeight = 300, barPadding = 25;
+let result_svg_width = 80;
+let result_bar_width = 70;
+let svgHeight = 300, barPadding = 10;
 let data_received;
 let selection = [];
 
@@ -20,13 +20,13 @@ function redraw(){
             .domain([0, d3.max(max_thp)])
             .range([0,svgHeight-25]);
 
-        let svg_elem = d3.select('#area1').append('div').append('svg')
-            .attr("width", '80%')
+        let max_cols = data_imported['Max Cols'];
+        let barWidth = (parseFloat(document.getElementById('area1').offsetWidth)/(max_cols)-4);
+        console.log(barWidth);
+        let svg_elem = d3.select('#area1').append('svg')
+            .attr("width", barWidth*dataset.length)
             .attr("height", svgHeight);
         
-        let max_cols = data_imported['Max Cols'];
-        let barWidth = (parseFloat(svg_elem.style('width'))/max_cols);    
-
         let barChart = svg_elem.selectAll("rect")
             .data(dataset)
             .enter()
@@ -94,28 +94,28 @@ function redraw(){
             })
             .attr("fill", "#A64C38");
             
-        let pressed1 = false;
+        // let pressed1 = false;
 
-        let form1 = d3.select('#area1').append('div').append("form")    
+        // let form1 = d3.select('#area1').append("form")    
         
-        form1.append("input")
-            .attr("type", "button")
-            .attr("name", "toggle")
-            .attr("value", column[i])
-            .on("click", function(event){
-                let data_button_tosend;
-                if(!pressed1){
-                    barChart.style("opacity", 0.5)
-                    pressed1 = true;
-                    data_button_tosend = {'column': column[i], 'switch': 'off'};
-                }
-                else{
-                    barChart.style("opacity", 1)
-                    pressed1 = false;
-                    data_button_tosend = {'column': column[i], 'switch': 'on'};
-                }
-                $.post("button", data_button_tosend, function(){});
-            });
+        // form1.append("input")
+        //     .attr("type", "button")
+        //     .attr("name", "toggle")
+        //     .attr("value", column[i])
+        //     .on("click", function(event){
+        //         let data_button_tosend;
+        //         if(!pressed1){
+        //             barChart.style("opacity", 0.5)
+        //             pressed1 = true;
+        //             data_button_tosend = {'column': column[i], 'switch': 'off'};
+        //         }
+        //         else{
+        //             barChart.style("opacity", 1)
+        //             pressed1 = false;
+        //             data_button_tosend = {'column': column[i], 'switch': 'on'};
+        //         }
+        //         $.post("button", data_button_tosend, function(){});
+        //     });
     }
 
     // ****************************** Below is 2nd column code ******************************

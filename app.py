@@ -78,7 +78,7 @@ def index():
             max_thp = max(max_thp, chart_df['Max'].max())
             min_thp = min(min_thp, chart_df['Min'].min())
             chart_df.columns = chart_df.columns.droplevel(1)
-            max_cols = max(max_cols, chart_df.shape[0])
+            max_cols = max_cols+chart_df.shape[0]
             chart_df = chart_df.to_dict(orient='records')
             chart_df = json.dumps(chart_df)
             data_tosend[col] = chart_df
