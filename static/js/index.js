@@ -1,6 +1,6 @@
 let column = data_imported.columns;
 
-let margin = {top: 200, right: 20, bottom: 0, left: 50};
+let margin = {top: 120, right: 20, bottom: 0, left: 70};
 let result_svg_height = 500;
 let result_svg_width = 80;
 let result_bar_width = 70;
@@ -13,21 +13,29 @@ let colorScale = d3.scaleOrdinal(d3.schemeCategory10)
 let selection = [];
 let linearScale = d3.scaleLinear()
     .domain([data_imported['Min Thp'], data_imported['Max Thp']])
-    .range([0,svgHeight-margin.top]);
+    .range([svgHeight-300,0])
 
+let xScale = d3.scaleBand()
+    .range([0, max_cols])
+
+let xAxis = d3.svg
+ 
 function redraw(){
 
     $('#area1').empty();   
     $('#area2').empty();
 
     let global_bar_translate = 0;
+    let global_text_translate = 0;
 
     // Declaring the svg element in area 1
     let svg_elem = d3.select('#area1').append('svg')
-        .attr("width", '95%')
+        .attr("width", '100%')
         .attr("height", svgHeight)
+        .attr("border",1)
     .append("g")
-        .attr("transform", "translate("+margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
 
     for(let i in column){
         // Finding the max throughput for the given variable
@@ -41,10 +49,10 @@ function redraw(){
             .enter()
             .append("rect")
             .attr("y", function(d) {
-                return linearScale(d.Min); 
+                return linearScale(d.Max); 
             })
             .attr("height", function(d) { 
-                return linearScale(d.Max - d.Min); 
+                return linearScale(d.Min) - linearScale(d.Max); 
             })
             .attr("fill", colorScale(i))
             .attr("width", barWidth - barPadding)
@@ -62,7 +70,7 @@ function redraw(){
                 }
             })
             .attr("transform", function (d, j) {
-                let translate = [barWidth * global_bar_translate, 0];
+                let translate = [barWidth * global_bar_translate+10, 0];
                 global_bar_translate++; 
                 return "translate("+ translate +")";
             })
@@ -86,45 +94,50 @@ function redraw(){
                     redraw();
                 });
             });
-
-        // let text = svg_elem.selectAll("text")
-        //     .data(dataset)
-        //     .enter()
-        //     .append("text")
-        //     .text(function(d) {
-        //         return Math.round(d.Max - d.Min);
-        //     })
-        //     .attr("y", function(d, i) {
-        //         return svgHeight - linearScale(d.Max - d.Min) - 2;
-        //     })
-        //     .attr("x", function(d, i) {
-        //         return barWidth * i;
-        //     })
-        //     .attr("fill", "#A64C38");
-            
-        // let pressed1 = false;
-
-        // let form1 = d3.select('#area1').append("form")    
         
-        // form1.append("input")
-        //     .attr("type", "button")
-        //     .attr("name", "toggle")
-        //     .attr("value", column[i])
-        //     .on("click", function(event){
-        //         let data_button_tosend;
-        //         if(!pressed1){
-        //             barChart.style("opacity", 0.5)
-        //             pressed1 = true;
-        //             data_button_tosend = {'column': column[i], 'switch': 'off'};
-        //         }
-        //         else{
-        //             barChart.style("opacity", 1)
-        //             pressed1 = false;
-        //             data_button_tosend = {'column': column[i], 'switch': 'on'};
-        //         }
-        //         $.post("button", data_button_tosend, function(){});
-        //     });
+        let g_text = svg_elem.append('g')    
+        let text = g_text.selectAll("text")
+            .data(dataset)
+            .enter()
+            .append("text")
+            .text(function(d,j) {
+                return dataset[j][column[i]];
+            })
+            .attr("transform", function (d, j) {
+                console.log(global_text_translate)
+                let translate = [barWidth * global_text_translate+17, 460]
+                global_text_translate++
+                return "translate("+ translate +")rotate(90)";
+            })
+            
+            
+        let pressed1 = false;
+
+        let form1 = d3.select('#area1').append("form")
+            .attr('class','btn-group')    
+        
+        form1.append("input")
+            .attr("type", "button")
+            .attr("name", "toggle")
+            .attr("value", column[i])
+            .on("click", function(event){
+                let data_button_tosend;
+                if(!pressed1){
+                    barChart.style("opacity", 0.5)
+                    pressed1 = true;
+                    data_button_tosend = {'column': column[i], 'switch': 'off'};
+                }
+                else{
+                    barChart.style("opacity", 1)
+                    pressed1 = false;
+                    data_button_tosend = {'column': column[i], 'switch': 'on'};
+                }
+                $.post("button", data_button_tosend, function(){});
+            });
     }
+    svg_elem.append('g')
+        .call(d3.axisLeft(linearScale))
+
 
     // ****************************** Below is 2nd column code ******************************
 

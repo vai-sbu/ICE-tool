@@ -6,9 +6,9 @@ import pandas as pd
 app = Flask(__name__)
 
 def calculations(filtered_data):
-    max_cols = 0
     min_thp = 10000000000000000
     max_thp = 0
+    max_col = 0
     for col in columns[:-1]:
         col_thp = [col]
         col_thp.append('Throughput')
@@ -19,13 +19,13 @@ def calculations(filtered_data):
         new_chart_df.columns = new_chart_df.columns.droplevel(1)
         chart_df = dataframes[col]
         chart_df.loc[chart_df[col].isin(new_chart_df[col]), ['Max','Min']] = new_chart_df[['Max','Min']]
-        max_thp = max(max_thp, chart_df['Max'].max())
-        min_thp = min(min_thp, chart_df['Min'].min())
-        max_cols = max(max_cols, chart_df.shape[0])
+        max_thp = max(max_thp, new_chart_df['Max'].max())
+        min_thp = min(min_thp, new_chart_df['Min'].min())
+        max_col = max_col + chart_df.shape[0]
         chart_df = chart_df.to_dict(orient='records')
         chart_df = json.dumps(chart_df)
         data_tosend[col] = chart_df
-    data_tosend['Max Cols'] = max_cols
+    data_tosend['Max Cols'] = max_col
     data_tosend['Max Thp'] = max_thp
     data_tosend['Min Thp'] = min_thp
 
@@ -63,10 +63,9 @@ def index():
         for item in columns[:-1]:
             unique_items = list(data[item].unique())
             unique_values[item] = unique_items
-        
-        max_cols = 0
         min_thp = 10000000000000000
         max_thp = 0
+        max_cols = 0
         for col in columns[:-1]:
             col_thp = [col]
             col_thp.append('Throughput')
@@ -99,6 +98,4 @@ if __name__ == "__main__":
     for item in columns[:-1]:
         unique_items = list(data[item].unique())
         unique_values[item] = unique_items
-    
-    
     app.run(debug=True)
