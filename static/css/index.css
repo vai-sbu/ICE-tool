@@ -2,6 +2,6 @@
     display: inline-block,
 }
 
-svg {
+.main-svg {
     border: 1px solid black;
 }
