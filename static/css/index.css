@@ -1,7 +1,8 @@
+/* To display the buttons in the center of the column horizontally */
 .btn-group{
     display: inline-block,
 }
-
+/* To display the border around the bars in "Area1" */
 .main-svg {
     border: 1px solid black;
 }
