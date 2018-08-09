@@ -6,7 +6,7 @@ let result_svg_width = 100; // Width of svg in Area2
 let result_bar_width = 60; // Bar width of svg in Area2
 let svgHeight = 730, barPadding = 10; // Svg height and bar padding for Area1
 let max_cols = data_imported['Max Cols']; // Get the maximum number of bars that are to be drawn in Area1
-let barWidth = (parseFloat(document.getElementById('area1').offsetWidth)/(max_cols)-4); // Calculate bar width by dividing the width of Area1 by max cols
+let barWidth = (parseFloat(document.getElementById('area1').offsetWidth)/(max_cols+column.length+7)); // Calculate bar width by dividing the width of Area1 by max cols
 let data_received = data_imported; // Data received captures the new data when user clicks on some bar or a button. Initially it is equal to original dataset but later it changes.
 let colorScale = d3.scaleOrdinal(d3.schemeCategory10) // To add different colors to bars representing each variable in the dataset
     .domain(column);
@@ -34,7 +34,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
 
     column = data_received.columns  // Get the column names from the dataset
     for(let i in column){
-        // Finding the max throughput for the given variable
+        global_bar_translate++; // To create gaps between bars of different variables
+        global_text_translate++;
+
         let dataset = JSON.parse(data_received[column[i]]); // Each element in data_received is the throughput details about a variable in the dataset. Extracting this information in a for loop
         let max_thp = dataset.map(function(o){return o.Max}); // Get the max value of throughput for current column
 
@@ -66,7 +68,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 }
             })
             .attr("transform", function (d, j) {
-                let translate = [barWidth * global_bar_translate+10, 0];
+                let translate = [barWidth * global_bar_translate, 0];
                 global_bar_translate++; 
                 return "translate("+ translate +")";
             })
@@ -104,7 +106,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 return dataset[j][column[i]];
             })
             .attr("transform", function (d, j) {
-                let translate = [barWidth * global_text_translate+20, 460]
+                let translate = [barWidth * global_text_translate+10, 460]
                 global_text_translate++
                 return "translate("+ translate +")rotate(45)";
             })
@@ -162,8 +164,6 @@ function redraw(){ // Redraws every bar when the user makes a selection
             return "translate("+ translate +")";
         });
         
-
-
 }
 
 redraw(); // Call the redraw function everytime this script runs
