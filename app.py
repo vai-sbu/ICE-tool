@@ -39,14 +39,6 @@ def calculations(filtered_data):
     data_tosend['Min Thp'] = min_thp
 
     
-# @app.route('/button', methods = ['POST', 'GET'])
-# def button_worker():
-#     column_received = request.form['column']
-#     switch_received = request.form['switch']
-#     print(switch_received)
-#     print(column_received)
-#     return 'OK'
-    
 @app.route("/", methods = ['POST', 'GET']) # View function for the app
 def index():
     if request.method == 'POST': # Collect the Post request when the user clicks a bar
@@ -58,14 +50,24 @@ def index():
         print(switch_received)
         filtered_data = data # Create a new dataframe what will only include "on" values in the dataset
         # Unique values is a dictionary of unique values in a variable. We add the value 
-        if switch_received == 'off': # Remove the selected bar from unique_values dict
-            unique_values[column_received].remove(value_received)
-        else: # Add the bar back to unique values dict
-            unique_values[column_received].append(value_received)
-        
+        if value_received == 'all': # Button is pressed for a whole variable
+            unique_values[column_received] = list(data[column_received].unique())
+            '''
+                Notice that turning a full variable on/off doesn't makes any difference. For example, having all features of variable "Workload" in your dataset will give the same result as Not having any feature of variable "Workload". How? Well, in our case, not having any feature of a variable means that that variable is wildcarded i.e. we ignore that variable in our calculations of throughput. Hence, irrespective of what the signal is, we add all the values in the unique_values dictionary
+            '''
+        else:
+            if switch_received == 'off': # Remove the selected bar from unique_values dict
+                unique_values[column_received].remove(value_received)
+            else: # Add the bar back to unique values dict
+                unique_values[column_received].append(value_received)
+            
         for item in columns[:-1]: # for all columns except throughput, remove the values that are not in unique_values dict
-            filtered_data = filtered_data[filtered_data[item].isin(unique_values[item])]
-        calculations(filtered_data) 
+            if unique_values[item] != []: # The list become empty if the user turns all bars off by clicking on all of them
+                filtered_data = filtered_data[filtered_data[item].isin(unique_values[item])]
+            else: # If the list is empty, we add all the unique values for that feature back to the list
+                filtered_data = filtered_data[filtered_data[item].isin(list(data[item].unique()))]
+        calculations(filtered_data)
+        print(unique_values) 
         return jsonify(data_tosend)
     else: # This method is executed each time the page is refreshed
         for item in columns[:-1]: # For all columns except throughput

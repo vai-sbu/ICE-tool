@@ -6,7 +6,7 @@ let result_svg_width = 100; // Width of svg in Area2
 let result_bar_width = 60; // Bar width of svg in Area2
 let svgHeight = 730, barPadding = 10; // Svg height and bar padding for Area1
 let max_cols = data_imported['Max Cols']; // Get the maximum number of bars that are to be drawn in Area1
-let barWidth = (parseFloat(document.getElementById('area1').offsetWidth)/(max_cols+column.length+7)); // Calculate bar width by dividing the width of Area1 by max cols
+let barWidth = (parseFloat(document.getElementById('area1').offsetWidth)/(max_cols+column.length+7)); // Calculate bar width by dividing the width of Area1 by (max cols + number of gaps i.e. number of variables in the dataset)
 let data_received = data_imported; // Data received captures the new data when user clicks on some bar or a button. Initially it is equal to original dataset but later it changes.
 let colorScale = d3.scaleOrdinal(d3.schemeCategory10) // To add different colors to bars representing each variable in the dataset
     .domain(column);
@@ -14,6 +14,9 @@ let selection = []; // This array helps keep track of which bar the user clicked
 let linearScale = d3.scaleLinear() // Scale to scale throughput values to the height of svg
     .domain([data_imported['Min Thp'], data_imported['Max Thp']])
     .range([svgHeight-300,0])
+let toggle_selection = [] // Array to store which buttons are pressed to display or hide whole variables
+
+
 
 function redraw(){ // Redraws every bar when the user makes a selection
 
@@ -109,7 +112,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 let translate = [barWidth * global_text_translate+10, 460]
                 global_text_translate++
                 return "translate("+ translate +")rotate(45)";
-            })
+            });
             
         // ****************************** Below is the code for buttons ******************************
             
@@ -128,14 +131,14 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 if(!pressed1){
                     barChart.style("opacity", 0.5)
                     pressed1 = true;
-                    data_button_tosend = {'column': column[i], 'switch': 'off'};
+                    data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'off'};
                 }
                 else{
                     barChart.style("opacity", 1)
                     pressed1 = false;
-                    data_button_tosend = {'column': column[i], 'switch': 'on'};
+                    data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'on'};
                 }
-                $.post("button", data_button_tosend, function(){});
+                $.post("", data_button_tosend, function(){});
             });
     }
     svg_elem.append('g')
