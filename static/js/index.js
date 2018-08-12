@@ -14,8 +14,6 @@ let selection = []; // This array helps keep track of which bar the user clicked
 let linearScale = d3.scaleLinear() // Scale to scale throughput values to the height of svg
     .domain([data_imported['Min Thp'], data_imported['Max Thp']])
     .range([svgHeight-300,0])
-let toggle_selection = [] // Array to store which buttons are pressed to display or hide whole variables
-
 
 
 function redraw(){ // Redraws every bar when the user makes a selection
@@ -82,16 +80,14 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 for(let k in selection){ // Check if the current selection by the user is present in selection array
                     if(selection[k].id == column[i]+dataset[j][column[i]]){
                         is_present = true;
-                        index_obtained = k;
-                        break;
+                        selection.splice(k,1); // Remove the element from selection array and send information to the server
                     }
                 }
                 if(!is_present){ // Add the element to selection array if it is not present and send the information to the server
                     selection.push({'id': column[i]+dataset[j][column[i]]});
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'off'};
                 }
-                else{ // Remove the element from selection array and send information to the server
-                    selection.splice(index_obtained,1);
+                else{ 
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'on'};
                 }
                 $.post("", data_toserver, function(data_infunc){
@@ -116,29 +112,38 @@ function redraw(){ // Redraws every bar when the user makes a selection
             
         // ****************************** Below is the code for buttons ******************************
             
-        let pressed1 = false;
+        let pressed1 = false; // Variable to store whether or not the button is pressed
 
-        let form1 = d3.select('#area1').append("form")
+        let form1 = d3.select('#area1').append("form") // Add buttons to Area1
             .attr('class','btn-group')    
         
-        form1.append("input")
+        form1.append("input") // Properties of each button
             .attr("type", "button")
             .attr("name", "toggle")
             .attr("value", column[i])
-            .attr("width", 40)
-            .on("click", function(event){
-                let data_button_tosend;
-                if(!pressed1){
-                    barChart.style("opacity", 0.5)
-                    pressed1 = true;
-                    data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'off'};
+            .on("click", function(event){ // Handling what happens when the button is clicked
+                let data_button_tosend; // Dict to send to the server
+                if(!pressed1){ // Variable is turned off by the user
+                    for(let k in dataset){
+                        selection.push({'id': column[i]+dataset[k][column[i]]}); // Add all the categories for that variable to the selection array
+                    }
+                    pressed1 = true; // Change the value of pressed1
+                    data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'off'}; // This is the information that is sent to the server when the button is pressed to turn the variable off
                 }
-                else{
-                    barChart.style("opacity", 1)
+                else{ // When the variable is turned on
+                    // Remove all the categories for that variable from the selection array
+                    for(let k in selection){
+                        if(selection[k].id.startsWith(column[i])){
+                            selection.splice(k,1); // Remove the element from selection array and send information to the server
+                        }
+                    }
                     pressed1 = false;
                     data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'on'};
                 }
-                $.post("", data_button_tosend, function(){});
+                $.post("", data_button_tosend, function(data_infunc){
+                    data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
+                    redraw(); // Redraw the bars based on current received information
+                });
             });
     }
     svg_elem.append('g')
