@@ -2,7 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         
@@ -19,13 +19,15 @@
         <div class="container-fluid">
             <h1>Interactive Box Plots</h1>
             <div class="row">
+                <!-- Area 1 contains the bars for all variables in the dataset. Area 2 contains the result bar showing the Max and Min thp for complete dataset -->
                 <div class="col-lg-11 text-center" id="area1"></div>
                 <div class="col-lg-1" id="area2"></div>
             </div>
         </div>
         <script src="https://d3js.org/d3.v4.min.js"></script>
         <script type="text/javascript">
-            let data_imported = {{data | safe}};
+        // Passing the data passed from app.py to index.js file by creating a global variable named data_imported.
+            let data_imported = {{data | safe}}; 
         </script>
         <script src="{{ url_for('static', filename="js/index.js")}}"></script>
     </body>
