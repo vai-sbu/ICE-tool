@@ -175,6 +175,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
         
 }
 
+console.time('redraw')
 redraw(); // Call the redraw function everytime this script runs
-
+console.timeEnd('redraw')
 window.addEventListener('resize',redraw); // Bootstrap will run everytime the user tries to resize the windw

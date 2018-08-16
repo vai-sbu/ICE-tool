@@ -2,6 +2,7 @@ import json
 
 from flask import Flask, render_template, request, redirect, Response, jsonify
 import pandas as pd
+import time # To measure the time of a block of code
 
 app = Flask(__name__)
 
@@ -38,10 +39,10 @@ def calculations(filtered_data):
     data_tosend['Max Thp'] = max_thp
     data_tosend['Min Thp'] = min_thp
 
-    
 @app.route("/", methods = ['POST', 'GET']) # View function for the app
 def index():
     if request.method == 'POST': # Collect the Post request when the user clicks a bar
+        start_time = time.time() # Measure time for this block of code, this is the start time
         column_received = request.form['column'] # Get the variable selected by the user
         value_received = request.form['value'] # Get the category within the variable selected by the user
         switch_received = request.form['switch'] # "on" or "off"
@@ -67,7 +68,8 @@ def index():
             else: # If the list is empty, we add all the unique values for that feature back to the list
                 filtered_data = filtered_data[filtered_data[item].isin(list(data[item].unique()))]
         calculations(filtered_data)
-        print(unique_values) 
+        # print(unique_values)
+        print(time.time() - start_time) 
         return jsonify(data_tosend)
     else: # This method is executed each time the page is refreshed
         for item in columns[:-1]: # For all columns except throughput
@@ -96,12 +98,11 @@ def index():
         data_tosend['Min Thp'] = min_thp
         return render_template("index.html", data=data_tosend)
 
-
 if __name__ == "__main__":
     '''
         This method is run only once when the server is started
     '''
-    data = pd.read_csv('dataset/systems_data.csv') # Reading the dataset is done only once when the server is started
+    data = pd.read_csv('/mnt/c/Users/atyag/Documents/boxPlotApp/dataset/systems_data.csv') # Reading the dataset is done only once when the server is started
     columns = list(data.columns) # Get the columns in the dataframe and create a list of the column names
     for col in columns[:-1]: # For all columns except throughput
         data[col] = data[col].apply(str) # Change the datatype for each column to be of type string so that there are no conflicts when performing calculations on each of the columns
@@ -112,4 +113,6 @@ if __name__ == "__main__":
     for item in columns[:-1]:
         unique_items = list(data[item].unique())
         unique_values[item] = unique_items
+
     app.run(debug=True)
+    # app.run(host='0.0.0.0', threaded=True)

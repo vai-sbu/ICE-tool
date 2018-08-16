@@ -13,15 +13,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="{{ url_for('static', filename="css/index.css")}}">
-        <title>Learn D3.js</title>
+        <title>Interactive box plots</title>
     </head>
     <body>
         <div class="container-fluid">
             <h1>Interactive Box Plots</h1>
             <div class="row">
                 <!-- Area 1 contains the bars for all variables in the dataset. Area 2 contains the result bar showing the Max and Min thp for complete dataset -->
-                <div class="col-lg-11 text-center" id="area1"></div>
-                <div class="col-lg-1" id="area2"></div>
+                <div class="col-md-11 text-center" id="area1"></div>
+                <div class="col-md-1" id="area2"></div>
             </div>
         </div>
         <script src="https://d3js.org/d3.v4.min.js"></script>
