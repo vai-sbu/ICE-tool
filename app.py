@@ -11,35 +11,60 @@ def index():
         column_received = request.form['column'] # Get the variable selected by the user
         value_received = request.form['value'] # Get the category within the variable selected by the user
         switch_received = request.form['switch'] # "on" or "off"
-        print(column_received)
-        print(value_received)
-        print(switch_received)
         filtered_data = data_dummy # Create a new dataframe to edit the values
         if value_received == 'all':
             unique_values = list(data[column_received].unique()) # Create a list of categories in the selected variable
+            '''
+            Notice that in this case, turning on/off a variable completely doesn't change the results. Turning on all features mean that we are adding that variable in the dataset.
+            On the other hand, turning off a variable means that we don't count that variable in our calculations i.e. it is wildcarded. In this case, the variable remain in the dataset but is
+            hidden from calculations. So, in both cases, the variable remains in the dataset.
+            '''
             if switch_received == 'off':
+                if column_received not in blacklist_cols:
+                    blacklist_cols.append(column_received)
                 for value in unique_values:
-                    on_cols.remove(column_received+'_'+value) # Remove all the categories from on_cols
+                    try:
+                        on_cols.remove(column_received+'_'+value) # Remove all the categories from on_cols
+                    except ValueError:
+                        pass
                     if column_received+'_'+value not in off_cols: # Add all the categories to off_cols if not already present
                         off_cols.append(column_received+'_'+value)
                 
             else:
+                try:
+                    blacklist_cols.remove(column_received)
+                except ValueError:
+                    pass
                 for value in unique_values:
-                    off_cols.remove(column_received+'_'+value) # Remove the categories from off_cols
+                    try:
+                        off_cols.remove(column_received+'_'+value) # Remove the categories from off_cols
+                    except ValueError:
+                        pass
                     if column_received+'_'+value not in on_cols: # Add the categories to on_cols if not already present
                         on_cols.append(column_received+'_'+value)
         else:
             if switch_received == 'off': # Remove the selected bar from on_cols and add to off_cols list
-                on_cols.remove(column_received+'_'+value_received)
+                try:
+                    on_cols.remove(column_received+'_'+value_received)
+                except ValueError:
+                    pass
                 off_cols.append(column_received+'_'+value_received)
             else: # Add the bar to on_cols and remove from off_cols
+                '''
+                It is important to remove the blacklisted variable at this stage because if the user clicked a button for a variable to turn them off, then he again clicks on a single bar 
+                for the same variable. In this case, the variable is back to scene and it is important to remove this column from blacklisted variables for proper
+                functioning of the app.
+                '''
+                if column_received in blacklist_cols: # Remove the variable if it is blacklisted
+                    blacklist_cols.remove(column_received)
                 on_cols.append(column_received+'_'+value_received)
                 off_cols.remove(column_received+'_'+value_received)
             
         # Remove the off_cols from filtered data
         for col in off_cols:
-            filtered_data = filtered_data.loc[filtered_data[col] == 0]
-        
+            cur_var = col.split('_')[0]
+            if cur_var not in blacklist_cols:
+                filtered_data = filtered_data.loc[filtered_data[col] == 0]
         # For every column in on_cols, calculate the min and max thp and update the dataframes
         for col in on_cols:
             cur_var = col.split('_')[0] # Get the value of the variable from the string
@@ -53,7 +78,6 @@ def index():
             data_tochange.at[cur_cat, 'Min'] = min_thp # Update the min thp value
             data_tochange.reset_index(inplace=True)
             dataframes[cur_var] = data_tochange # Replace the previous dataframe with the newly calculated values of thp
-            
             # Now it's time to send the dataframes to the client
             for col in columns[:-1]:
                 dataframe_tosend = dataframes[col] # Get the updated dataframe
@@ -61,15 +85,15 @@ def index():
                 chart_df = json.dumps(chart_df) # Create a JSON object
                 data_tosend[col] = chart_df # Add to the data_tosend dict
             
-            data_tosend['Max Thp'] = filtered_data.Throughput.max()
-            data_tosend['Min Thp'] = filtered_data.Throughput.min()
-            return jsonify(data_tosend)
+        data_tosend['Max Thp'] = filtered_data.Throughput.max()
+        data_tosend['Min Thp'] = filtered_data.Throughput.min()
+        return jsonify(data_tosend)
     else:
         filtered_data = data_dummy # Create a new dataframe to edit the values
         '''
-            In the next step, a new dataframe is created storing the variable categories and 
-            the Max and Min Throughput value for each category. This new dataframe is then 
-            converted to a JSON dictionary and sent to the client.
+        In the next step, a new dataframe is created storing the variable categories and 
+        the Max and Min Throughput value for each category. This new dataframe is then 
+        converted to a JSON dictionary and sent to the client.
         '''
         cur_variable = on_cols[0].split('_')[0] # Used to store the variable part of the string, for ex: Workload_Data is a string them cur_variable will store "Workload".
         global_temp_df = pd.DataFrame() # Dataframe used to store the categories and their Max and Min Throughput values
@@ -125,5 +149,6 @@ if __name__=="__main__":
     data_tosend = {'columns': columns[:-1]}
     data_tosend['Max Cols'] = len(column_dummy)-1 # Total number of bars to display i.e. all columns in the dummy dataframe except throughput
     dataframes = {} # This variable stores all variables in the dataset and the statistics of throughput for each of these variables. It is a dict of dataframes
+    blacklist_cols = [] # It stores the variables for which the buttons are turned 'off'. 
     app.run(debug=True)
     # app.run(host='0.0.0.0', threaded=True)
