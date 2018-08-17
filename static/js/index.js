@@ -19,8 +19,17 @@ for(let i in column){
     button_pressed[column[i]] = false;
 }
 
-function redraw(){ // Redraws every bar when the user makes a selection
+function tempAlert(msg,duration){ // Function to generate an alert box for configuration doesn't exist
+     var el = document.createElement("div");
+     el.setAttribute("style","position:absolute;top:5%;left:40%;background-color:orange;");
+     el.innerHTML = msg;
+     setTimeout(function(){
+      el.parentNode.removeChild(el);
+     },duration);
+     document.body.appendChild(el);
+}
 
+function redraw(){ // Redraws every bar when the user makes a selection
     $('#area1').empty(); // Delete every object in Area 1 to redraw everything  
     $('#area2').empty(); // Delete every object in Area 2
     
@@ -95,7 +104,13 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 }
                 $.post("", data_toserver, function(data_infunc){
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
-                    redraw(); // Redraw the bars based on current received information
+                    if (data_received['No Config Exist'] == 'True'){ // Check if the selected configuration exist, if no, tell the user about it
+                        selection.push({'id': column[i]+dataset[j][column[i]]});
+                        tempAlert("Configuration doesn't exist",700);
+                    }
+                    else{
+                        redraw(); // Redraw the bars based on current received information
+                    }
                 });
             });
         
@@ -176,7 +191,5 @@ function redraw(){ // Redraws every bar when the user makes a selection
         
 }
 
-console.time('redraw')
 redraw(); // Call the redraw function everytime this script runs
-console.timeEnd('redraw')
 window.addEventListener('resize',redraw); // Bootstrap will run everytime the user tries to resize the windw

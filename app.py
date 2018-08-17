@@ -10,6 +10,7 @@ app = Flask(__name__)
 def index():
     global on_cols
     global off_cols
+    data_tosend['No Config Exist'] = 'False' # By default, we assume that a configuration selected by the user exists. If it doesn't, we change it later in the code
     if request.method == 'POST': # Collect the Post request when the user clicks a bar
         column_received = request.form['column'] # Get the variable selected by the user
         value_received = request.form['value'] # Get the category within the variable selected by the user
@@ -72,30 +73,36 @@ def index():
             if cur_var not in blacklist_cols:
                 filtered_data = filtered_data.loc[filtered_data[col] == 0]
         # For every column in on_cols, calculate the min and max thp and update the dataframes
-        for col in on_cols:
-            cur_var = col.split('_')[0] # Get the value of the variable from the string
-            cur_cat = col.split('_')[1] # Get the value of category from the string
-            temp = filtered_data.loc[filtered_data[col] == 1] # Get the subset dataframe where only the current variable in 1
-            min_thp = temp.Throughput.min() # Get the min thp for this column
-            max_thp = temp.Throughput.max() # Get the max thp for this column
-            print(min_thp)
-            print(max_thp)
-            if not np.isnan(min_thp) and not np.isnan(max_thp): # Check for NaN values to prevent dataframe from distorting
-                data_tochange = dataframes[cur_var] # Get the dataframe generated from original data to change the values
-                data_tochange.set_index(cur_var, inplace=True) # Set the index to categories of the current variable
-                data_tochange.at[cur_cat, 'Max'] = max_thp # Update the max thp value
-                data_tochange.at[cur_cat, 'Min'] = min_thp # Update the min thp value
-                data_tochange.reset_index(inplace=True)
-                dataframes[cur_var] = data_tochange # Replace the previous dataframe with the newly calculated values of thp
-        # Now it's time to send the dataframes to the client
-        for col in columns[:-1]:
-            dataframe_tosend = dataframes[col] # Get the updated dataframe
-            chart_df = dataframe_tosend.to_dict(orient='records') # Convert the dataframe to dict
-            chart_df = json.dumps(chart_df) # Create a JSON object
-            data_tosend[col] = chart_df # Add to the data_tosend dict
-            
-        data_tosend['Max Thp'] = filtered_data.Throughput.max()
-        data_tosend['Min Thp'] = filtered_data.Throughput.min()
+        if not filtered_data.empty: # Filtered data is empty when no such configuration exist. In this case, we return the previous result and no bar changes on frontend
+            for col in on_cols:
+                cur_var = col.split('_')[0] # Get the value of the variable from the string
+                cur_cat = col.split('_')[1] # Get the value of category from the string
+                temp = filtered_data.loc[filtered_data[col] == 1] # Get the subset dataframe where only the current variable in 1
+                min_thp = temp.Throughput.min() # Get the min thp for this column
+                max_thp = temp.Throughput.max() # Get the max thp for this column
+                if not np.isnan(min_thp) and not np.isnan(max_thp): # Check for NaN values to prevent dataframe from distorting
+                    data_tochange = dataframes[cur_var] # Get the dataframe generated from original data to change the values
+                    data_tochange.set_index(cur_var, inplace=True) # Set the index to categories of the current variable
+                    data_tochange.at[cur_cat, 'Max'] = max_thp # Update the max thp value
+                    data_tochange.at[cur_cat, 'Min'] = min_thp # Update the min thp value
+                    data_tochange.reset_index(inplace=True)
+                    dataframes[cur_var] = data_tochange # Replace the previous dataframe with the newly calculated values of thp
+            data_tosend['Max Thp'] = filtered_data.Throughput.max()
+            data_tosend['Min Thp'] = filtered_data.Throughput.min()
+            # Now it's time to send the dataframes to the client
+            for col in columns[:-1]:
+                dataframe_tosend = dataframes[col] # Get the updated dataframe
+                chart_df = dataframe_tosend.to_dict(orient='records') # Convert the dataframe to dict
+                chart_df = json.dumps(chart_df) # Create a JSON object
+                data_tosend[col] = chart_df # Add to the data_tosend dict
+        else: # If the filtered data is empty i.e. no such configuration exists
+            try:
+                on_cols.remove(column_received+'_'+value_received) # Remove the current config from on_cols
+            except ValueError:
+                pass
+            off_cols.append(column_received+'_'+value_received) # Add the current config to off_cols
+            data_tosend['No Config Exist'] = 'True' # Send the message to client that no such configuration exist
+
         return jsonify(data_tosend)
     else:
         filtered_data = data_dummy # Create a new dataframe to edit the values
