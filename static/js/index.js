@@ -14,8 +14,10 @@ let selection = []; // This array helps keep track of which bar the user clicked
 let linearScale = d3.scaleLinear() // Scale to scale throughput values to the height of svg
     .domain([data_imported['Min Thp'], data_imported['Max Thp']])
     .range([svgHeight-300,0])
-let pressed1 = false; // Variable to store whether or not the button is pressed
-
+let button_pressed = {}; // Variable to store whether or not the button is pressed
+for(let i in column){
+    button_pressed[column[i]] = false;
+}
 
 function redraw(){ // Redraws every bar when the user makes a selection
 
@@ -122,13 +124,12 @@ function redraw(){ // Redraws every bar when the user makes a selection
             .attr("value", column[i])
             .on("click", function(){ // Handling what happens when the button is clicked
                 let data_button_tosend; // Dict to send to the server  
-                if(!pressed1){ // Variable is turned off by the user
+                if(!button_pressed[column[i]]){ // Variable is turned off by the user
                     for(let k in dataset){
                         selection.push({'id': column[i]+dataset[k][column[i]]}); // Add all the categories for that variable to the selection array
                     }
-                    pressed1 = true; // Change the value of pressed1
+                    button_pressed[column[i]] = true; // Change the value of button_pressed
                     data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'off'}; // This is the information that is sent to the server when the button is pressed to turn the variable off
-                    console.log(pressed1)
                 }
                 else{ // When the variable is turned on
                     // Remove all the categories for that variable from the selection array
@@ -138,7 +139,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                             selection.splice(k,1); // Remove the element from selection array and send information to the server
                         }
                     }
-                    pressed1 = false;
+                    button_pressed[column[i]] = false;
                     data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'on'};
                 }
                 $.post("", data_button_tosend, function(data_infunc){

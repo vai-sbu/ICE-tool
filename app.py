@@ -2,6 +2,7 @@ import json
 
 from flask import Flask, render_template, request, redirect, Response, jsonify
 import pandas as pd
+import numpy as np
 
 app = Flask(__name__)
 
@@ -11,6 +12,9 @@ def index():
         column_received = request.form['column'] # Get the variable selected by the user
         value_received = request.form['value'] # Get the category within the variable selected by the user
         switch_received = request.form['switch'] # "on" or "off"
+        print(column_received)
+        print(value_received)
+        print(switch_received)
         filtered_data = data_dummy # Create a new dataframe to edit the values
         if value_received == 'all':
             unique_values = list(data[column_received].unique()) # Create a list of categories in the selected variable
@@ -72,24 +76,31 @@ def index():
             temp = filtered_data.loc[filtered_data[col] == 1] # Get the subset dataframe where only the current variable in 1
             min_thp = temp.Throughput.min() # Get the min thp for this column
             max_thp = temp.Throughput.max() # Get the max thp for this column
-            data_tochange = dataframes[cur_var] # Get the dataframe generated from original data to change the values
-            data_tochange.set_index(cur_var, inplace=True) # Set the index to categories of the current variable
-            data_tochange.at[cur_cat, 'Max'] = max_thp # Update the max thp value
-            data_tochange.at[cur_cat, 'Min'] = min_thp # Update the min thp value
-            data_tochange.reset_index(inplace=True)
-            dataframes[cur_var] = data_tochange # Replace the previous dataframe with the newly calculated values of thp
-            # Now it's time to send the dataframes to the client
-            for col in columns[:-1]:
-                dataframe_tosend = dataframes[col] # Get the updated dataframe
-                chart_df = dataframe_tosend.to_dict(orient='records') # Convert the dataframe to dict
-                chart_df = json.dumps(chart_df) # Create a JSON object
-                data_tosend[col] = chart_df # Add to the data_tosend dict
+            if not np.isnan(min_thp) and not np.isnan(max_thp):
+                print(min_thp)
+                print(max_thp)
+                data_tochange = dataframes[cur_var] # Get the dataframe generated from original data to change the values
+                data_tochange.set_index(cur_var, inplace=True) # Set the index to categories of the current variable
+                data_tochange.at[cur_cat, 'Max'] = max_thp # Update the max thp value
+                data_tochange.at[cur_cat, 'Min'] = min_thp # Update the min thp value
+                data_tochange.reset_index(inplace=True)
+                dataframes[cur_var] = data_tochange # Replace the previous dataframe with the newly calculated values of thp
+        # Now it's time to send the dataframes to the client
+        for col in columns[:-1]:
+            dataframe_tosend = dataframes[col] # Get the updated dataframe
+            chart_df = dataframe_tosend.to_dict(orient='records') # Convert the dataframe to dict
+            chart_df = json.dumps(chart_df) # Create a JSON object
+            data_tosend[col] = chart_df # Add to the data_tosend dict
             
         data_tosend['Max Thp'] = filtered_data.Throughput.max()
         data_tosend['Min Thp'] = filtered_data.Throughput.min()
         return jsonify(data_tosend)
     else:
         filtered_data = data_dummy # Create a new dataframe to edit the values
+        global on_cols
+        global off_cols
+        on_cols = list(column_dummy[1:]) # List of bars that are turned on. Initially, all the bars are on. We start from 1st index because column_dummy[0] = Throughput
+        off_cols = [] # No bars are turned off initially    
         '''
         In the next step, a new dataframe is created storing the variable categories and 
         the Max and Min Throughput value for each category. This new dataframe is then 
@@ -144,7 +155,7 @@ if __name__=="__main__":
         data[col] = data[col].apply(str) # Change the datatype for each column to be of type string so that there are no conflicts when performing calculations on each of the columns
     data_dummy = pd.get_dummies(data) #Since all the data in categorical, this creates a boolean dummy dataframe by creating columns of all the categories for each variable. This creates a column for each bar displayed
     column_dummy = list(data_dummy.columns)
-    on_cols = list(column_dummy[1:]) # List of bars that are turned on. Initially, all the bars are on. We start from 1st index because column_dummy[0] = Throughput
+    on_cols = [] # List of bars that are turned on. Initially, all the bars are on. We start from 1st index because column_dummy[0] = Throughput
     off_cols = [] # No bars are turned off initially
     data_tosend = {'columns': columns[:-1]}
     data_tosend['Max Cols'] = len(column_dummy)-1 # Total number of bars to display i.e. all columns in the dummy dataframe except throughput
