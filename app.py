@@ -8,6 +8,8 @@ app = Flask(__name__)
 
 @app.route("/", methods = ['POST', 'GET']) # View function for the app
 def index():
+    global on_cols
+    global off_cols
     if request.method == 'POST': # Collect the Post request when the user clicks a bar
         column_received = request.form['column'] # Get the variable selected by the user
         value_received = request.form['value'] # Get the category within the variable selected by the user
@@ -76,9 +78,9 @@ def index():
             temp = filtered_data.loc[filtered_data[col] == 1] # Get the subset dataframe where only the current variable in 1
             min_thp = temp.Throughput.min() # Get the min thp for this column
             max_thp = temp.Throughput.max() # Get the max thp for this column
-            if not np.isnan(min_thp) and not np.isnan(max_thp):
-                print(min_thp)
-                print(max_thp)
+            print(min_thp)
+            print(max_thp)
+            if not np.isnan(min_thp) and not np.isnan(max_thp): # Check for NaN values to prevent dataframe from distorting
                 data_tochange = dataframes[cur_var] # Get the dataframe generated from original data to change the values
                 data_tochange.set_index(cur_var, inplace=True) # Set the index to categories of the current variable
                 data_tochange.at[cur_cat, 'Max'] = max_thp # Update the max thp value
@@ -97,8 +99,6 @@ def index():
         return jsonify(data_tosend)
     else:
         filtered_data = data_dummy # Create a new dataframe to edit the values
-        global on_cols
-        global off_cols
         on_cols = list(column_dummy[1:]) # List of bars that are turned on. Initially, all the bars are on. We start from 1st index because column_dummy[0] = Throughput
         off_cols = [] # No bars are turned off initially    
         '''
