@@ -72,6 +72,7 @@ def index():
             cur_var = col.split('_')[0]
             if cur_var not in blacklist_cols:
                 filtered_data = filtered_data.loc[filtered_data[col] == 0]
+
         # For every column in on_cols, calculate the min and max thp and update the dataframes
         if not filtered_data.empty: # Filtered data is empty when no such configuration exist. In this case, we return the previous result and no bar changes on frontend
             for col in on_cols:
@@ -102,7 +103,6 @@ def index():
                 pass
             off_cols.append(column_received+'_'+value_received) # Add the current config to off_cols
             data_tosend['No Config Exist'] = 'True' # Send the message to client that no such configuration exist
-
         return jsonify(data_tosend)
     else:
         filtered_data = data_dummy # Create a new dataframe to edit the values
