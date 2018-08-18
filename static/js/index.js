@@ -113,7 +113,16 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     }
                 });
             });
-        
+        svg_elem.append('g').append('rect')
+            .attr("transform", function () {
+                let translate = [barWidth * global_text_translate+10, 550]
+                return "translate("+ translate +")";
+            })
+            .attr('width', barWidth*dataset.length)
+            .attr('height', 20)
+            .attr('fill', 'yellow')
+            .text(column[i]);
+
         let g_text = svg_elem.append('g')     
         let text = g_text.selectAll("text") // Add the text below each bar
             .data(dataset)
@@ -129,39 +138,38 @@ function redraw(){ // Redraws every bar when the user makes a selection
             });
             
         // ****************************** Below is the code for buttons ******************************
-
-        let form1 = d3.select('#area1').append("form") // Add buttons to Area1
-            .attr('class','btn-group')    
+        // let form1 = d3.select('#area1').append("form") // Add buttons to Area1
+        //     .attr('class','btn-group')    
         
-        form1.append("input") // Properties of each button
-            .attr("type", "button")
-            .attr("name", "toggle")
-            .attr("value", column[i])
-            .on("click", function(){ // Handling what happens when the button is clicked
-                let data_button_tosend; // Dict to send to the server  
-                if(!button_pressed[column[i]]){ // Variable is turned off by the user
-                    for(let k in dataset){
-                        selection.push({'id': column[i]+dataset[k][column[i]]}); // Add all the categories for that variable to the selection array
-                    }
-                    button_pressed[column[i]] = true; // Change the value of button_pressed
-                    data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'off'}; // This is the information that is sent to the server when the button is pressed to turn the variable off
-                }
-                else{ // When the variable is turned on
-                    // Remove all the categories for that variable from the selection array
-                    let k = selection.length
-                    while(k--){
-                        if(selection[k].id.startsWith(column[i])){
-                            selection.splice(k,1); // Remove the element from selection array and send information to the server
-                        }
-                    }
-                    button_pressed[column[i]] = false;
-                    data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'on'};
-                }
-                $.post("", data_button_tosend, function(data_infunc){
-                    data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
-                    redraw(); // Redraw the bars based on current received information
-                });
-            });
+        // form1.append("input") // Properties of each button
+        //     .attr("type", "button")
+        //     .attr("name", "toggle")
+        //     .attr("value", column[i])
+        //     .on("click", function(){ // Handling what happens when the button is clicked
+        //         let data_button_tosend; // Dict to send to the server  
+        //         if(!button_pressed[column[i]]){ // Variable is turned off by the user
+        //             for(let k in dataset){
+        //                 selection.push({'id': column[i]+dataset[k][column[i]]}); // Add all the categories for that variable to the selection array
+        //             }
+        //             button_pressed[column[i]] = true; // Change the value of button_pressed
+        //             data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'off'}; // This is the information that is sent to the server when the button is pressed to turn the variable off
+        //         }
+        //         else{ // When the variable is turned on
+        //             // Remove all the categories for that variable from the selection array
+        //             let k = selection.length
+        //             while(k--){
+        //                 if(selection[k].id.startsWith(column[i])){
+        //                     selection.splice(k,1); // Remove the element from selection array and send information to the server
+        //                 }
+        //             }
+        //             button_pressed[column[i]] = false;
+        //             data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'on'};
+        //         }
+        //         $.post("", data_button_tosend, function(data_infunc){
+        //             data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
+        //             redraw(); // Redraw the bars based on current received information
+        //         });
+        //     });
     }
     svg_elem.append('g')
         .call(d3.axisLeft(linearScale))

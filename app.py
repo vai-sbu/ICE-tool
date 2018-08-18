@@ -156,7 +156,7 @@ if __name__=="__main__":
     '''
         This method is run only once when the server is started
     '''
-    data = pd.read_csv('dataset/systems_data.csv') # # Reading the dataset is done only once when the server is started
+    data = pd.read_csv('dataset/systems_data.csv') # Reading the dataset is done only once when the server is started
     columns = list(data.columns) # Crete a list of columns in the dataset
     for col in columns[:-1]: # For all columns except throughput
         data[col] = data[col].apply(str) # Change the datatype for each column to be of type string so that there are no conflicts when performing calculations on each of the columns
