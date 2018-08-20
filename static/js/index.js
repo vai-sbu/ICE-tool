@@ -40,8 +40,8 @@ function redraw(){ // Redraws every bar when the user makes a selection
     let global_hzline_translate2 = 0; // To control upper horizontal whiskers right point
     let global_hzline2_translate1 = 0; // To control lower horizontal whiskers left point
     let global_hzline2_translate2 = 0; // To control lower horizontal whiskers right point
-    let global_median1 = 0;
-    let global_median2 = 0;
+    let global_median1 = 0; // To control the median horizontal whisker left point
+    let global_median2 = 0; // To control the median whisker right point
 
     // Declaring the svg element in area 1
     let svg_elem = d3.select('#area1').append('svg')
@@ -66,11 +66,12 @@ function redraw(){ // Redraws every bar when the user makes a selection
 
         let dataset = JSON.parse(data_received[column[i]]); // Each element in data_received is the throughput details about a variable in the dataset. Extracting this information in a for loop
         
+        // Add vertical lines for the box plots. We add them before the boxes because the boxes have to be drawn over these vertical lines.
         let verticalLines = svg_elem.append('g').selectAll('.verticalLines')
             .data(dataset)
             .enter()
             .append('line')
-            .attr("transform", function (d, j) {
+            .attr("transform", function () {
                 let translate = [barWidth * global_line_translate+barWidth/3, 0];
                 global_line_translate++; 
                 return "translate("+ translate +")"})
