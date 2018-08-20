@@ -81,15 +81,27 @@ def index():
                 temp = filtered_data.loc[filtered_data[col] == 1] # Get the subset dataframe where only the current variable in 1
                 min_thp = temp.Throughput.min() # Get the min thp for this column
                 max_thp = temp.Throughput.max() # Get the max thp for this column
+                lq_thp = temp.Throughput.quantile(0.25) # Get 25th percentile
+                uq_thp = temp.Throughput.quantile(0.75) # Get 75th percentile
+                med_thp = temp.Throughput.quantile(0.5) # Get the median of data
+                iqr_thp = uq_thp - lq_thp # Get IQR
                 if not np.isnan(min_thp) and not np.isnan(max_thp): # Check for NaN values to prevent dataframe from distorting
                     data_tochange = dataframes[cur_var] # Get the dataframe generated from original data to change the values
                     data_tochange.set_index(cur_var, inplace=True) # Set the index to categories of the current variable
                     data_tochange.at[cur_cat, 'Max'] = max_thp # Update the max thp value
                     data_tochange.at[cur_cat, 'Min'] = min_thp # Update the min thp value
+                    data_tochange.at[cur_cat, 'LQ'] = lq_thp # Update other values 
+                    data_tochange.at[cur_cat, 'UQ'] = uq_thp
+                    data_tochange.at[cur_cat, 'MED'] = med_thp
+                    data_tochange.at[cur_cat, 'IQR'] = iqr_thp
                     data_tochange.reset_index(inplace=True)
                     dataframes[cur_var] = data_tochange # Replace the previous dataframe with the newly calculated values of thp
             data_tosend['Max Thp'] = filtered_data.Throughput.max()
             data_tosend['Min Thp'] = filtered_data.Throughput.min()
+            data_tosend['LQ Thp'] = filtered_data.Throughput.quantile(0.25) # 25th percentile
+            data_tosend['UQ Thp'] = filtered_data.Throughput.quantile(0.75) # 75th percentile
+            data_tosend['MED Thp'] = filtered_data.Throughput.quantile(0.5) # Median value of total throughput
+            data_tosend['IQR Thp'] = filtered_data.Throughput.quantile(0.75) - filtered_data.Throughput.quantile(0.25)
             # Now it's time to send the dataframes to the client
             for col in columns[:-1]:
                 dataframe_tosend = dataframes[col] # Get the updated dataframe
@@ -120,8 +132,8 @@ def index():
             temp_var = col.split('_')[0] # Get the variable part of the string
             temp_cat = col.split('_')[1] # Get the category part of the string
             if temp_var == cur_variable: # There is no change in the variable of the col
-                global_temp_df = global_temp_df.append({temp_var: temp_cat, 'Max': temp.Throughput.max(), 'Min': temp.Throughput.min()}, ignore_index=True)
-                # Append a row in the global_temp_df that includes the Min and Max values for a new category of current variable
+                global_temp_df = global_temp_df.append({temp_var: temp_cat, 'Max': temp.Throughput.max(), 'Min': temp.Throughput.min(), 'LQ': temp.Throughput.quantile(0.25), 'MED': temp.Throughput.quantile(0.5), 'UQ': temp.Throughput.quantile(0.75), 'IQR': temp.Throughput.quantile(0.75)-temp.Throughput.quantile(0.25)}, ignore_index=True)
+                # Append a row in the global_temp_df that includes the Min and Max, Lower Quantile, Upper Quantile and Median values for a new category of current variable
             else:
                 dataframes[cur_variable] = global_temp_df # Add the value of current dataframe to the dataframes dict for storage
                 # Code to create a JSON Object start -------------
@@ -132,8 +144,8 @@ def index():
 
                 # JSON object code end here --------------
                 cur_variable = temp_var # A new variable is detected, so change the value of cur_variable to the new variable
-                temp_df = pd.DataFrame(columns=[temp_var, 'Max', 'Min']) # Create a new temporary dataframe because a new variable type is detected
-                temp_df = temp_df.append({temp_var: temp_cat, 'Max': temp.Throughput.max(), 'Min': temp.Throughput.min()}, ignore_index=True) # Add the Max and Min throughput values to the temp dataframe for current category
+                temp_df = pd.DataFrame(columns=[temp_var, 'Max', 'Min', 'LQ', 'MED', 'UQ', 'IQR']) # Create a new temporary dataframe because a new variable type is detected
+                temp_df = temp_df.append({temp_var: temp_cat, 'Max': temp.Throughput.max(), 'Min': temp.Throughput.min(), 'LQ': temp.Throughput.quantile(0.25), 'MED': temp.Throughput.quantile(0.5), 'UQ': temp.Throughput.quantile(0.75), 'IQR': temp.Throughput.quantile(0.75) - temp.Throughput.quantile(0.25)}, ignore_index=True) # Add the Max and Min throughput values to the temp dataframe for current category
                 global_temp_df = temp_df # Change global_temp_df to this new dataframe for a new variable
 
         # At this point, global_temp_df contains the dataframe for the last variable in the dataset. We need to add this dataset to the JSON array data_tosend
@@ -146,8 +158,12 @@ def index():
         data_tosend[cur_variable] = chart_df # Add the JSON object to JSON array which is sent to the client
 
         # JSON object code end here --------------
-        data_tosend['Max Thp'] = filtered_data.Throughput.max()
-        data_tosend['Min Thp'] = filtered_data.Throughput.min()
+        data_tosend['Max Thp'] = filtered_data.Throughput.max() # Max throughput of full data
+        data_tosend['Min Thp'] = filtered_data.Throughput.min() # Min throughput of full data
+        data_tosend['LQ Thp'] = filtered_data.Throughput.quantile(0.25) # 25th percentile
+        data_tosend['UQ Thp'] = filtered_data.Throughput.quantile(0.75) # 75th percentile
+        data_tosend['MED Thp'] = filtered_data.Throughput.quantile(0.5) # Median value of total throughput
+        data_tosend['IQR Thp'] = filtered_data.Throughput.quantile(0.75) - filtered_data.Throughput.quantile(0.25)
         return render_template('index.html', data=data_tosend)
 
 

@@ -1,5 +1,4 @@
 /* To display the border around the bars in "Area1" */
 .main-svg {
     border: 1px solid black;
-    color: lightslategrey;
 }
