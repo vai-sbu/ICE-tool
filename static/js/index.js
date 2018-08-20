@@ -105,7 +105,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     return 1
                 }
                 else{
-                    return 0.5
+                    return 0.2
                 }
             })
             .attr("transform", function (d, j) { // Increment globar_bar_translate with each new bar drawn
@@ -289,7 +289,20 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 let translate = [barWidth * global_text_translate+10, 460]
                 global_text_translate++
                 return "translate("+ translate +")rotate(45)";
-            });
+            })
+            .attr("fill", function(d, j){
+                let is_present = false;
+                for(let k in selection){  // Check if the element is present in selection array, is yes, then the text should be black, otherwise red
+                    if(selection[k].id == column[i]+dataset[j][column[i]]) 
+                    is_present = true;
+                }
+                if(!is_present){
+                    return 'black'
+                }
+                else{
+                    return 'red'
+                }
+            })
             
     }
     svg_elem.append('g')
