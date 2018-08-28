@@ -108,6 +108,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     return 0.2
                 }
             })
+            
             .attr("transform", function (d, j) { // Increment globar_bar_translate with each new bar drawn
                 let translate = [barWidth * global_bar_translate, 0];
                 global_bar_translate++; 
