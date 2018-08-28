@@ -66,32 +66,15 @@ function redraw(){ // Redraws every bar when the user makes a selection
 
         let dataset = JSON.parse(data_received[column[i]]); // Each element in data_received is the throughput details about a variable in the dataset. Extracting this information in a for loop
         
-        // Add vertical lines for the box plots. We add them before the boxes because the boxes have to be drawn over these vertical lines.
-        let verticalLines = svg_elem.append('g').selectAll('.verticalLines')
-            .data(dataset)
-            .enter()
-            .append('line')
-            .attr("transform", function () {
-                let translate = [barWidth * global_line_translate+barWidth/3, 0];
-                global_line_translate++; 
-                return "translate("+ translate +")"})
-            .attr('y1', function(d){
-                return linearScale(d.Max)})
-            .attr('y2', function(d){
-                return linearScale(d.Min)})
-            .attr('stroke', '#000')
-            .attr('stroke-width', 1)
-            .attr('fill', 'none');
-
         let barChart = svg_elem.append('g').selectAll("rect") // Draw the bars to the current g element inside the svg in Area1
             .data(dataset)
             .enter()
             .append("rect")
             .attr("y", function(d) {
-                return linearScale(d.UQ); 
+                return linearScale(d.Max); 
             })
             .attr("height", function(d) { 
-                return linearScale(d.LQ) - linearScale(d.UQ); 
+                return linearScale(d.Min) - linearScale(d.Max); 
             })
             .attr("fill", colorScale(i))
             .attr("width", barWidth - barPadding)
@@ -108,7 +91,6 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     return 0.2
                 }
             })
-            
             .attr("transform", function (d, j) { // Increment globar_bar_translate with each new bar drawn
                 let translate = [barWidth * global_bar_translate, 0];
                 global_bar_translate++; 
@@ -142,52 +124,6 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     }
                 });
             });
-        
-        // Draw Upper horizontal whiskers
-        let horizontalLine = svg_elem.append('g').selectAll('.horizontalLine')
-            .data(dataset)
-            .enter()
-            .append('line')
-            .attr('x1', function () { // Increment globar_bar_translate with each new bar drawn
-                let translate = barWidth * global_hzline_translate1;
-                global_hzline_translate1++;
-                return translate;
-            })
-            .attr('x2', function () { // Increment globar_bar_translate with each new bar drawn
-                let translate = barWidth * global_hzline_translate2;
-                global_hzline_translate2++; 
-                return translate+barWidth-barPadding;
-            })
-            .attr('y1', function(d){
-                return linearScale(d.Max)})
-            .attr('y2', function(d){
-                return linearScale(d.Max)})
-            .attr('stroke', '#000')
-            .attr('stroke-width', 1)
-            .attr('fill', 'none');
-
-        // Draw Lower horizontal whiskers
-        let horizontalLine2 = svg_elem.append('g').selectAll('.horizontalLine2')
-            .data(dataset)
-            .enter()
-            .append('line')
-            .attr('x1', function () { // Increment globar_bar_translate with each new bar drawn
-                let translate = barWidth * global_hzline2_translate1;
-                global_hzline2_translate1++;
-                return translate;
-            })
-            .attr('x2', function () { // Increment globar_bar_translate with each new bar drawn
-                let translate = barWidth * global_hzline2_translate2;
-                global_hzline2_translate2++; 
-                return translate+barWidth-barPadding;
-            })
-            .attr('y1', function(d){
-                return linearScale(d.Min)})
-            .attr('y2', function(d){
-                return linearScale(d.Min)})
-            .attr('stroke', '#000')
-            .attr('stroke-width', 1)
-            .attr('fill', 'none');
 
         // Draw Median horizontal whiskers
         let medianLine = svg_elem.append('g').selectAll('.medianLine')
@@ -338,55 +274,24 @@ function redraw(){ // Redraws every bar when the user makes a selection
 
 
     // ****************************** Below is 2nd column code ******************************
-
-    let svg_result = d3.select('#area2').append('div').append('svg') // Initialize the svg element in Area2
+    
+    // Initialize the svg element in Area2
+    let svg_result = d3.select('#area2').append('div').append('svg') 
         .attr("width", result_svg_width)
         .attr("height", result_svg_height)
         .attr("class", "result-svg")
         .append("g")
             .attr("transform", "translate(" + margin_result.left + "," + margin_result.top + ")");
     
-    // Add the vertical line
-    svg_result.append('g').append('line')
-        .attr("transform", function () {
-            let translate = [result_bar_width/2.5, 0]; 
-            return "translate("+ translate +")";
-        })
-        .attr('y1', linearScale(data_received['Max Thp']))
-        .attr('y2', linearScale(data_received['Min Thp']))
-        .attr('stroke', '#000')
-        .attr('stroke-width', 1)
-        .attr('fill', 'none');
-    
     svg_result.append('g').append("rect") // Add the result bar
-        .attr("y", linearScale(data_received['UQ Thp']))
-        .attr("height", linearScale(data_received['LQ Thp']) - linearScale(data_received['UQ Thp']))
+        .attr("y", linearScale(data_received['Max Thp']))
+        .attr("height", linearScale(data_received['Min Thp']) - linearScale(data_received['Max Thp']))
         .attr("width", result_bar_width - barPadding)
         .attr("transform", function () {
             let translate = [margin_result, 0]; 
             return "translate("+ translate +")";
         })
         .attr('fill', 'palevioletred');
-
-    // Add the upper horizontal whisker
-    svg_result.append('g').append('line')
-        .attr('x1', margin_result)
-        .attr('x2', result_bar_width-barPadding)
-        .attr('y1', linearScale(data_received['Max Thp']))
-        .attr('y2', linearScale(data_received['Max Thp']))
-        .attr('stroke', '#000')
-        .attr('stroke-width', 1)
-        .attr('fill', 'none');
-
-    // Add the lower horizontal whisker
-    svg_result.append('g').append('line')
-        .attr('x1', margin_result)
-        .attr('x2', result_bar_width-barPadding)
-        .attr('y1', linearScale(data_received['Min Thp']))
-        .attr('y2', linearScale(data_received['Min Thp']))
-        .attr('stroke', '#000')
-        .attr('stroke-width', 1)
-        .attr('fill', 'none');
 
     // Add the median horizontal whisker
     svg_result.append('g').append('line')
