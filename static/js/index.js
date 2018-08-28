@@ -116,8 +116,20 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 $.post("", data_toserver, function(data_infunc){
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
                     if (data_received['No Config Exist'] == 'True'){ // Check if the selected configuration exist, if no, tell the user about it
-                        selection.push({'id': column[i]+dataset[j][column[i]]});
-                        tempAlert("Configuration doesn't exist",700);
+                        if(data_toserver['switch'] == 'on'){
+                            selection.push({'id': column[i]+dataset[j][column[i]]});
+                            tempAlert("Configuration doesn't exist",700);
+                        }
+                        else{
+                            let k = selection.length;
+                            while(k--){ // Check if the current selection by the user is present in selection array
+                                if(selection[k].id == column[i]+dataset[j][column[i]]){
+                                    is_present = true;
+                                    selection.splice(k,1); // Remove the element from selection array and send information to the server
+                                }
+                            }
+                            tempAlert("Error: Either configuration doesn't exist OR Press the Button to turn off the full variable instead.", 2500);
+                        }
                     }
                     else{
                         redraw(); // Redraw the bars based on current received information
@@ -259,7 +271,11 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 }
                 $.post("", data_toserver, function(data_infunc){
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
-                    if (data_received['No Config Exist'] == 'True'){ // Check if the selected configuration exist, if no, tell the user about it
+                    
+                    /*We add data_toserver['switch'] == 'on' in the IF condition below because we want to filter the case when the user wants to turn off the only selected bar in a variable.
+                    In this case the Algorithm returns 'No Config Exist' as True but actually, this operation is similar to pressing the button for that variable.*/
+
+                    if ((data_received['No Config Exist'] == 'True') && (data_toserver['switch'] == 'on')){ // Check if the selected configuration exist, if no, tell the user about it
                         selection.push({'id': column[i]+dataset[j][column[i]]});
                         tempAlert("Configuration doesn't exist",700);
                     }
