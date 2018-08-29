@@ -113,11 +113,23 @@ def index():
                 chart_df = json.dumps(chart_df) # Create a JSON object
                 data_tosend[col] = chart_df # Add to the data_tosend dict
         else: # If the filtered data is empty i.e. no such configuration exists
-            try:
-                on_cols.remove(column_received+'_'+value_received) # Remove the current config from on_cols
-            except ValueError:
-                pass
-            off_cols.append(column_received+'_'+value_received) # Add the current config to off_cols
+            '''
+            Following code undo the operations on on_cols and off_cols done in the upper part of the code
+            Since, the filtered data is empty and no such configuration exists, we need to updo the additions and deletions on on_cols and off_cols
+            to maintain consistency
+            '''
+            if switch_received == 'on':
+                try:
+                    on_cols.remove(column_received+'_'+value_received) # Remove the current config from on_cols
+                except ValueError:
+                    pass
+                off_cols.append(column_received+'_'+value_received) # Add the current config to off_cols
+            else: 
+                try:
+                    off_cols.remove(column_received+'_'+value_received)
+                except ValueError:
+                    pass
+                on_cols.append(column_received+'_'+value_received)
             data_tosend['No Config Exist'] = 'True' # Send the message to client that no such configuration exist
         return jsonify(data_tosend)
     else:

@@ -119,7 +119,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                             while(k--){ // Check if the current selection by the user is present in selection array
                                 if(selection[k].id == column[i]+dataset[j][column[i]]){
                                     is_present = true;
-                                    selection.splice(k,1); // Remove the element from selection array and send information to the server
+                                    selection.splice(k,1); // Remove the current bar from selection array as it was by default, pushed into the selection array.
                                 }
                             }
                             tempAlert("Error: Either configuration doesn't exist OR Press the Button to turn off the full variable instead.", 2500);
