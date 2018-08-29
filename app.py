@@ -85,8 +85,11 @@ def index():
                 uq_thp = temp.Throughput.quantile(0.75) # Get 75th percentile
                 med_thp = temp.Throughput.quantile(0.5) # Get the median of data
                 iqr_thp = uq_thp - lq_thp # Get IQR
+                data_tochange = dataframes[cur_var] # Get the dataframe generated from original data to change the values
+                data_tochange.set_index(cur_var, inplace=True) # Set the index to categories of the current variable
+                data_tochange.at[cur_cat, 'IsPresent'] = 0 # Set the bar to disappear by default. This value is changed in the below if condition in case we get new values of THP for this category.
+                data_tochange.reset_index(inplace=True)
                 if not np.isnan(min_thp) and not np.isnan(max_thp): # Check for NaN values to prevent dataframe from distorting
-                    data_tochange = dataframes[cur_var] # Get the dataframe generated from original data to change the values
                     data_tochange.set_index(cur_var, inplace=True) # Set the index to categories of the current variable
                     data_tochange.at[cur_cat, 'Max'] = max_thp # Update the max thp value
                     data_tochange.at[cur_cat, 'Min'] = min_thp # Update the min thp value
@@ -94,6 +97,7 @@ def index():
                     data_tochange.at[cur_cat, 'UQ'] = uq_thp
                     data_tochange.at[cur_cat, 'MED'] = med_thp
                     data_tochange.at[cur_cat, 'IQR'] = iqr_thp
+                    data_tochange.at[cur_cat, 'IsPresent'] = 1 # Since we got new THP values, hence this bar should be present in the plot with it's new size
                     data_tochange.reset_index(inplace=True)
                     dataframes[cur_var] = data_tochange # Replace the previous dataframe with the newly calculated values of thp
             data_tosend['Max Thp'] = filtered_data.Throughput.max()
@@ -132,7 +136,7 @@ def index():
             temp_var = col.split('_')[0] # Get the variable part of the string
             temp_cat = col.split('_')[1] # Get the category part of the string
             if temp_var == cur_variable: # There is no change in the variable of the col
-                global_temp_df = global_temp_df.append({temp_var: temp_cat, 'Max': temp.Throughput.max(), 'Min': temp.Throughput.min(), 'LQ': temp.Throughput.quantile(0.25), 'MED': temp.Throughput.quantile(0.5), 'UQ': temp.Throughput.quantile(0.75), 'IQR': temp.Throughput.quantile(0.75)-temp.Throughput.quantile(0.25)}, ignore_index=True)
+                global_temp_df = global_temp_df.append({temp_var: temp_cat, 'IsPresent': 1, 'Max': temp.Throughput.max(), 'Min': temp.Throughput.min(), 'LQ': temp.Throughput.quantile(0.25), 'MED': temp.Throughput.quantile(0.5), 'UQ': temp.Throughput.quantile(0.75), 'IQR': temp.Throughput.quantile(0.75)-temp.Throughput.quantile(0.25)}, ignore_index=True)
                 # Append a row in the global_temp_df that includes the Min and Max, Lower Quantile, Upper Quantile and Median values for a new category of current variable
             else:
                 dataframes[cur_variable] = global_temp_df # Add the value of current dataframe to the dataframes dict for storage
@@ -144,8 +148,18 @@ def index():
 
                 # JSON object code end here --------------
                 cur_variable = temp_var # A new variable is detected, so change the value of cur_variable to the new variable
-                temp_df = pd.DataFrame(columns=[temp_var, 'Max', 'Min', 'LQ', 'MED', 'UQ', 'IQR']) # Create a new temporary dataframe because a new variable type is detected
-                temp_df = temp_df.append({temp_var: temp_cat, 'Max': temp.Throughput.max(), 'Min': temp.Throughput.min(), 'LQ': temp.Throughput.quantile(0.25), 'MED': temp.Throughput.quantile(0.5), 'UQ': temp.Throughput.quantile(0.75), 'IQR': temp.Throughput.quantile(0.75) - temp.Throughput.quantile(0.25)}, ignore_index=True) # Add the Max and Min throughput values to the temp dataframe for current category
+                '''
+                IsPresent in the dataframe is used to remember which are the bars that are actually affected by the current configuration selection.
+                IsPresent = 1 if a category's throughput changes based on current configuration selection, on the other hand
+                IsPresent = 0 if a category disappears from the dataset based on current configuration. 
+
+                For example: if the user selects {Workload: FileServer, SpecialOption: nodatasum}, in this case, many categories disappear as 
+                they are not possible to occur in reality or they are not present in the dataset. In such case, the bars for these categories should disappear from the plot.
+
+                IsPresent stores this information and is used in index.js to make the bars appear/disappear.
+                '''
+                temp_df = pd.DataFrame(columns=[temp_var, 'IsPresent', 'Max', 'Min', 'LQ', 'MED', 'UQ', 'IQR']) # Create a new temporary dataframe because a new variable type is detected
+                temp_df = temp_df.append({temp_var: temp_cat, 'IsPresent': 1, 'Max': temp.Throughput.max(), 'Min': temp.Throughput.min(), 'LQ': temp.Throughput.quantile(0.25), 'MED': temp.Throughput.quantile(0.5), 'UQ': temp.Throughput.quantile(0.75), 'IQR': temp.Throughput.quantile(0.75) - temp.Throughput.quantile(0.25)}, ignore_index=True) # Add the Max and Min throughput values to the temp dataframe for current category
                 global_temp_df = temp_df # Change global_temp_df to this new dataframe for a new variable
 
         # At this point, global_temp_df contains the dataframe for the last variable in the dataset. We need to add this dataset to the JSON array data_tosend
