@@ -14,10 +14,14 @@ let selection = []; // This array helps keep track of which bar the user clicked
 let linearScale = d3.scaleLinear() // Scale to scale throughput values to the height of svg
     .domain([data_imported['Min Thp'], data_imported['Max Thp']])
     .range([svgHeight-300,0])
+
 let button_pressed = {}; // Variable to store whether or not the button is pressed
 for(let i in column){
     button_pressed[column[i]] = false;
 }
+
+// To plot the distribution of data along with bar charts, we need to create bins with the help of histogram class in d3
+let histoChart = d3.histogram();
 
 function tempAlert(msg,duration){ // Function to generate an alert box for configuration doesn't exist
      var el = document.createElement("div");
@@ -35,6 +39,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
     
     let global_bar_translate = 0; // To draw each bar next to each other
     let global_text_translate = 0; // To write the labels for each bar underneath
+    let global_violin_translate = 0;
     let global_median1 = 0; // To control the median horizontal whisker left point
     let global_median2 = 0; // To control the median whisker right point
 
@@ -53,6 +58,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
         global_text_translate++;
         global_median1++;
         global_median2++;
+        global_violin_translate++;
 
         let dataset = JSON.parse(data_received[column[i]]); // Each element in data_received is the throughput details about a variable in the dataset. Extracting this information in a for loop
         
@@ -131,6 +137,118 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 });
             });
 
+        // Draw the Violin Chart over the rectangles
+        svg_elem.selectAll('g.violin')
+        .data(dataset)
+        .enter()
+        .append('g')
+        .attr('transform', function(d){
+            let translate = [barWidth*global_violin_translate];
+            global_violin_translate++;
+            return 'translate('+translate+')';
+        })
+        .attr("opacity", function(d, j){
+            if(d.IsPresent == 1){
+                let is_present = false;
+                for(let k in selection){  // Check if the element is present in selection array, is yes, then plot if with opacity 0.5, otherwise plot it with opacity 1
+                    if(selection[k].id == column[i]+dataset[j][column[i]]) 
+                    is_present = true;
+                }
+                if(!is_present){
+                    return 1
+                }
+                else{
+                    return 0.2
+                }
+            }
+            else    
+                return 0
+        })
+        .append('path')
+            .style('stroke', 'black')
+            .style('fill', 'yellow')
+            .style('stroke-width', 0.5)
+            .attr('d', function(d){
+                // Max bins is used to store the value of maximum number of values in a bucket after the data is passed to histoChart
+                let max_bins = 0;
+                // Create the buckets with 500 units throughput range
+                let thresholds = d3.range(d.Min, d.Max, 500)
+                // Create the bins and fill the bins with the number of values lying in respective bins
+                histoChart
+                    .domain([d.Min, d.Max])
+                    .thresholds(thresholds)
+                    .value(d => d)
+                // Fill the area in the distribution. We use the below function to find the maximum number of values in a bucket. Notice that max_bins is update in the following function
+                let area = d3.area()
+                    .x0(a => 0)
+                    .x1(function(a){
+                        max_bins = Math.max(a.length, max_bins);
+                        return a.length
+                    })
+                    .y(a => linearScale(a.x1))
+                    .curve(d3.curveCatmullRom);
+
+                // run the below code to find max_bins
+                let to_return  = area(histoChart(d.Data));
+
+                // After the max_bins has been calculated for current bar, we assign a scale to keep the width of the distribution within the bar width
+                let violin_width_scale = d3.scaleLinear()
+                    .domain([0, max_bins])
+                    .range([0,20])
+                
+                // Now finally, area is calculated using the above linearScale    
+                area = d3.area()
+                    .x0(a => 0)
+                    .x1(a => violin_width_scale(a.length))
+                    .y(a => linearScale(a.x1))
+                    .curve(d3.curveCatmullRom);
+                    
+                // Fill the distribution curve within the bar chart
+                return area(histoChart(d.Data))
+            })
+            .on("click", function(d,j){
+                let data_toserver;
+                let is_present = false;
+                let k = selection.length
+                while(k--){ // Check if the current selection by the user is present in selection array
+                    if(selection[k].id == column[i]+dataset[j][column[i]]){
+                        is_present = true;
+                        selection.splice(k,1); // Remove the element from selection array and send information to the server
+                    }
+                }
+                if(!is_present){ // Add the element to selection array if it is not present and send the information to the server
+                    selection.push({'id': column[i]+dataset[j][column[i]]});
+                    data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'off'};
+                }
+                else{ 
+                    data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'on'};
+                }
+                $.post("", data_toserver, function(data_infunc){
+                    data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
+                    if (data_received['No Config Exist'] == 'True'){ // Check if the selected configuration exist, if no, tell the user about it
+                        if(data_toserver['switch'] == 'on'){
+                            selection.push({'id': column[i]+dataset[j][column[i]]});
+                            tempAlert("Configuration doesn't exist",700);
+                        }
+                        else{
+                            let k = selection.length;
+                            while(k--){ // Check if the current selection by the user is present in selection array
+                                if(selection[k].id == column[i]+dataset[j][column[i]]){
+                                    is_present = true;
+                                    selection.splice(k,1); // Remove the current bar from selection array as it was by default, pushed into the selection array.
+                                }
+                            }
+                            tempAlert("Error: Either configuration doesn't exist OR Press the Button to turn off the full variable instead.", 2500);
+                        }
+                    }
+                    else{
+                        redraw(); // Redraw the bars based on current received information
+                    }
+                });
+            });
+            
+            
+                
         // // Draw Median horizontal whiskers
         // let medianLine = svg_elem.append('g').selectAll('.medianLine')
         //     .data(dataset)
@@ -245,38 +363,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else{
                     return 'red'
                 }
-            })
-            .on("click", function(d,j){
-                let data_toserver;
-                let is_present = false;
-                let k = selection.length
-                while(k--){ // Check if the current selection by the user is present in selection array
-                    if(selection[k].id == column[i]+dataset[j][column[i]]){
-                        is_present = true;
-                        selection.splice(k,1); // Remove the element from selection array and send information to the server
-                    }
-                }
-                if(!is_present){ // Add the element to selection array if it is not present and send the information to the server
-                    selection.push({'id': column[i]+dataset[j][column[i]]});
-                    data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'off'};
-                }
-                else{ 
-                    data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'on'};
-                }
-                $.post("", data_toserver, function(data_infunc){
-                    data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
-                    
-                    /*We add data_toserver['switch'] == 'on' in the IF condition below because we want to filter the case when the user wants to turn off the only selected bar in a variable.
-                    In this case the Algorithm returns 'No Config Exist' as True but actually, this operation is similar to pressing the button for that variable.*/
-
-                    if ((data_received['No Config Exist'] == 'True') && (data_toserver['switch'] == 'on')){ // Check if the selected configuration exist, if no, tell the user about it
-                        selection.push({'id': column[i]+dataset[j][column[i]]});
-                        tempAlert("Configuration doesn't exist",700);
-                    }
-                    else{
-                        redraw(); // Redraw the bars based on current received information
-                    }
-                })});
+            });
             
     }
     svg_elem.append('g')
@@ -304,14 +391,64 @@ function redraw(){ // Redraws every bar when the user makes a selection
         .attr('fill', 'palevioletred');
 
     // Add the median horizontal whisker
-    svg_result.append('g').append('line')
-        .attr('x1', margin_result)
-        .attr('x2', result_bar_width-barPadding)
-        .attr('y1', linearScale(data_received['MED Thp']))
-        .attr('y2', linearScale(data_received['MED Thp']))
-        .attr('stroke', '#000')
-        .attr('stroke-width', 1)
-        .attr('fill', 'none');
+    // svg_result.append('g').append('line')
+    //     .attr('x1', margin_result)
+    //     .attr('x2', result_bar_width-barPadding)
+    //     .attr('y1', linearScale(data_received['MED Thp']))
+    //     .attr('y2', linearScale(data_received['MED Thp']))
+    //     .attr('stroke', '#000')
+    //     .attr('stroke-width', 1)
+    //     .attr('fill', 'none');
+
+    // Draw the Violin chart on the result bar
+    svg_result.append('g')
+    .attr("transform", function () {
+        let translate = [margin_result, 0]; 
+        return "translate("+ translate +")";
+    })
+    .append('path')
+        .style('stroke', 'black')
+        .style('fill', 'yellow')
+        .style('stroke-width', 0.5)
+        .attr('d', function(){
+            // Max bins is used to store the value of maximum number of values in a bucket after the data is passed to histoChart
+            let max_bins = 0;
+            // Create the buckets with 500 units throughput range
+            let thresholds = d3.range(data_received['Min Thp'], data_received['Max Thp'], 500)
+            // Create the bins and fill the bins with the number of values lying in respective bins
+            histoChart
+                .domain([data_received['Min Thp'], data_received['Max Thp']])
+                .thresholds(thresholds)
+                .value(d => d)
+            // Fill the area in the distribution. We use the below function to find the maximum number of values in a bucket. Notice that max_bins is update in the following function
+            let area = d3.area()
+                .x0(a => 0)
+                .x1(function(a){
+                    max_bins = Math.max(a.length, max_bins);
+                    return a.length
+                })
+                .y(a => linearScale(a.x1))
+                .curve(d3.curveCatmullRom);
+
+            // run the below code to find max_bins
+            let to_return  = area(histoChart(data_received['Data Thp']));
+
+            // After the max_bins has been calculated for current bar, we assign a scale to keep the width of the distribution within the bar width
+            let violin_width_scale = d3.scaleLinear()
+                .domain([0, max_bins])
+                .range([0,50])
+            
+            // Now finally, area is calculated using the above linearScale    
+            area = d3.area()
+                .x0(a => 0)
+                .x1(a => violin_width_scale(a.length))
+                .y(a => linearScale(a.x1))
+                .curve(d3.curveCatmullRom);
+                
+            // Fill the distribution curve within the bar chart
+            return area(histoChart(data_received['Data Thp']))    
+        });
+    
 
 }
 
