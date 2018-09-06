@@ -62,8 +62,19 @@ function redraw(){ // Redraws every bar when the user makes a selection
 
         let dataset = JSON.parse(data_received[column[i]]); // Each element in data_received is the throughput details about a variable in the dataset. Extracting this information in a for loop
         
+        // Draw boundaries around bars for each of the categories
+        svg_elem.append('g').append('rect')
+            .attr('y', linearScale(data_imported['Max Thp'])-10)
+            .attr('height', linearScale(data_imported['Min Thp']) - linearScale(data_imported['Max Thp'])+20)
+            .attr('width', dataset.length*barWidth+barPadding)
+            .attr('fill', 'white')
+            .attr('stroke', 'grey')
+            .attr('stroke-width', 3)
+            .attr('transform', 'translate('+(barWidth*global_bar_translate-barPadding)+')');
+
         // Draw the bars to the current g element inside the svg in Area1
-        let barChart = svg_elem.append('g').selectAll("rect") 
+        let barChart = svg_elem.append('g')
+            .selectAll("rect") 
             .data(dataset)
             .enter()
             .append("rect")
@@ -76,7 +87,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else
                     return 0; 
             })
-            .attr("fill", colorScale(i))
+            .attr("fill", 'white')
+            .attr('stroke', 'black')
+            .attr('stroke-width', 1)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -194,7 +207,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 // After the max_bins has been calculated for current bar, we assign a scale to keep the width of the distribution within the bar width
                 let violin_width_scale = d3.scaleLinear()
                     .domain([0, max_bins])
-                    .range([0,20])
+                    .range([0,barWidth-barPadding])
                 
                 // Now finally, area is calculated using the above linearScale    
                 area = d3.area()
