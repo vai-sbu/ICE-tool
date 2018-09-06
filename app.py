@@ -82,11 +82,13 @@ def index():
                 temp = filtered_data.loc[filtered_data[col] == 1] # Get the subset dataframe where only the current variable in 1
                 min_thp = temp.Throughput.min() # Get the min thp for this column
                 max_thp = temp.Throughput.max() # Get the max thp for this column
-                lq_thp = temp.Throughput.quantile(0.25) # Get 25th percentile
-                uq_thp = temp.Throughput.quantile(0.75) # Get 75th percentile
-                med_thp = temp.Throughput.quantile(0.5) # Get the median of data
+                thp_10 = temp.Throughput.quantile(0.1) # Get 10th percentile
+                thp_25 = temp.Throughput.quantile(0.25) # Get 10th percentile
+                thp_50 = temp.Throughput.quantile(0.5) # Get 10th percentile
+                thp_75 = temp.Throughput.quantile(0.75) # Get 10th percentile
+                thp_90 = temp.Throughput.quantile(0.9) # Get 10th percentile
+                thp_mean = temp.Throughput.mean() # Get 10th percentile
                 data_thp = list(temp.Throughput)
-                iqr_thp = uq_thp - lq_thp # Get IQR
                 data_tochange = dataframes[cur_var] # Get the dataframe generated from original data to change the values
                 data_tochange.set_index(cur_var, inplace=True) # Set the index to categories of the current variable
                 data_tochange.at[cur_cat, 'IsPresent'] = 0 # Set the bar to disappear by default. This value is changed in the below if condition in case we get new values of THP for this category.
@@ -95,20 +97,24 @@ def index():
                     data_tochange.set_index(cur_var, inplace=True) # Set the index to categories of the current variable
                     data_tochange.at[cur_cat, 'Max'] = max_thp # Update the max thp value
                     data_tochange.at[cur_cat, 'Min'] = min_thp # Update the min thp value
-                    data_tochange.at[cur_cat, 'LQ'] = lq_thp # Update other values 
-                    data_tochange.at[cur_cat, 'UQ'] = uq_thp
-                    data_tochange.at[cur_cat, 'MED'] = med_thp
-                    data_tochange.at[cur_cat, 'IQR'] = iqr_thp
+                    data_tochange.at[cur_cat, '10'] = thp_10 # Update other values 
+                    data_tochange.at[cur_cat, '25'] = thp_25
+                    data_tochange.at[cur_cat, '50'] = thp_50
+                    data_tochange.at[cur_cat, '75'] = thp_75
+                    data_tochange.at[cur_cat, '90'] = thp_90
+                    data_tochange.at[cur_cat, 'Mean'] = thp_mean
                     data_tochange.at[cur_cat, 'Data'] = data_thp
                     data_tochange.at[cur_cat, 'IsPresent'] = 1 # Since we got new THP values, hence this bar should be present in the plot with it's new size
                     data_tochange.reset_index(inplace=True)
                     dataframes[cur_var] = data_tochange # Replace the previous dataframe with the newly calculated values of thp
-            data_tosend['Max Thp'] = filtered_data.Throughput.max()
-            data_tosend['Min Thp'] = filtered_data.Throughput.min()
-            data_tosend['LQ Thp'] = filtered_data.Throughput.quantile(0.25) # 25th percentile
-            data_tosend['UQ Thp'] = filtered_data.Throughput.quantile(0.75) # 75th percentile
-            data_tosend['MED Thp'] = filtered_data.Throughput.quantile(0.5) # Median value of total throughput
-            data_tosend['IQR Thp'] = filtered_data.Throughput.quantile(0.75) - filtered_data.Throughput.quantile(0.25)
+            data_tosend['Max Thp'] = filtered_data.Throughput.max() # Max throughput of full data
+            data_tosend['Min Thp'] = filtered_data.Throughput.min() # Min throughput of full data
+            data_tosend['10 Thp'] = filtered_data.Throughput.quantile(0.1)
+            data_tosend['25 Thp'] = filtered_data.Throughput.quantile(0.25)
+            data_tosend['50 Thp'] = filtered_data.Throughput.quantile(0.5)
+            data_tosend['75 Thp'] = filtered_data.Throughput.quantile(0.75)
+            data_tosend['90 Thp'] = filtered_data.Throughput.quantile(0.9)
+            data_tosend['Mean Thp'] = filtered_data.Throughput.mean()
             data_tosend['Data Thp'] = list(filtered_data.Throughput)
             # Now it's time to send the dataframes to the client
             for col in columns[:-1]:
@@ -135,6 +141,7 @@ def index():
                     pass
                 on_cols.append(column_received+'_'+value_received)
             data_tosend['No Config Exist'] = 'True' # Send the message to client that no such configuration exist
+
         return jsonify(data_tosend)
     else:
         filtered_data = data_dummy # Create a new dataframe to edit the values
@@ -146,13 +153,23 @@ def index():
         converted to a JSON dictionary and sent to the client.
         '''
         cur_variable = on_cols[0].split('_')[0] # Used to store the variable part of the string, for ex: Workload_Data is a string them cur_variable will store "Workload".
-        global_temp_df = pd.DataFrame(columns=[cur_variable, 'IsPresent', 'Max', 'Min', 'LQ', 'MED', 'UQ', 'IQR', 'Data']) # Dataframe used to store the categories and their Max and Min Throughput values
+        global_temp_df = pd.DataFrame(columns=[cur_variable, 'IsPresent', 'Max', 'Min', '10', '25', '50', '75', '90', 'Mean', 'Data']) # Dataframe used to store the categories and their Max and Min Throughput values
         for col in on_cols: # For all the bars that are currently in the "on" state
             temp = filtered_data.loc[filtered_data[col] == 1] # Get the dataframe where the current category for a given variable is 1 i.e. 'on'. This is used to plot individual bars.
             temp_var = col.split('_')[0] # Get the variable part of the string
             temp_cat = col.split('_')[1] # Get the category part of the string
             if temp_var == cur_variable: # There is no change in the variable of the col
-                global_temp_df = global_temp_df.append({temp_var: temp_cat, 'IsPresent': 1, 'Max': temp.Throughput.max(), 'Min': temp.Throughput.min(), 'LQ': temp.Throughput.quantile(0.25), 'MED': temp.Throughput.quantile(0.5), 'UQ': temp.Throughput.quantile(0.75), 'IQR': temp.Throughput.quantile(0.75)-temp.Throughput.quantile(0.25), 'Data': list(temp.Throughput)}, ignore_index=True)
+                global_temp_df = global_temp_df.append({temp_var: temp_cat, 
+                                                        'IsPresent': 1, 
+                                                        'Max': temp.Throughput.max(), 
+                                                        'Min': temp.Throughput.min(), 
+                                                        '10': temp.Throughput.quantile(0.1),
+                                                        '25': temp.Throughput.quantile(0.25),
+                                                        '50': temp.Throughput.quantile(0.5),
+                                                        '75': temp.Throughput.quantile(0.75),
+                                                        '90': temp.Throughput.quantile(0.9),
+                                                        'Mean': temp.Throughput.mean(), 
+                                                        'Data': list(temp.Throughput)}, ignore_index=True)
                 # Append a row in the global_temp_df that includes the Min and Max, Lower Quantile, Upper Quantile and Median values for a new category of current variable
             else:
                 '''
@@ -194,8 +211,19 @@ def index():
 
                 IsPresent stores this information and is used in index.js to make the bars appear/disappear.
                 '''
-                temp_df = pd.DataFrame(columns=[temp_var, 'IsPresent', 'Max', 'Min', 'LQ', 'MED', 'UQ', 'IQR', 'Data']) # Create a new temporary dataframe because a new variable type is detected
-                temp_df = temp_df.append({temp_var: temp_cat, 'IsPresent': 1, 'Max': temp.Throughput.max(), 'Min': temp.Throughput.min(), 'LQ': temp.Throughput.quantile(0.25), 'MED': temp.Throughput.quantile(0.5), 'UQ': temp.Throughput.quantile(0.75), 'IQR': temp.Throughput.quantile(0.75) - temp.Throughput.quantile(0.25), 'Data': list(temp.Throughput)}, ignore_index=True) # Add the Max and Min throughput values to the temp dataframe for current category
+                temp_df = pd.DataFrame(columns=[temp_var, 'IsPresent', 'Max', 'Min', '10', '25', '50', '75', '90', 'Mean', 'Data']) # Create a new temporary dataframe because a new variable type is detected
+                temp_df = temp_df.append({temp_var: temp_cat, 
+                                        'IsPresent': 1, 
+                                        'Max': temp.Throughput.max(), 
+                                        'Min': temp.Throughput.min(), 
+                                        '10': temp.Throughput.quantile(0.1),
+                                        '25': temp.Throughput.quantile(0.25),
+                                        '50': temp.Throughput.quantile(0.5),
+                                        '75': temp.Throughput.quantile(0.75),
+                                        '90': temp.Throughput.quantile(0.9),
+                                        'Mean': temp.Throughput.mean(), 
+                                        'Data': list(temp.Throughput)}, ignore_index=True)
+                # Add the Max and Min throughput values to the temp dataframe for current category
                 global_temp_df = temp_df # Change global_temp_df to this new dataframe for a new variable
                 
         # At this point, global_temp_df contains the dataframe for the last variable in the dataset. We need to add this dataset to the JSON array data_tosend
@@ -210,10 +238,12 @@ def index():
         # JSON object code end here --------------
         data_tosend['Max Thp'] = filtered_data.Throughput.max() # Max throughput of full data
         data_tosend['Min Thp'] = filtered_data.Throughput.min() # Min throughput of full data
-        data_tosend['LQ Thp'] = filtered_data.Throughput.quantile(0.25) # 25th percentile
-        data_tosend['UQ Thp'] = filtered_data.Throughput.quantile(0.75) # 75th percentile
-        data_tosend['MED Thp'] = filtered_data.Throughput.quantile(0.5) # Median value of total throughput
-        data_tosend['IQR Thp'] = filtered_data.Throughput.quantile(0.75) - filtered_data.Throughput.quantile(0.25)
+        data_tosend['10 Thp'] = filtered_data.Throughput.quantile(0.1)
+        data_tosend['25 Thp'] = filtered_data.Throughput.quantile(0.25)
+        data_tosend['50 Thp'] = filtered_data.Throughput.quantile(0.5)
+        data_tosend['75 Thp'] = filtered_data.Throughput.quantile(0.75)
+        data_tosend['90 Thp'] = filtered_data.Throughput.quantile(0.9)
+        data_tosend['Mean Thp'] = filtered_data.Throughput.mean()
         data_tosend['Data Thp'] = list(filtered_data.Throughput)
         return render_template('index.html', data=data_tosend)
 
