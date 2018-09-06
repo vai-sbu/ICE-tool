@@ -3,6 +3,7 @@ import json
 from flask import Flask, render_template, request, redirect, Response, jsonify
 import pandas as pd
 import numpy as np
+from natsort import natsorted
 
 app = Flask(__name__)
 
@@ -145,7 +146,7 @@ def index():
         converted to a JSON dictionary and sent to the client.
         '''
         cur_variable = on_cols[0].split('_')[0] # Used to store the variable part of the string, for ex: Workload_Data is a string them cur_variable will store "Workload".
-        global_temp_df = pd.DataFrame() # Dataframe used to store the categories and their Max and Min Throughput values
+        global_temp_df = pd.DataFrame(columns=[cur_variable, 'IsPresent', 'Max', 'Min', 'LQ', 'MED', 'UQ', 'IQR', 'Data']) # Dataframe used to store the categories and their Max and Min Throughput values
         for col in on_cols: # For all the bars that are currently in the "on" state
             temp = filtered_data.loc[filtered_data[col] == 1] # Get the dataframe where the current category for a given variable is 1 i.e. 'on'. This is used to plot individual bars.
             temp_var = col.split('_')[0] # Get the variable part of the string
@@ -154,7 +155,27 @@ def index():
                 global_temp_df = global_temp_df.append({temp_var: temp_cat, 'IsPresent': 1, 'Max': temp.Throughput.max(), 'Min': temp.Throughput.min(), 'LQ': temp.Throughput.quantile(0.25), 'MED': temp.Throughput.quantile(0.5), 'UQ': temp.Throughput.quantile(0.75), 'IQR': temp.Throughput.quantile(0.75)-temp.Throughput.quantile(0.25), 'Data': list(temp.Throughput)}, ignore_index=True)
                 # Append a row in the global_temp_df that includes the Min and Max, Lower Quantile, Upper Quantile and Median values for a new category of current variable
             else:
+                '''
+                Now we're ready to put the values of global_temp_df into dataframes dictionary. But before that, there's a user specification 
+                that needs to be taken care of. In the dataset, some values were named 'none' which are to be displayed before any other category for 
+                that variable. So, we bring the row containing 'none' as the category name to the top of the dataframe.
+
+                Secondly, there are some categories that contain strings with numbers. For such categories, we need natural sorting instead of trivial 
+                string. For example, For Inode Size containing {128, 512, 256, 1024, none}, the correct sorted order should be {none, 128, 256, 512, 1024}. But since, we read
+                the categories as strings, the sorted order is produced to be {1024, 128, 256, 512, none}. To sort such strings correctly, we use 
+                natural sorting along with explicitly adding 'none' to the start of the sorted dataframe.
+                '''
+                global_temp_df.set_index(list(global_temp_df.columns)[0], inplace=True) # Set the index of global_temp_df to the variable name, for example Workload, FileSystem etc.
+                global_temp_df = global_temp_df.reindex(index=natsorted(global_temp_df.index)) # Sort the newly created index column based on natural sort
+                global_temp_df['new'] = range(1,len(global_temp_df)+1) # Create a new column to give numbers to each of the rows in the dataframe
+                if 'none' in global_temp_df.index: # If the current variable contains none, we need to bring that to the top of the dataframe
+                    global_temp_df.at['none', 'new'] =  0 # Assign the number 0 to the row that contains none.
+                    # Notice that we assigned numbers from range 1 to length of the dataframe to each row under 'new' column. 
+                    # As we assign 'none' containing row a value 0, if we sort the dataframe with column 'new', 'none' will come on top automatically.
+                global_temp_df = global_temp_df.sort_values('new').drop('new', axis=1) # Sort the dataframe based on values in 'new' column to bring 'none' on top
+                global_temp_df.reset_index(inplace=True) # Reset the index
                 dataframes[cur_variable] = global_temp_df # Add the value of current dataframe to the dataframes dict for storage
+                
                 # Code to create a JSON Object start -------------
 
                 chart_df = global_temp_df.to_dict(orient='records') # Convert the dataframe to a dict
@@ -176,7 +197,7 @@ def index():
                 temp_df = pd.DataFrame(columns=[temp_var, 'IsPresent', 'Max', 'Min', 'LQ', 'MED', 'UQ', 'IQR', 'Data']) # Create a new temporary dataframe because a new variable type is detected
                 temp_df = temp_df.append({temp_var: temp_cat, 'IsPresent': 1, 'Max': temp.Throughput.max(), 'Min': temp.Throughput.min(), 'LQ': temp.Throughput.quantile(0.25), 'MED': temp.Throughput.quantile(0.5), 'UQ': temp.Throughput.quantile(0.75), 'IQR': temp.Throughput.quantile(0.75) - temp.Throughput.quantile(0.25), 'Data': list(temp.Throughput)}, ignore_index=True) # Add the Max and Min throughput values to the temp dataframe for current category
                 global_temp_df = temp_df # Change global_temp_df to this new dataframe for a new variable
-
+                
         # At this point, global_temp_df contains the dataframe for the last variable in the dataset. We need to add this dataset to the JSON array data_tosend
         
         dataframes[cur_variable] = global_temp_df # Add the value of current dataframe to the dataframes dict for storage
