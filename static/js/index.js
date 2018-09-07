@@ -850,15 +850,6 @@ function redraw(){ // Redraws every bar when the user makes a selection
         })
         .attr('fill', 'palevioletred');
 
-    // Add the median horizontal whisker
-    // svg_result.append('g').append('line')
-    //     .attr('x1', margin_result)
-    //     .attr('x2', result_bar_width-barPadding)
-    //     .attr('y1', linearScale(data_received['MED Thp']))
-    //     .attr('y2', linearScale(data_received['MED Thp']))
-    //     .attr('stroke', '#000')
-    //     .attr('stroke-width', 1)
-    //     .attr('fill', 'none');
 
     // Draw the Violin chart on the result bar
     svg_result.append('g')
@@ -868,7 +859,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
     })
     .append('path')
         .style('stroke', 'black')
-        .style('fill', 'yellow')
+        .style('fill', 'chartreuse')
         .style('stroke-width', 0.5)
         .attr('d', function(){
             // Max bins is used to store the value of maximum number of values in a bucket after the data is passed to histoChart
@@ -909,6 +900,54 @@ function redraw(){ // Redraws every bar when the user makes a selection
             return area(histoChart(data_received['Data Thp']))    
         });
 
+    svg_result.append('g').append('line')
+    .attr('x1', margin_result)
+    .attr('x2', result_bar_width-barPadding)
+    .attr('y1', linearScale(data_received['90 Thp']))
+    .attr('y2', linearScale(data_received['90 Thp']))
+    .attr('stroke', 'black')
+    .attr('stroke-width', 1);
+
+        svg_result.append('g').append('line')
+    .attr('x1', margin_result)
+    .attr('x2', result_bar_width-barPadding)
+    .attr('y1', linearScale(data_received['75 Thp']))
+    .attr('y2', linearScale(data_received['75 Thp']))
+    .attr('stroke', 'black')
+    .attr('stroke-width', 1);
+
+
+        // Add the median horizontal whisker
+    svg_result.append('g').append('line')
+    .attr('x1', margin_result)
+    .attr('x2', result_bar_width-barPadding)
+    .attr('y1', linearScale(data_received['50 Thp']))
+    .attr('y2', linearScale(data_received['50 Thp']))
+    .attr('stroke', 'black')
+    .attr('stroke-width', 1);
+
+    svg_result.append('g').append('line')
+    .attr('x1', margin_result)
+    .attr('x2', result_bar_width-barPadding)
+    .attr('y1', linearScale(data_received['25 Thp']))
+    .attr('y2', linearScale(data_received['25 Thp']))
+    .attr('stroke', 'black')
+    .attr('stroke-width', 1);
+
+    svg_result.append('g').append('line')
+    .attr('x1', margin_result)
+    .attr('x2', result_bar_width-barPadding)
+    .attr('y1', linearScale(data_received['10 Thp']))
+    .attr('y2', linearScale(data_received['10 Thp']))
+    .attr('stroke', 'black')
+    .attr('stroke-width', 1);
+    
+    console.log(margin_result.left)
+    svg_result.append('g').append('circle')
+        .attr('cx', margin_result.left + 5)
+        .attr('cy', linearScale(data_received['Mean Thp']))
+        .attr('r', '4')
+        .attr('fill', 'white');
     
 
 }
