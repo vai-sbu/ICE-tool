@@ -78,7 +78,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
             .attr('height', linearScale(data_imported['Min Thp']) - linearScale(data_imported['Max Thp'])+20)
             .attr('width', dataset.length*barWidth+barPadding)
             .attr('fill', 'white')
-            .attr('stroke', 'grey')
+            .attr('stroke', 'black')
             .attr('stroke-width', 3)
             .attr('transform', 'translate('+(barWidth*global_bar_translate-barPadding)+')');
 
@@ -97,9 +97,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else
                     return 0; 
             })
-            .attr("fill", colorScale(0))
-            .attr('stroke', 'black')
-            .attr('stroke-width', 1)
+            .attr("fill", 'amber')
+            .attr('stroke', 'yellow')
+            .attr('stroke-width', 1.2)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -108,7 +108,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     is_present = true;
                 }
                 if(!is_present){
-                    return 1
+                    return 0.7
                 }
                 else{
                     return 0.2
@@ -176,9 +176,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else
                     return 0; 
             })
-            .attr("fill", colorScale(1))
-            .attr('stroke', 'black')
-            .attr('stroke-width', 1)
+            .attr("fill", 'teal')
+            .attr('stroke', 'yellow')
+            .attr('stroke-width', 1.2)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -187,7 +187,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     is_present = true;
                 }
                 if(!is_present){
-                    return 1
+                    return 0.7
                 }
                 else{
                     return 0.2
@@ -255,9 +255,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else
                     return 0; 
             })
-            .attr("fill", colorScale(2))
-            .attr('stroke', 'black')
-            .attr('stroke-width', 1)
+            .attr("fill", 'amber')
+            .attr('stroke', 'yellow')
+            .attr('stroke-width', 1.2)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -266,7 +266,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     is_present = true;
                 }
                 if(!is_present){
-                    return 1
+                    return 0.7
                 }
                 else{
                     return 0.2
@@ -334,9 +334,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else
                     return 0; 
             })
-            .attr("fill", colorScale(3))
-            .attr('stroke', 'black')
-            .attr('stroke-width', 1)
+            .attr("fill", 'teal')
+            .attr('stroke', 'yellow')
+            .attr('stroke-width', 1.2)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -345,7 +345,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     is_present = true;
                 }
                 if(!is_present){
-                    return 1
+                    return 0.7
                 }
                 else{
                     return 0.2
@@ -414,9 +414,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else
                     return 0; 
             })
-            .attr("fill", colorScale(4))
-            .attr('stroke', 'black')
-            .attr('stroke-width', 1)
+            .attr("fill", 'amber')
+            .attr('stroke', 'yellow')
+            .attr('stroke-width', 1.2)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -425,7 +425,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     is_present = true;
                 }
                 if(!is_present){
-                    return 1
+                    return 0.7
                 }
                 else{
                     return 0.2
@@ -493,9 +493,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else
                     return 0; 
             })
-            .attr("fill", colorScale(5))
-            .attr('stroke', 'black')
-            .attr('stroke-width', 1)
+            .attr("fill", 'teal')
+            .attr('stroke', 'yellow')
+            .attr('stroke-width', 1.2)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -504,7 +504,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     is_present = true;
                 }
                 if(!is_present){
-                    return 1
+                    return 0.7
                 }
                 else{
                     return 0.2
@@ -574,7 +574,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     is_present = true;
                 }
                 if(!is_present){
-                    return 1
+                    return 0.7
                 }
                 else{
                     return 0.2
@@ -585,8 +585,8 @@ function redraw(){ // Redraws every bar when the user makes a selection
         })
         .append('path')
             .style('stroke', 'black')
-            .style('fill', 'yellow')
-            .style('stroke-width', 0.5)
+            .style('fill', 'magenta')
+            .style('stroke-width', 1)
             .attr('d', function(d){
                 // Max bins is used to store the value of maximum number of values in a bucket after the data is passed to histoChart
                 let max_bins = 0;
@@ -668,28 +668,20 @@ function redraw(){ // Redraws every bar when the user makes a selection
             
             
                 
-        // // Draw Median horizontal whiskers
-        // let medianLine = svg_elem.append('g').selectAll('.medianLine')
-        //     .data(dataset)
-        //     .enter()
-        //     .append('line')
-        //     .attr('x1', function () { // Increment globar_bar_translate with each new bar drawn
-        //         let translate = barWidth * global_median1;
-        //         global_median1++;
-        //         return translate;
-        //     })
-        //     .attr('x2', function () { // Increment globar_bar_translate with each new bar drawn
-        //         let translate = barWidth * global_median2;
-        //         global_median2++; 
-        //         return translate+barWidth-barPadding;
-        //     })
-        //     .attr('y1', function(d){
-        //         return linearScale(d.MED)})
-        //     .attr('y2', function(d){
-        //         return linearScale(d.MED)})
-        //     .attr('stroke', '#000')
-        //     .attr('stroke-width', 1)
-        //     .attr('fill', 'none');
+        // // Draw Mean horizontal whiskers
+        svg_elem.append('g').selectAll('circle')
+            .data(dataset)
+            .enter()
+            .append('circle')
+            .attr('cx', function () { // Increment globar_bar_translate with each new bar drawn
+                let translate = barWidth * global_median1 + (barWidth-barPadding)/2;
+                global_median1++;
+                return translate;
+            })
+            .attr('cy', function(d){
+                return linearScale(d.Mean)})
+            .attr('r', '3')
+            .attr('fill', 'white');
 
         // The following code is to draw the button. In this case, buttons are drawn as rect HTML elements
         svg_elem.append('g').append('rect')
@@ -780,7 +772,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     return 'black'
                 }
                 else{
-                    return 'red'
+                    return 'darkred'
                 }
             });
             
