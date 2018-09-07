@@ -19,7 +19,6 @@ let button_pressed = {}; // Variable to store whether or not the button is press
 for(let i in column){
     button_pressed[column[i]] = false;
 }
-
 // To plot the distribution of data along with bar charts, we need to create bins with the help of histogram class in d3
 let histoChart = d3.histogram();
 
@@ -691,7 +690,13 @@ function redraw(){ // Redraws every bar when the user makes a selection
             })
             .attr('width', 9*column[i].length)
             .attr('height', 20)
-            .attr('fill', 'lightslategray')
+            .attr('fill', function(){
+                if(button_pressed[column[i]]){
+                    return 'red'
+                }
+                else
+                    return 'green'
+            })
             .attr('opacity', 0.5) 
             .on("click", function(){ // Handling what happens when the button is clicked
                 let data_button_tosend; // Dict to send to the server  
@@ -749,11 +754,12 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
                     redraw(); // Redraw the bars based on current received information
                 })});
-
-        let text = svg_elem.append('g').selectAll("text") // Add the text below each bar
+        // Add the text below each bar
+        let text = svg_elem.append('g').selectAll("text") 
             .data(dataset)
             .enter()
             .append("text")
+            .attr('class', 'heavy')
             .text(function(d,j) {
                 return dataset[j][column[i]];
             })
@@ -772,7 +778,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     return 'black'
                 }
                 else{
-                    return 'darkred'
+                    return 'red'
                 }
             })
             .on("click", function(d,j){
