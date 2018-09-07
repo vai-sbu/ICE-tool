@@ -774,6 +774,46 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else{
                     return 'darkred'
                 }
+            })
+            .on("click", function(d,j){
+                let data_toserver;
+                let is_present = false;
+                let k = selection.length
+                while(k--){ // Check if the current selection by the user is present in selection array
+                    if(selection[k].id == column[i]+dataset[j][column[i]]){
+                        is_present = true;
+                        selection.splice(k,1); // Remove the element from selection array and send information to the server
+                    }
+                }
+                if(!is_present){ // Add the element to selection array if it is not present and send the information to the server
+                    selection.push({'id': column[i]+dataset[j][column[i]]});
+                    data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'off'};
+                }
+                else{ 
+                    data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'on'};
+                }
+                $.post("", data_toserver, function(data_infunc){
+                    data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
+                    if (data_received['No Config Exist'] == 'True'){ // Check if the selected configuration exist, if no, tell the user about it
+                        if(data_toserver['switch'] == 'on'){
+                            selection.push({'id': column[i]+dataset[j][column[i]]});
+                            tempAlert("Configuration doesn't exist",700);
+                        }
+                        else{
+                            let k = selection.length;
+                            while(k--){ // Check if the current selection by the user is present in selection array
+                                if(selection[k].id == column[i]+dataset[j][column[i]]){
+                                    is_present = true;
+                                    selection.splice(k,1); // Remove the current bar from selection array as it was by default, pushed into the selection array.
+                                }
+                            }
+                            tempAlert("Error: Either configuration doesn't exist OR Press the Button to turn off the full variable instead.", 2500);
+                        }
+                    }
+                    else{
+                        redraw(); // Redraw the bars based on current received information
+                    }
+                });
             });
             
     }
