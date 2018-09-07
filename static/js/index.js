@@ -6,7 +6,7 @@ let result_svg_width = 100; // Width of svg in Area2
 let result_bar_width = 60; // Bar width of svg in Area2
 let svgHeight = 730, barPadding = 10; // Svg height and bar padding for Area1
 let max_cols = data_imported['Max Cols']; // Get the maximum number of bars that are to be drawn in Area1
-let barWidth = (parseFloat(document.getElementById('area1').offsetWidth)/(max_cols+column.length+7)); // Calculate bar width by dividing the width of Area1 by (max cols + number of gaps i.e. number of variables in the dataset)
+let barWidth = (parseFloat(document.getElementById('area1').offsetWidth-margin.left-120)/(max_cols+column.length)); // Calculate bar width by dividing the width of Area1 by (max cols + number of gaps i.e. number of variables in the dataset)
 let data_received = data_imported; // Data received captures the new data when user clicks on some bar or a button. Initially it is equal to original dataset but later it changes.
 let colorScale = d3.scaleOrdinal(d3.schemeCategory10) // To add different colors to bars representing each variable in the dataset
     .domain(column);
@@ -819,6 +819,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
     }
     svg_elem.append('g')
         .call(d3.axisLeft(linearScale))
+    svg_elem.append('g')
+        .attr('transform', 'translate('+(document.getElementById('area1').offsetWidth-150)+',0)')
+        .call(d3.axisRight(linearScale))
 
 
     // ****************************** Below is 2nd column code ******************************
@@ -899,6 +902,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
             // Fill the distribution curve within the bar chart
             return area(histoChart(data_received['Data Thp']))    
         });
+
     
 
 }
