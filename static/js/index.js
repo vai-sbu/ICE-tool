@@ -115,7 +115,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     return 0.7
                 }
                 else{
-                    return 0.2
+                    return 0
                 }
             })
             .attr("transform", function (d, j) { // Increment globar_bar_translate with each new bar drawn
@@ -194,7 +194,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     return 0.7
                 }
                 else{
-                    return 0.2
+                    return 0
                 }
             })
             .attr("transform", function (d, j) { // Increment globar_bar_translate with each new bar drawn
@@ -273,7 +273,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     return 0.7
                 }
                 else{
-                    return 0.2
+                    return 0
                 }
             })
             .attr("transform", function (d, j) { // Increment globar_bar_translate with each new bar drawn
@@ -352,7 +352,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     return 0.7
                 }
                 else{
-                    return 0.2
+                    return 0
                 }
             })
             .attr("transform", function (d, j) { // Increment globar_bar_translate with each new bar drawn
@@ -432,7 +432,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     return 0.7
                 }
                 else{
-                    return 0.2
+                    return 0
                 }
             })
             .attr("transform", function (d, j) { // Increment globar_bar_translate with each new bar drawn
@@ -511,7 +511,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     return 0.7
                 }
                 else{
-                    return 0.2
+                    return 0
                 }
             })
             .attr("transform", function (d, j) { // Increment globar_bar_translate with each new bar drawn
@@ -581,7 +581,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     return 0.7
                 }
                 else{
-                    return 0.2
+                    return 0
                 }
             }
             else    
@@ -672,7 +672,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
             
             
                 
-        // // Draw Mean horizontal whiskers
+        // // Draw Mean circles on the bars
         svg_elem.append('g').selectAll('circle')
             .data(dataset)
             .enter()
@@ -684,7 +684,21 @@ function redraw(){ // Redraws every bar when the user makes a selection
             })
             .attr('cy', function(d){
                 return linearScale(d.Mean)})
-            .attr('r', '3')
+            .attr('r', function(d, j){
+                if(d.IsPresent == 1){
+                    let is_present = false;
+                    for(let k in selection){  // Check if the element is present in selection array, is yes, then plot if with opacity 0.5, otherwise plot it with opacity 1
+                        if(selection[k].id == column[i]+dataset[j][column[i]]) 
+                        is_present = true;
+                    }
+                    if(!is_present)
+                        return '3'
+                    else
+                        return '0'
+                }
+                else
+                    return '0';
+            })
             .attr('fill', meancolor);
 
         // The following code is to draw the button. In this case, buttons are drawn as rect HTML elements
@@ -766,7 +780,10 @@ function redraw(){ // Redraws every bar when the user makes a selection
             .append("text")
             .attr('class', 'heavy')
             .text(function(d,j) {
-                return dataset[j][column[i]];
+                if(d.IsPresent == 1)
+                    return dataset[j][column[i]];
+                else
+                    return "";
             })
             .attr("transform", function (d, j) {
                 let translate = [barWidth * global_text_translate+10, 460]
