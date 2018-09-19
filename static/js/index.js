@@ -22,6 +22,11 @@ for(let i in column){
 // To plot the distribution of data along with bar charts, we need to create bins with the help of histogram class in d3
 let histoChart = d3.histogram();
 
+colorcodes = ['#cccccc', '#636363', '#cccccc', '#636363', '#cccccc', '#636363']; // color codes for the 6 sections on each bar. First color is for max to 90th percentile.
+violincolor = '#ca0020'; // color of the distribution displayed on the bar
+meancolor = '#000000' // color of the mean circle that is displayed at the center of the bar
+boundarycolor = '#0571b0'; // color of the box surrounding bars from each category
+
 function tempAlert(msg,duration){ // Function to generate an alert box for configuration doesn't exist
      var el = document.createElement("div");
      el.setAttribute("style","position:absolute;top:5%;left:40%;background-color:orange;");
@@ -77,7 +82,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
             .attr('height', linearScale(data_imported['Min Thp']) - linearScale(data_imported['Max Thp'])+20)
             .attr('width', dataset.length*barWidth+barPadding)
             .attr('fill', 'white')
-            .attr('stroke', 'black')
+            .attr('stroke', boundarycolor)
             .attr('stroke-width', 3)
             .attr('transform', 'translate('+(barWidth*global_bar_translate-barPadding)+')');
 
@@ -96,9 +101,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else
                     return 0; 
             })
-            .attr("fill", 'amber')
-            .attr('stroke', 'yellow')
-            .attr('stroke-width', 1.2)
+            .attr("fill", colorcodes[0])
+            .attr('stroke', 'black')
+            .attr('stroke-width', 0)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -175,9 +180,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else
                     return 0; 
             })
-            .attr("fill", 'teal')
-            .attr('stroke', 'yellow')
-            .attr('stroke-width', 1.2)
+            .attr("fill", colorcodes[1])
+            .attr('stroke', 'black')
+            .attr('stroke-width', 0)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -254,9 +259,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else
                     return 0; 
             })
-            .attr("fill", 'amber')
-            .attr('stroke', 'yellow')
-            .attr('stroke-width', 1.2)
+            .attr("fill", colorcodes[2])
+            .attr('stroke', 'black')
+            .attr('stroke-width', 0)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -333,9 +338,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else
                     return 0; 
             })
-            .attr("fill", 'teal')
-            .attr('stroke', 'yellow')
-            .attr('stroke-width', 1.2)
+            .attr("fill", colorcodes[3])
+            .attr('stroke', 'black')
+            .attr('stroke-width', 0)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -413,9 +418,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else
                     return 0; 
             })
-            .attr("fill", 'amber')
-            .attr('stroke', 'yellow')
-            .attr('stroke-width', 1.2)
+            .attr("fill", colorcodes[4])
+            .attr('stroke', 'black')
+            .attr('stroke-width', 0)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -492,9 +497,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 else
                     return 0; 
             })
-            .attr("fill", 'teal')
-            .attr('stroke', 'yellow')
-            .attr('stroke-width', 1.2)
+            .attr("fill", colorcodes[5])
+            .attr('stroke', 'black')
+            .attr('stroke-width', 0)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -584,8 +589,8 @@ function redraw(){ // Redraws every bar when the user makes a selection
         })
         .append('path')
             .style('stroke', 'black')
-            .style('fill', 'magenta')
-            .style('stroke-width', 1)
+            .style('fill', violincolor)
+            .style('stroke-width', 0)
             .attr('d', function(d){
                 // Max bins is used to store the value of maximum number of values in a bucket after the data is passed to histoChart
                 let max_bins = 0;
@@ -680,7 +685,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
             .attr('cy', function(d){
                 return linearScale(d.Mean)})
             .attr('r', '3')
-            .attr('fill', 'white');
+            .attr('fill', meancolor);
 
         // The following code is to draw the button. In this case, buttons are drawn as rect HTML elements
         svg_elem.append('g').append('rect')
@@ -842,14 +847,69 @@ function redraw(){ // Redraws every bar when the user makes a selection
     
     svg_result.append('g').append("rect") // Add the result bar
         .attr("y", linearScale(data_received['Max Thp']))
-        .attr("height", linearScale(data_received['Min Thp']) - linearScale(data_received['Max Thp']))
+        .attr("height", linearScale(data_received['90 Thp']) - linearScale(data_received['Max Thp']))
         .attr("width", result_bar_width - barPadding)
         .attr("transform", function () {
             let translate = [margin_result, 0]; 
             return "translate("+ translate +")";
         })
-        .attr('fill', 'palevioletred');
+        .attr('fill', colorcodes[0])
+        .attr('opacity', 0.7);
 
+        svg_result.append('g').append("rect") // Add the result bar
+        .attr("y", linearScale(data_received['90 Thp']))
+        .attr("height", linearScale(data_received['75 Thp']) - linearScale(data_received['90 Thp']))
+        .attr("width", result_bar_width - barPadding)
+        .attr("transform", function () {
+            let translate = [margin_result, 0]; 
+            return "translate("+ translate +")";
+        })
+        .attr('fill', colorcodes[1])
+        .attr('opacity', 0.7);
+
+        svg_result.append('g').append("rect") // Add the result bar
+        .attr("y", linearScale(data_received['75 Thp']))
+        .attr("height", linearScale(data_received['50 Thp']) - linearScale(data_received['75 Thp']))
+        .attr("width", result_bar_width - barPadding)
+        .attr("transform", function () {
+            let translate = [margin_result, 0]; 
+            return "translate("+ translate +")";
+        })
+        .attr('fill', colorcodes[2])
+        .attr('opacity', 0.7);
+
+        svg_result.append('g').append("rect") // Add the result bar
+        .attr("y", linearScale(data_received['50 Thp']))
+        .attr("height", linearScale(data_received['25 Thp']) - linearScale(data_received['50 Thp']))
+        .attr("width", result_bar_width - barPadding)
+        .attr("transform", function () {
+            let translate = [margin_result, 0]; 
+            return "translate("+ translate +")";
+        })
+        .attr('fill', colorcodes[3])
+        .attr('opacity', 0.7);
+
+        svg_result.append('g').append("rect") // Add the result bar
+        .attr("y", linearScale(data_received['25 Thp']))
+        .attr("height", linearScale(data_received['10 Thp']) - linearScale(data_received['25 Thp']))
+        .attr("width", result_bar_width - barPadding)
+        .attr("transform", function () {
+            let translate = [margin_result, 0]; 
+            return "translate("+ translate +")";
+        })
+        .attr('fill', colorcodes[4])
+        .attr('opacity', 0.7);
+
+        svg_result.append('g').append("rect") // Add the result bar
+        .attr("y", linearScale(data_received['10 Thp']))
+        .attr("height", linearScale(data_received['Min Thp']) - linearScale(data_received['10 Thp']))
+        .attr("width", result_bar_width - barPadding)
+        .attr("transform", function () {
+            let translate = [margin_result, 0]; 
+            return "translate("+ translate +")";
+        })
+        .attr('fill', colorcodes[5])
+        .attr('opacity', 0.7);
 
     // Draw the Violin chart on the result bar
     svg_result.append('g')
@@ -857,10 +917,11 @@ function redraw(){ // Redraws every bar when the user makes a selection
         let translate = [margin_result, 0]; 
         return "translate("+ translate +")";
     })
+    .attr('opacity', 0.7)
     .append('path')
-        .style('stroke', 'black')
-        .style('fill', 'chartreuse')
-        .style('stroke-width', 0.5)
+        // .style('stroke', 'black')
+        .style('fill', violincolor)
+        .style('stroke-width', 0)
         .attr('d', function(){
             // Max bins is used to store the value of maximum number of values in a bucket after the data is passed to histoChart
             let max_bins = 0;
@@ -900,54 +961,54 @@ function redraw(){ // Redraws every bar when the user makes a selection
             return area(histoChart(data_received['Data Thp']))    
         });
 
-    svg_result.append('g').append('line')
-    .attr('x1', margin_result)
-    .attr('x2', result_bar_width-barPadding)
-    .attr('y1', linearScale(data_received['90 Thp']))
-    .attr('y2', linearScale(data_received['90 Thp']))
-    .attr('stroke', 'black')
-    .attr('stroke-width', 1);
+    // svg_result.append('g').append('line')
+    // .attr('x1', margin_result)
+    // .attr('x2', result_bar_width-barPadding)
+    // .attr('y1', linearScale(data_received['90 Thp']))
+    // .attr('y2', linearScale(data_received['90 Thp']))
+    // .attr('stroke', 'black')
+    // .attr('stroke-width', 1);
 
-        svg_result.append('g').append('line')
-    .attr('x1', margin_result)
-    .attr('x2', result_bar_width-barPadding)
-    .attr('y1', linearScale(data_received['75 Thp']))
-    .attr('y2', linearScale(data_received['75 Thp']))
-    .attr('stroke', 'black')
-    .attr('stroke-width', 1);
+    //     svg_result.append('g').append('line')
+    // .attr('x1', margin_result)
+    // .attr('x2', result_bar_width-barPadding)
+    // .attr('y1', linearScale(data_received['75 Thp']))
+    // .attr('y2', linearScale(data_received['75 Thp']))
+    // .attr('stroke', 'black')
+    // .attr('stroke-width', 1);
 
 
-        // Add the median horizontal whisker
-    svg_result.append('g').append('line')
-    .attr('x1', margin_result)
-    .attr('x2', result_bar_width-barPadding)
-    .attr('y1', linearScale(data_received['50 Thp']))
-    .attr('y2', linearScale(data_received['50 Thp']))
-    .attr('stroke', 'black')
-    .attr('stroke-width', 1);
+    //     // Add the median horizontal whisker
+    // svg_result.append('g').append('line')
+    // .attr('x1', margin_result)
+    // .attr('x2', result_bar_width-barPadding)
+    // .attr('y1', linearScale(data_received['50 Thp']))
+    // .attr('y2', linearScale(data_received['50 Thp']))
+    // .attr('stroke', 'black')
+    // .attr('stroke-width', 1);
 
-    svg_result.append('g').append('line')
-    .attr('x1', margin_result)
-    .attr('x2', result_bar_width-barPadding)
-    .attr('y1', linearScale(data_received['25 Thp']))
-    .attr('y2', linearScale(data_received['25 Thp']))
-    .attr('stroke', 'black')
-    .attr('stroke-width', 1);
+    // svg_result.append('g').append('line')
+    // .attr('x1', margin_result)
+    // .attr('x2', result_bar_width-barPadding)
+    // .attr('y1', linearScale(data_received['25 Thp']))
+    // .attr('y2', linearScale(data_received['25 Thp']))
+    // .attr('stroke', 'black')
+    // .attr('stroke-width', 1);
 
-    svg_result.append('g').append('line')
-    .attr('x1', margin_result)
-    .attr('x2', result_bar_width-barPadding)
-    .attr('y1', linearScale(data_received['10 Thp']))
-    .attr('y2', linearScale(data_received['10 Thp']))
-    .attr('stroke', 'black')
-    .attr('stroke-width', 1);
+    // svg_result.append('g').append('line')
+    // .attr('x1', margin_result)
+    // .attr('x2', result_bar_width-barPadding)
+    // .attr('y1', linearScale(data_received['10 Thp']))
+    // .attr('y2', linearScale(data_received['10 Thp']))
+    // .attr('stroke', 'black')
+    // .attr('stroke-width', 1);
     
     console.log(margin_result.left)
     svg_result.append('g').append('circle')
         .attr('cx', margin_result.left + 5)
         .attr('cy', linearScale(data_received['Mean Thp']))
         .attr('r', '4')
-        .attr('fill', 'white');
+        .attr('fill', meancolor);
     
 
 }
