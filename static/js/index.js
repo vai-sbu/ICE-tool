@@ -22,8 +22,8 @@ for(let i in column){
 // To plot the distribution of data along with bar charts, we need to create bins with the help of histogram class in d3
 let histoChart = d3.histogram();
 
-colorcodes = ['#cccccc', '#636363', '#cccccc', '#636363', '#cccccc', '#636363']; // color codes for the 6 sections on each bar. First color is for max to 90th percentile.
-violincolor = '#ca0020'; // color of the distribution displayed on the bar
+colorcodes = ['#252525', '#737373', '#bdbdbd', '#d9d9d9', '#737373', '#252525']; // color codes for the 6 sections on each bar. First color is for max to 90th percentile.
+violincolor = '#f0027f'; // color of the distribution displayed on the bar
 meancolor = '#000000' // color of the mean circle that is displayed at the center of the bar
 boundarycolor = '#0571b0'; // color of the box surrounding bars from each category
 
@@ -83,7 +83,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
             .attr('width', dataset.length*barWidth+barPadding)
             .attr('fill', 'white')
             .attr('stroke', boundarycolor)
-            .attr('stroke-width', 3)
+            .attr('stroke-width', 1.5)
             .attr('transform', 'translate('+(barWidth*global_bar_translate-barPadding)+')');
 
         // Draw the bar chart from Max till 90th percentile
@@ -103,7 +103,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
             })
             .attr("fill", colorcodes[0])
             .attr('stroke', 'black')
-            .attr('stroke-width', 0)
+            .attr('stroke-width', 0.8)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -182,7 +182,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
             })
             .attr("fill", colorcodes[1])
             .attr('stroke', 'black')
-            .attr('stroke-width', 0)
+            .attr('stroke-width', 0.8)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -261,7 +261,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
             })
             .attr("fill", colorcodes[2])
             .attr('stroke', 'black')
-            .attr('stroke-width', 0)
+            .attr('stroke-width', 0.8)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -340,7 +340,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
             })
             .attr("fill", colorcodes[3])
             .attr('stroke', 'black')
-            .attr('stroke-width', 0)
+            .attr('stroke-width', 0.8)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -420,7 +420,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
             })
             .attr("fill", colorcodes[4])
             .attr('stroke', 'black')
-            .attr('stroke-width', 0)
+            .attr('stroke-width', 0.8)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -499,7 +499,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
             })
             .attr("fill", colorcodes[5])
             .attr('stroke', 'black')
-            .attr('stroke-width', 0)
+            .attr('stroke-width', 0.8)
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
@@ -871,6 +871,8 @@ function redraw(){ // Redraws every bar when the user makes a selection
             return "translate("+ translate +")";
         })
         .attr('fill', colorcodes[0])
+        .attr('stroke', 'black')
+        .attr('stroke-width', 0.8)
         .attr('opacity', 0.7);
 
         svg_result.append('g').append("rect") // Add the result bar
@@ -882,6 +884,8 @@ function redraw(){ // Redraws every bar when the user makes a selection
             return "translate("+ translate +")";
         })
         .attr('fill', colorcodes[1])
+        .attr('stroke', 'black')
+        .attr('stroke-width', 0.8)
         .attr('opacity', 0.7);
 
         svg_result.append('g').append("rect") // Add the result bar
@@ -893,6 +897,8 @@ function redraw(){ // Redraws every bar when the user makes a selection
             return "translate("+ translate +")";
         })
         .attr('fill', colorcodes[2])
+        .attr('stroke', 'black')
+        .attr('stroke-width', 0.8)
         .attr('opacity', 0.7);
 
         svg_result.append('g').append("rect") // Add the result bar
@@ -904,6 +910,8 @@ function redraw(){ // Redraws every bar when the user makes a selection
             return "translate("+ translate +")";
         })
         .attr('fill', colorcodes[3])
+        .attr('stroke', 'black')
+        .attr('stroke-width', 0.8)
         .attr('opacity', 0.7);
 
         svg_result.append('g').append("rect") // Add the result bar
@@ -915,6 +923,8 @@ function redraw(){ // Redraws every bar when the user makes a selection
             return "translate("+ translate +")";
         })
         .attr('fill', colorcodes[4])
+        .attr('stroke', 'black')
+        .attr('stroke-width', 0.8)
         .attr('opacity', 0.7);
 
         svg_result.append('g').append("rect") // Add the result bar
@@ -926,6 +936,8 @@ function redraw(){ // Redraws every bar when the user makes a selection
             return "translate("+ translate +")";
         })
         .attr('fill', colorcodes[5])
+        .attr('stroke', 'black')
+        .attr('stroke-width', 0.8)
         .attr('opacity', 0.7);
 
     // Draw the Violin chart on the result bar
