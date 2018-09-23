@@ -22,8 +22,8 @@ for(let i in column){
 // To plot the distribution of data along with bar charts, we need to create bins with the help of histogram class in d3
 let histoChart = d3.histogram();
 
-colorcodes = ['#252525', '#737373', '#bdbdbd', '#d9d9d9', '#737373', '#252525']; // color codes for the 6 sections on each bar. First color is for max to 90th percentile.
-violincolor = '#f0027f'; // color of the distribution displayed on the bar
+colorcodes = ['#4f4f4f', '#828282', '#bdbdbd', '#d9d9d9', '#828282', '#4f4f4f']; // color codes for the 6 sections on each bar. First color is for max to 90th percentile.
+violincolor = '#ff0099'; // color of the distribution displayed on the bar
 meancolor = '#000000' // color of the mean circle that is displayed at the center of the bar
 boundarycolor = '#0571b0'; // color of the box surrounding bars from each category
 
@@ -588,9 +588,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 return 0
         })
         .append('path')
-            .style('stroke', 'black')
+            .style('stroke', '#ffffff')
             .style('fill', violincolor)
-            .style('stroke-width', 0)
+            .style('stroke-width', 0.3)
             .attr('d', function(d){
                 // Max bins is used to store the value of maximum number of values in a bucket after the data is passed to histoChart
                 let max_bins = 0;
@@ -845,11 +845,29 @@ function redraw(){ // Redraws every bar when the user makes a selection
             });
             
     }
-    svg_elem.append('g')
-        .call(d3.axisLeft(linearScale))
-    svg_elem.append('g')
+    svg_elem.append('g') // Put scale on the left side of the plot
+        .attr('class', 'axis')
+        .call(d3.axisLeft(linearScale).tickFormat(d3.format('.2s')))
+    svg_elem.append('g') // Put scale on the right side of the plot
+        .attr('class', 'axis')
         .attr('transform', 'translate('+(document.getElementById('area1').offsetWidth-150)+',0)')
-        .call(d3.axisRight(linearScale))
+        .call(d3.axisRight(linearScale).tickFormat(d3.format('.2s')))
+    svg_elem.append('g').append('text') // Create the label for left y axis
+        .attr('transform', 'rotate(-90)')
+        .attr('y', 0 - margin.left)
+        .attr('x', 0 - 200)
+        .attr('dy', '1em')
+        .style('text-anchor', 'middle')
+        .text('Throughput')
+    svg_elem.append('g').append('text') // Create the label for left y axis
+    .attr('transform', 'rotate(-90)')
+    .attr('y', document.getElementById('area1').offsetWidth - 180)
+    .attr('x', 0 - 200)
+    .attr('dy', '1em')
+    .style('text-anchor', 'middle')
+    .text('Throughput')
+
+    
 
 
     // ****************************** Below is 2nd column code ******************************
@@ -948,9 +966,9 @@ function redraw(){ // Redraws every bar when the user makes a selection
     })
     .attr('opacity', 0.7)
     .append('path')
-        // .style('stroke', 'black')
+        .style('stroke', '#ffffff')
         .style('fill', violincolor)
-        .style('stroke-width', 0)
+        .style('stroke-width', 0.3)
         .attr('d', function(){
             // Max bins is used to store the value of maximum number of values in a bucket after the data is passed to histoChart
             let max_bins = 0;
