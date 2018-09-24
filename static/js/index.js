@@ -704,17 +704,19 @@ function redraw(){ // Redraws every bar when the user makes a selection
         // The following code is to draw the button. In this case, buttons are drawn as rect HTML elements
         svg_elem.append('g').append('rect')
             .attr("transform", function () {
-                let translate = [barWidth * (global_text_translate+((global_bar_translate - global_text_translate)/2))-45, 550]
+                let translate_start = barWidth*global_text_translate;
+                let translate_end = barWidth*global_bar_translate;
+                let translate = [(translate_start + translate_end)/2-(column[i].length*5), 550]
                 return "translate("+ translate +")"
             })
-            .attr('width', 9*column[i].length)
+            .attr('width', 10.5*column[i].length)
             .attr('height', 20)
             .attr('fill', function(){
                 if(button_pressed[column[i]]){
                     return 'red'
                 }
                 else
-                    return 'green'
+                    return '#74c476'
             })
             .attr('opacity', 0.5) 
             .on("click", function(){ // Handling what happens when the button is clicked
@@ -744,8 +746,11 @@ function redraw(){ // Redraws every bar when the user makes a selection
         
         // Add text to the buttons drawn using the above function
         svg_elem.append('g').append('text')
+            .attr('class', 'button_text')
             .attr("transform", function () {
-                let translate = [barWidth * (global_text_translate+((global_bar_translate - global_text_translate)/2))-40, 565]
+                let translate_start = barWidth*global_text_translate;
+                let translate_end = barWidth*global_bar_translate;
+                let translate = [(translate_start + translate_end)/2-(column[i].length*4), 565];
                 return "translate("+ translate +")"
             })
             .text(column[i])
@@ -853,19 +858,21 @@ function redraw(){ // Redraws every bar when the user makes a selection
         .attr('transform', 'translate('+(document.getElementById('area1').offsetWidth-150)+',0)')
         .call(d3.axisRight(linearScale).tickFormat(d3.format('.2s')))
     svg_elem.append('g').append('text') // Create the label for left y axis
+        .attr('class', 'thp_text')
         .attr('transform', 'rotate(-90)')
         .attr('y', 0 - margin.left)
         .attr('x', 0 - 200)
         .attr('dy', '1em')
         .style('text-anchor', 'middle')
         .text('Throughput')
-    svg_elem.append('g').append('text') // Create the label for left y axis
-    .attr('transform', 'rotate(-90)')
-    .attr('y', document.getElementById('area1').offsetWidth - 180)
-    .attr('x', 0 - 200)
-    .attr('dy', '1em')
-    .style('text-anchor', 'middle')
-    .text('Throughput')
+    // svg_elem.append('g').append('text') // Create the label for left y axis
+    //     .attr('class', 'thp_text')
+    //     .attr('transform', 'rotate(-90)')
+    //     .attr('y', document.getElementById('area1').offsetWidth - 180)
+    //     .attr('x', 0 - 200)
+    //     .attr('dy', '1em')
+    //     .style('text-anchor', 'middle')
+    //     .text('Throughput')
 
     
 
@@ -1050,7 +1057,6 @@ function redraw(){ // Redraws every bar when the user makes a selection
     // .attr('stroke', 'black')
     // .attr('stroke-width', 1);
     
-    console.log(margin_result.left)
     svg_result.append('g').append('circle')
         .attr('cx', margin_result.left + 5)
         .attr('cy', linearScale(data_received['Mean Thp']))

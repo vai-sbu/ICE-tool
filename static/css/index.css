@@ -1,10 +1,18 @@
 /* To display the border around the bars in "Area1" */
-.main-svg {
+/* .main-svg {
     border: 1px solid black;  
-}
+} */
 .heavy{
     font: bold 17px sans-serif;
 }
 .axis {
-    font: 14px sans-serif;
+    font: bold 20px sans-serif;
+}
+
+.thp_text {
+    font: bold 17px sans-serif;
+}
+
+.button_text {
+    font: bold 15px sans-serif;
 }
