@@ -706,10 +706,10 @@ function redraw(){ // Redraws every bar when the user makes a selection
             .attr("transform", function () {
                 let translate_start = barWidth*global_text_translate;
                 let translate_end = barWidth*global_bar_translate;
-                let translate = [(translate_start + translate_end)/2-(column[i].length*5), 550]
+                let translate = [(translate_start + translate_end)/2-(column[i].length*5), 580]
                 return "translate("+ translate +")"
             })
-            .attr('width', 10.5*column[i].length)
+            .attr('width', 12*column[i].length)
             .attr('height', 20)
             .attr('fill', function(){
                 if(button_pressed[column[i]]){
@@ -750,7 +750,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
             .attr("transform", function () {
                 let translate_start = barWidth*global_text_translate;
                 let translate_end = barWidth*global_bar_translate;
-                let translate = [(translate_start + translate_end)/2-(column[i].length*4), 565];
+                let translate = [(translate_start + translate_end)/2-(column[i].length*4), 595];
                 return "translate("+ translate +")"
             })
             .text(column[i])
