@@ -1,6 +1,6 @@
 let column = data_imported.columns; // Get the column names from the dataset except throughput
-let margin = {top: 120, right: 20, bottom: 0, left: 70}; // Set the margins for the svg object
-let margin_result = {top: 120, right: 20, bottom: 0, left: 20}; // Set the margins for the result svg object, which is the svg in "area2" of the index.html file
+let margin = {top: 30, right: 20, bottom: 0, left: 70}; // Set the margins for the svg object
+let margin_result = {top: 30, right: 20, bottom: 0, left: 20}; // Set the margins for the result svg object, which is the svg in "area2" of the index.html file
 let result_svg_height = 730; // Height of the svg in Area2
 let result_svg_width = 100; // Width of svg in Area2
 let result_bar_width = 60; // Bar width of svg in Area2
@@ -159,6 +159,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                         }
                     }
                     else{
+                        blockchain_draw();
                         redraw(); // Redraw the bars based on current received information
                     }
                 });
@@ -238,6 +239,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                         }
                     }
                     else{
+                        blockchain_draw();
                         redraw(); // Redraw the bars based on current received information
                     }
                 });
@@ -317,6 +319,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                         }
                     }
                     else{
+                        blockchain_draw();
                         redraw(); // Redraw the bars based on current received information
                     }
                 });
@@ -396,6 +399,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                         }
                     }
                     else{
+                        blockchain_draw();
                         redraw(); // Redraw the bars based on current received information
                     }
                 });
@@ -476,6 +480,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                         }
                     }
                     else{
+                        blockchain_draw();
                         redraw(); // Redraw the bars based on current received information
                     }
                 });
@@ -555,6 +560,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                         }
                     }
                     else{
+                        blockchain_draw();
                         redraw(); // Redraw the bars based on current received information
                     }
                 });
@@ -665,6 +671,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                         }
                     }
                     else{
+                        blockchain_draw();
                         redraw(); // Redraw the bars based on current received information
                     }
                 });
@@ -741,6 +748,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 }
                 $.post("", data_button_tosend, function(data_infunc){
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
+                    blockchain_draw();
                     redraw(); // Redraw the bars based on current received information
                 })});
         
@@ -776,6 +784,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 }
                 $.post("", data_button_tosend, function(data_infunc){
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
+                    blockchain_draw();
                     redraw(); // Redraw the bars based on current received information
                 })});
         // Add the text below each bar
@@ -844,6 +853,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                         }
                     }
                     else{
+                        blockchain_draw();
                         redraw(); // Redraw the bars based on current received information
                     }
                 });

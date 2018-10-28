@@ -11,6 +11,7 @@ app = Flask(__name__)
 def index():
     global on_cols
     global off_cols
+    global history_global
     data_tosend['No Config Exist'] = 'False' # By default, we assume that a configuration selected by the user exists. If it doesn't, we change it later in the code
     if request.method == 'POST': # Collect the Post request when the user clicks a bar
         column_received = request.form['column'] # Get the variable selected by the user
@@ -116,6 +117,10 @@ def index():
             data_tosend['90 Thp'] = filtered_data.Throughput.quantile(0.9)
             data_tosend['Mean Thp'] = filtered_data.Throughput.mean()
             data_tosend['Data Thp'] = list(filtered_data.Throughput)
+            # History disctionary is added to history_global list to record a state change
+            history_list = {"on_cols": on_cols, "off_cols": off_cols, "blacklist_cols": blacklist_cols, "Thp Max": filtered_data.Throughput.max(), "Thp Min": filtered_data.Throughput.min()}
+            history_global.append(history_list)
+            data_tosend['History'] = history_global
             # Now it's time to send the dataframes to the client
             for col in columns[:-1]:
                 dataframe_tosend = dataframes[col] # Get the updated dataframe
@@ -141,9 +146,10 @@ def index():
                     pass
                 on_cols.append(column_received+'_'+value_received)
             data_tosend['No Config Exist'] = 'True' # Send the message to client that no such configuration exist
-
+            print(history_global)
         return jsonify(data_tosend)
     else:
+        history_global = [] # Empty the history global array because the system is refreshed
         filtered_data = data_dummy # Create a new dataframe to edit the values
         on_cols = list(column_dummy[1:]) # List of bars that are turned on. Initially, all the bars are on. We start from 1st index because column_dummy[0] = Throughput
         off_cols = [] # No bars are turned off initially    
@@ -245,6 +251,11 @@ def index():
         data_tosend['90 Thp'] = filtered_data.Throughput.quantile(0.9)
         data_tosend['Mean Thp'] = filtered_data.Throughput.mean()
         data_tosend['Data Thp'] = list(filtered_data.Throughput)
+        # History disctionary is added to history_global list to record a state change
+        history_list = {"on_cols": on_cols, "off_cols": off_cols, "blacklist_cols": blacklist_cols, "Thp Max": filtered_data.Throughput.max(), "Thp Min": filtered_data.Throughput.min()}
+        history_global.append(history_list)
+        data_tosend['History'] = history_global
+        print(history_global)
         return render_template('index.html', data=data_tosend)
 
 
@@ -265,5 +276,6 @@ if __name__=="__main__":
     data_tosend['Max Cols'] = len(column_dummy)-1 # Total number of bars to display i.e. all columns in the dummy dataframe except throughput
     dataframes = {} # This variable stores all variables in the dataset and the statistics of throughput for each of these variables. It is a dict of dataframes
     blacklist_cols = [] # It stores the variables for which the buttons are turned 'off'. 
+    history_global = [] # List used to store on_cols, off_cols and blacklist_cols for each state. Used for blockchain plot
     app.run(debug=True)
     # app.run(host='0.0.0.0', threaded=True)

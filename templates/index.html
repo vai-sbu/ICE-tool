@@ -18,20 +18,22 @@
     <body>
         <div class="container-fluid">
             <h1>Configuration Filter Chart</h1>
+            <a href=".">
+                <h3>Click to reset</h3>
+            </a>
             <div class="row">
                 <!-- Area 1 contains the bars for all variables in the dataset. Area 2 contains the result bar showing the Max and Min thp for complete dataset -->
                 <div class="col-lg-11 text-center" id="area1"></div>
                 <div class="col-lg-1" id="area2"></div>
             </div>
-            <a href=".">
-            <h3>Click to reset</h3>
-            </a>
+            
         </div>
         <script src="https://d3js.org/d3.v4.min.js"></script>
         <script type="text/javascript">
-        // Passing the data passed from app.py to index.js file by creating a global variable named data_imported.
+        // Passing the data passed from app.py to barchart.js file by creating a global variable named data_imported.
             let data_imported = {{data | safe}}; 
         </script>
-        <script src="{{ url_for('static', filename="js/index.js")}}"></script>
+        <script src="{{ url_for('static', filename="js/blockchain.js")}}"></script>
+        <script src="{{ url_for('static', filename="js/barchart.js")}}"></script>
     </body>
 </html>
