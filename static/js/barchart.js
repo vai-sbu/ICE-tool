@@ -16,7 +16,7 @@ let linearScale = d3.scaleLinear() // Scale to scale throughput values to the he
     .range([svgHeight-300,0])
 
 let button_pressed = {}; // Variable to store whether or not the button is pressed
-for(let i in column){
+for(let i in column){ // Initially none of the buttons are pressed
     button_pressed[column[i]] = false;
 }
 // To plot the distribution of data along with bar charts, we need to create bins with the help of histogram class in d3

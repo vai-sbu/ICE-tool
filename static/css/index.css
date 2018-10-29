@@ -16,3 +16,28 @@
 .button_text {
     font: bold 18px sans-serif;
 }
+.grid path {
+    stroke: none;
+}
+
+.grid line {
+    stroke: #E0E0E0;
+    shape-rendering: crispEdges;
+}
+
+.line {
+    fill: none;
+    stroke: red;
+    stroke-width: 3;
+}
+
+.line_min {
+    fill: none;
+    stroke: blue;
+    stroke-width: 3;
+}
+
+
+/* .blockchain-svg{
+    border: 1px solid black;
+} */
