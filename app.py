@@ -146,7 +146,7 @@ def index():
                     pass
                 on_cols.append(column_received+'_'+value_received)
             data_tosend['No Config Exist'] = 'True' # Send the message to client that no such configuration exist
-            print(history_global)
+            
         return jsonify(data_tosend)
     else:
         history_global = [] # Empty the history global array because the system is refreshed
@@ -255,7 +255,6 @@ def index():
         history_list = {"on_cols": on_cols, "off_cols": off_cols, "blacklist_cols": blacklist_cols, "Thp Max": filtered_data.Throughput.max(), "Thp Min": filtered_data.Throughput.min()}
         history_global.append(history_list)
         data_tosend['History'] = history_global
-        print(history_global)
         return render_template('index.html', data=data_tosend)
 
 

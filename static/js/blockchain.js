@@ -1,6 +1,5 @@
-function blockchain_draw(){
-    let data = data_imported;
-    // console.log(data['History'])
+function blockchain_draw(data){
+    console.log(data)
 }
 
-blockchain_draw();
+blockchain_draw(['History']);
