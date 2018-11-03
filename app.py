@@ -7,6 +7,8 @@ from natsort import natsorted
 from getRequestedData import getRequestedData
 app = Flask(__name__)
 
+import logging
+logging.basicConfig(filename='error.log', level=logging.DEBUG)
 
 @app.route("/blockchain", methods = ['POST'])
 def getBlockchainData():
@@ -32,7 +34,6 @@ def index():
     global data_tosend
     data_tosend['No Config Exist'] = 'False' # By default, we assume that a configuration selected by the user exists. If it doesn't, we change it later in the code
     if request.method == 'POST': # Collect the Post request when the user clicks a bar
-        print(request.form)
         column_received = request.form['column'] # Get the variable selected by the user
         value_received = request.form['value'] # Get the category within the variable selected by the user
         switch_received = request.form['switch'] # "on" or "off"
@@ -194,7 +195,7 @@ def index():
         data_tosend['Mean Thp'] = filtered_data.Throughput.mean()
         data_tosend['Data Thp'] = list(filtered_data.Throughput)
         # History disctionary is added to history_global list to record a state change
-        history_list = {"on_cols": on_cols, "off_cols": off_cols, "blacklist_cols": blacklist_cols, "Thp Max": filtered_data.Throughput.max(), "Thp Min": filtered_data.Throughput.min()}
+        history_list = {"on_cols": list(on_cols), "off_cols": list(off_cols), "blacklist_cols": list(blacklist_cols), "Thp Max": filtered_data.Throughput.max(), "Thp Min": filtered_data.Throughput.min()}
         history_global.append(history_list)
         data_tosend['History'] = history_global
         return render_template('index.html', data=data_tosend)

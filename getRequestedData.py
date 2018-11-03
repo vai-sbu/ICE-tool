@@ -5,10 +5,14 @@ import pandas as pd
 import numpy as np
 from natsort import natsorted
 
+import logging
+logging.basicConfig(filename='error.log', level=logging.DEBUG)
+
 def getRequestedData(on_cols, off_cols, blacklist_cols, filtered_data, data_tosend, switch_received, value_received, column_received, dataframes, history_global, columns):    
-    print(on_cols)
-    print(off_cols)
-    print(blacklist_cols)
+    logging.info('column details')
+    logging.info(on_cols)
+    logging.info(off_cols)
+    logging.info(blacklist_cols)
     # Remove the off_cols from filtered data
     for col in off_cols:
         cur_var = col.split('_')[0]
@@ -58,7 +62,8 @@ def getRequestedData(on_cols, off_cols, blacklist_cols, filtered_data, data_tose
         data_tosend['Mean Thp'] = filtered_data.Throughput.mean()
         data_tosend['Data Thp'] = list(filtered_data.Throughput)
         # History disctionary is added to history_global list to record a state change
-        history_list = {"on_cols": on_cols, "off_cols": off_cols, "blacklist_cols": blacklist_cols, "Thp Max": filtered_data.Throughput.max(), "Thp Min": filtered_data.Throughput.min()}
+        # List parameter is required to prevent the default behaviour of pass by reference in python
+        history_list = {"on_cols": list(on_cols), "off_cols": list(off_cols), "blacklist_cols": list(blacklist_cols), "Thp Max": filtered_data.Throughput.max(), "Thp Min": filtered_data.Throughput.min()}
         history_global.append(history_list)
         data_tosend['History'] = history_global
         # Now it's time to send the dataframes to the client
