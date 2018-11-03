@@ -128,7 +128,32 @@ let y_scale = d3.scaleLinear()
             return x_scale(i);
         })
         .attr('r', 6)
-        .style('fill', 'red');
+        .style('fill', 'red')
+        .on('click', function(d,j){
+            $.post("/blockchain", {'index': j}, function(data_infunc){
+                data_received = data_infunc
+                if (data_received['No Config Exist'] == 'True'){ // Check if the selected configuration exist, if no, tell the user about it
+                    if(data_toserver['switch'] == 'on'){
+                        selection.push({'id': column[i]+dataset[j][column[i]]});
+                        tempAlert("Configuration doesn't exist",700);
+                    }
+                    else{
+                        let k = selection.length;
+                        while(k--){ // Check if the current selection by the user is present in selection array
+                            if(selection[k].id == column[i]+dataset[j][column[i]]){
+                                is_present = true;
+                                selection.splice(k,1); // Remove the current bar from selection array as it was by default, pushed into the selection array.
+                            }
+                        }
+                        tempAlert("Error: Either configuration doesn't exist OR Press the Button to turn off the full variable instead.", 2500);
+                    }
+                }
+                else{
+                    blockchain_draw(data_received['History']);
+                    redraw(data_received); // Redraw the bars based on current received information
+                }
+            })
+        })
     
 }
 

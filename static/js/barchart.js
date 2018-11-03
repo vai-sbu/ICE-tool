@@ -15,9 +15,7 @@ let linearScale = d3.scaleLinear() // Scale to scale throughput values to the he
     .range([svgHeight-300,0])
 
 let button_pressed = {}; // Variable to store whether or not the button is pressed
-for(let i in column){ // Initially none of the buttons are pressed
-    // button_pressed[column[i]] = false;
-}
+
 // To plot the distribution of data along with bar charts, we need to create bins with the help of histogram class in d3
 let histoChart = d3.histogram();
 
@@ -26,6 +24,10 @@ violincolor = '#ff0099'; // color of the distribution displayed on the bar
 meancolor = '#000000' // color of the mean circle that is displayed at the center of the bar
 boundarycolor = '#0571b0'; // color of the box surrounding bars from each category
 
+/*
+There might be cases where certain combinations of bars don't exist in the dataset. For such combinations, we need to create an alert box 
+for the user information. The following function creates an alert box.
+*/
 function tempAlert(msg,duration){ // Function to generate an alert box for configuration doesn't exist
      var el = document.createElement("div");
      el.setAttribute("style","position:absolute;top:5%;left:40%;background-color:orange;");
@@ -36,16 +38,36 @@ function tempAlert(msg,duration){ // Function to generate an alert box for confi
      document.body.appendChild(el);
 }
 
+
+// Redraw function is used to draw all the elements besides the blockchain diagram. It is called everytime the user makes a selection.
+
 function redraw(data_received){ // Redraws every bar when the user makes a selection
+    
+    // Area1 and Area2 are html elements present in Index.html
+
     $('#area1').empty(); // Delete every object in Area 1 to redraw everything  
     $('#area2').empty(); // Delete every object in Area 2
+    
+    // Retreive the last element of the History_global array from the backend.
+    // It contains information about which bars are selected by the user and which buttons were clicked
+
     let hist_data = data_received['History']
+    // Retrieve the last element in the history array
     hist_data = hist_data[hist_data.length-1]
+
+    // Off_cols in history array denotes the bars that were selected by the user. So they are not to be displayed in the plot.
     let selection = hist_data['off_cols']; // This array helps keep track of which bar the user clicked
+
+    // Button pressed array keeps track of the buttons that the user pressed. This information is retrieved from blacklist_cols of the history array
+    for(let i in column){ // Initially none of the buttons are pressed
+        button_pressed[column[i]] = false;
+    }
+    // Set the columns present in Blacklist cols to true, i.e. these columns are to be displayed as red.
     for(let i in hist_data['blacklist_cols']){
         button_pressed[hist_data['blacklist_cols'][i]] = true;
     }
-    console.log(button_pressed)
+    
+    // These are variables to display each percentile bar next to each other.
     let global_bar_translate = 0; // To draw each bar next to each other
     let global_bar_translate1 = 0;
     let global_bar_translate2 = 0;
@@ -125,9 +147,6 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
             })
             .attr("transform", function (d, j) { // Increment globar_bar_translate with each new bar drawn
                 let translate = [barWidth * global_bar_translate, 0];
-
-
-
                 global_bar_translate++; 
                 return "translate("+ translate +")";
             })
@@ -138,21 +157,20 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                 while(k--){ // Check if the current selection by the user is present in selection array
                     if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                         is_present = true;
-                        // // selection.splice(k,1); // Remove the element from selection array and send information to the server
+                        break;
                     }
                 }
-                if(!is_present){ // Add the element to selection array if it is not present and send the information to the server
-                    // // selection.push({'id': column[i]+'_'+dataset[j][column[i]]});
+                if(!is_present){ // If element is not present, send swtich value 'off', otherwise 'on'
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'off'};
                 }
                 else{ 
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'on'};
                 }
+                // Send the info as a post request to the server
                 $.post("", data_toserver, function(data_infunc){
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
                     if (data_received['No Config Exist'] == 'True'){ // Check if the selected configuration exist, if no, tell the user about it
                         if(data_toserver['switch'] == 'on'){
-                            // // selection.push({'id': column[i]+'_'+dataset[j][column[i]]});
                             tempAlert("Configuration doesn't exist",700);
                         }
                         else{
@@ -160,7 +178,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                             while(k--){ // Check if the current selection by the user is present in selection array
                                 if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                                     is_present = true;
-                                    // // selection.splice(k,1); // Remove the current bar from selection array as it was by default, pushed into the selection array.
+                                    break;
                                 }
                             }
                             tempAlert("Error: Either configuration doesn't exist OR Press the Button to turn off the full variable instead.", 2500);
@@ -218,21 +236,20 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                 while(k--){ // Check if the current selection by the user is present in selection array
                     if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                         is_present = true;
-                        // // selection.splice(k,1); // Remove the element from selection array and send information to the server
+                        break;
                     }
                 }
-                if(!is_present){ // Add the element to selection array if it is not present and send the information to the server
-                    // // selection.push({'id': column[i]+'_'+dataset[j][column[i]]});
+                if(!is_present){ // If element is not present, send swtich value 'off', otherwise 'on'
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'off'};
                 }
                 else{ 
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'on'};
                 }
+                // Send the info as a post request to the server
                 $.post("", data_toserver, function(data_infunc){
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
                     if (data_received['No Config Exist'] == 'True'){ // Check if the selected configuration exist, if no, tell the user about it
                         if(data_toserver['switch'] == 'on'){
-                            // // selection.push({'id': column[i]+'_'+dataset[j][column[i]]});
                             tempAlert("Configuration doesn't exist",700);
                         }
                         else{
@@ -240,7 +257,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                             while(k--){ // Check if the current selection by the user is present in selection array
                                 if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                                     is_present = true;
-                                    // // selection.splice(k,1); // Remove the current bar from selection array as it was by default, pushed into the selection array.
+                                    break;
                                 }
                             }
                             tempAlert("Error: Either configuration doesn't exist OR Press the Button to turn off the full variable instead.", 2500);
@@ -298,21 +315,20 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                 while(k--){ // Check if the current selection by the user is present in selection array
                     if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                         is_present = true;
-                        // // selection.splice(k,1); // Remove the element from selection array and send information to the server
+                        break;
                     }
                 }
-                if(!is_present){ // Add the element to selection array if it is not present and send the information to the server
-                    // // selection.push({'id': column[i]+'_'+dataset[j][column[i]]});
+                if(!is_present){ // If element is not present, send swtich value 'off', otherwise 'on'
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'off'};
                 }
                 else{ 
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'on'};
                 }
+                // Send the info as a post request to the server
                 $.post("", data_toserver, function(data_infunc){
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
                     if (data_received['No Config Exist'] == 'True'){ // Check if the selected configuration exist, if no, tell the user about it
                         if(data_toserver['switch'] == 'on'){
-                            // // selection.push({'id': column[i]+'_'+dataset[j][column[i]]});
                             tempAlert("Configuration doesn't exist",700);
                         }
                         else{
@@ -320,7 +336,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                             while(k--){ // Check if the current selection by the user is present in selection array
                                 if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                                     is_present = true;
-                                    // // selection.splice(k,1); // Remove the current bar from selection array as it was by default, pushed into the selection array.
+                                    break;
                                 }
                             }
                             tempAlert("Error: Either configuration doesn't exist OR Press the Button to turn off the full variable instead.", 2500);
@@ -378,21 +394,20 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                 while(k--){ // Check if the current selection by the user is present in selection array
                     if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                         is_present = true;
-                        // // selection.splice(k,1); // Remove the element from selection array and send information to the server
+                        break;
                     }
                 }
-                if(!is_present){ // Add the element to selection array if it is not present and send the information to the server
-                    // // selection.push({'id': column[i]+'_'+dataset[j][column[i]]});
+                if(!is_present){ // If element is not present, send swtich value 'off', otherwise 'on'
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'off'};
                 }
                 else{ 
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'on'};
                 }
+                // Send the info as a post request to the server
                 $.post("", data_toserver, function(data_infunc){
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
                     if (data_received['No Config Exist'] == 'True'){ // Check if the selected configuration exist, if no, tell the user about it
                         if(data_toserver['switch'] == 'on'){
-                            // // selection.push({'id': column[i]+'_'+dataset[j][column[i]]});
                             tempAlert("Configuration doesn't exist",700);
                         }
                         else{
@@ -400,7 +415,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                             while(k--){ // Check if the current selection by the user is present in selection array
                                 if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                                     is_present = true;
-                                    // // selection.splice(k,1); // Remove the current bar from selection array as it was by default, pushed into the selection array.
+                                    break;
                                 }
                             }
                             tempAlert("Error: Either configuration doesn't exist OR Press the Button to turn off the full variable instead.", 2500);
@@ -459,21 +474,20 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                 while(k--){ // Check if the current selection by the user is present in selection array
                     if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                         is_present = true;
-                        // // selection.splice(k,1); // Remove the element from selection array and send information to the server
+                        break;
                     }
                 }
-                if(!is_present){ // Add the element to selection array if it is not present and send the information to the server
-                    // // selection.push({'id': column[i]+'_'+dataset[j][column[i]]});
+                if(!is_present){ // If element is not present, send swtich value 'off', otherwise 'on'
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'off'};
                 }
                 else{ 
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'on'};
                 }
+                // Send the info as a post request to the server
                 $.post("", data_toserver, function(data_infunc){
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
                     if (data_received['No Config Exist'] == 'True'){ // Check if the selected configuration exist, if no, tell the user about it
                         if(data_toserver['switch'] == 'on'){
-                            // // selection.push({'id': column[i]+'_'+dataset[j][column[i]]});
                             tempAlert("Configuration doesn't exist",700);
                         }
                         else{
@@ -481,7 +495,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                             while(k--){ // Check if the current selection by the user is present in selection array
                                 if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                                     is_present = true;
-                                    // // selection.splice(k,1); // Remove the current bar from selection array as it was by default, pushed into the selection array.
+                                    break;
                                 }
                             }
                             tempAlert("Error: Either configuration doesn't exist OR Press the Button to turn off the full variable instead.", 2500);
@@ -539,21 +553,20 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                 while(k--){ // Check if the current selection by the user is present in selection array
                     if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                         is_present = true;
-                        // // selection.splice(k,1); // Remove the element from selection array and send information to the server
+                        break;
                     }
                 }
-                if(!is_present){ // Add the element to selection array if it is not present and send the information to the server
-                    // // selection.push({'id': column[i]+'_'+dataset[j][column[i]]});
+                if(!is_present){ // If element is not present, send swtich value 'off', otherwise 'on'
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'off'};
                 }
                 else{ 
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'on'};
                 }
+                // Send the info as a post request to the server
                 $.post("", data_toserver, function(data_infunc){
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
                     if (data_received['No Config Exist'] == 'True'){ // Check if the selected configuration exist, if no, tell the user about it
                         if(data_toserver['switch'] == 'on'){
-                            // // selection.push({'id': column[i]+'_'+dataset[j][column[i]]});
                             tempAlert("Configuration doesn't exist",700);
                         }
                         else{
@@ -561,7 +574,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                             while(k--){ // Check if the current selection by the user is present in selection array
                                 if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                                     is_present = true;
-                                    // // selection.splice(k,1); // Remove the current bar from selection array as it was by default, pushed into the selection array.
+                                    break;
                                 }
                             }
                             tempAlert("Error: Either configuration doesn't exist OR Press the Button to turn off the full variable instead.", 2500);
@@ -650,21 +663,20 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                 while(k--){ // Check if the current selection by the user is present in selection array
                     if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                         is_present = true;
-                        // // selection.splice(k,1); // Remove the element from selection array and send information to the server
+                        break;
                     }
                 }
-                if(!is_present){ // Add the element to selection array if it is not present and send the information to the server
-                    // // selection.push({'id': column[i]+'_'+dataset[j][column[i]]});
+                if(!is_present){ // If element is not present, send swtich value 'off', otherwise 'on'
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'off'};
                 }
                 else{ 
                     data_toserver = {'column': column[i], 'value': dataset[j][column[i]], 'switch': 'on'};
                 }
+                // Send the info as a post request to the server
                 $.post("", data_toserver, function(data_infunc){
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
                     if (data_received['No Config Exist'] == 'True'){ // Check if the selected configuration exist, if no, tell the user about it
                         if(data_toserver['switch'] == 'on'){
-                            // // selection.push({'id': column[i]+'_'+dataset[j][column[i]]});
                             tempAlert("Configuration doesn't exist",700);
                         }
                         else{
@@ -672,7 +684,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                             while(k--){ // Check if the current selection by the user is present in selection array
                                 if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                                     is_present = true;
-                                    // // selection.splice(k,1); // Remove the current bar from selection array as it was by default, pushed into the selection array.
+                                    break;
                                 }
                             }
                             tempAlert("Error: Either configuration doesn't exist OR Press the Button to turn off the full variable instead.", 2500);
@@ -703,8 +715,10 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                 if(d.IsPresent == 1){
                     let is_present = false;
                     for(let k in selection){  // Check if the element is present in selection array, is yes, then plot if with opacity 0.5, otherwise plot it with opacity 1
-                        if(selection[k] == column[i]+'_'+dataset[j][column[i]]) 
-                        is_present = true;
+                        if(selection[k] == column[i]+'_'+dataset[j][column[i]]){ 
+                            is_present = true;
+                            break;
+                        }
                     }
                     if(!is_present)
                         return '3'
@@ -737,21 +751,9 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
             .on("click", function(){ // Handling what happens when the button is clicked
                 let data_button_tosend; // Dict to send to the server  
                 if(!button_pressed[column[i]]){ // Variable is turned off by the user
-                    for(let k in dataset){
-                        // // selection.push({'id': column[i]+dataset[k][column[i]]}); // Add all the categories for that variable to the selection array
-                    }
-                    // // button_pressed[column[i]] = true; // Change the value of button_pressed
                     data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'off'}; // This is the information that is sent to the server when the button is pressed to turn the variable off
                 }
                 else{ // When the variable is turned on
-                    // Remove all the categories for that variable from the selection array
-                    let k = selection.length
-                    while(k--){
-                        if(selection[k].startsWith(column[i])){
-                            // selection.splice(k,1); // Remove the element from selection array and send information to the server
-                        }
-                    }
-                    // button_pressed[column[i]] = false;
                     data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'on'};
                 }
                 $.post("", data_button_tosend, function(data_infunc){
@@ -773,20 +775,9 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
             .on("click", function(){ // Handling what happens when the button is clicked
                 let data_button_tosend; // Dict to send to the server  
                 if(!button_pressed[column[i]]){ // Variable is turned off by the user
-                    for(let k in dataset){
-                        // selection.push({'id': column[i]+dataset[k][column[i]]}); // Add all the categories for that variable to the selection array
-                    }
-                    // button_pressed[column[i]] = true; // Change the value of button_pressed
                     data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'off'}; // This is the information that is sent to the server when the button is pressed to turn the variable off
                 }
                 else{ // When the variable is turned on
-                    // Remove all the categories for that variable from the selection array
-                    let k = selection.length
-                    while(k--){
-                        if(selection[k].startsWith(column[i])){
-                            // selection.splice(k,1); // Remove the element from selection array and send information to the server
-                        }
-                    }
                     // button_pressed[column[i]] = false;
                     data_button_tosend = {'column': column[i], 'value': 'all', 'switch': 'on'};
                 }
@@ -815,8 +806,10 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
             .attr("fill", function(d, j){
                 let is_present = false;
                 for(let k in selection){  // Check if the element is present in selection array, is yes, then the text should be black, otherwise red
-                    if(selection[k] == column[i]+'_'+dataset[j][column[i]]) 
-                    is_present = true;
+                    if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
+                        is_present = true;
+                        break;
+                    }
                 }
                 if(!is_present){
                     return 'black'
@@ -832,7 +825,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                 while(k--){ // Check if the current selection by the user is present in selection array
                     if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
                         is_present = true;
-                        // selection.splice(k,1); // Remove the element from selection array and send information to the server
+                        break;
                     }
                 }
                 if(!is_present){ // Add the element to selection array if it is not present and send the information to the server
@@ -850,13 +843,6 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                             tempAlert("Configuration doesn't exist",700);
                         }
                         else{
-                            let k = selection.length;
-                            while(k--){ // Check if the current selection by the user is present in selection array
-                                if(selection[k] == column[i]+'_'+dataset[j][column[i]]){
-                                    is_present = true;
-                                    // selection.splice(k,1); // Remove the current bar from selection array as it was by default, pushed into the selection array.
-                                }
-                            }
                             tempAlert("Error: Either configuration doesn't exist OR Press the Button to turn off the full variable instead.", 2500);
                         }
                     }
@@ -883,14 +869,6 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
         .attr('dy', '1em')
         .style('text-anchor', 'middle')
         .text('Throughput')
-    // svg_elem.append('g').append('text') // Create the label for left y axis
-    //     .attr('class', 'thp_text')
-    //     .attr('transform', 'rotate(-90)')
-    //     .attr('y', document.getElementById('area1').offsetWidth - 180)
-    //     .attr('x', 0 - 200)
-    //     .attr('dy', '1em')
-    //     .style('text-anchor', 'middle')
-    //     .text('Throughput')
 
     
 
@@ -1033,48 +1011,8 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
             return area(histoChart(data_received['Data Thp']))    
         });
 
-    // svg_result.append('g').append('line')
-    // .attr('x1', margin_result)
-    // .attr('x2', result_bar_width-barPadding)
-    // .attr('y1', linearScale(data_received['90 Thp']))
-    // .attr('y2', linearScale(data_received['90 Thp']))
-    // .attr('stroke', 'black')
-    // .attr('stroke-width', 1);
 
-    //     svg_result.append('g').append('line')
-    // .attr('x1', margin_result)
-    // .attr('x2', result_bar_width-barPadding)
-    // .attr('y1', linearScale(data_received['75 Thp']))
-    // .attr('y2', linearScale(data_received['75 Thp']))
-    // .attr('stroke', 'black')
-    // .attr('stroke-width', 1);
-
-
-    //     // Add the median horizontal whisker
-    // svg_result.append('g').append('line')
-    // .attr('x1', margin_result)
-    // .attr('x2', result_bar_width-barPadding)
-    // .attr('y1', linearScale(data_received['50 Thp']))
-    // .attr('y2', linearScale(data_received['50 Thp']))
-    // .attr('stroke', 'black')
-    // .attr('stroke-width', 1);
-
-    // svg_result.append('g').append('line')
-    // .attr('x1', margin_result)
-    // .attr('x2', result_bar_width-barPadding)
-    // .attr('y1', linearScale(data_received['25 Thp']))
-    // .attr('y2', linearScale(data_received['25 Thp']))
-    // .attr('stroke', 'black')
-    // .attr('stroke-width', 1);
-
-    // svg_result.append('g').append('line')
-    // .attr('x1', margin_result)
-    // .attr('x2', result_bar_width-barPadding)
-    // .attr('y1', linearScale(data_received['10 Thp']))
-    // .attr('y2', linearScale(data_received['10 Thp']))
-    // .attr('stroke', 'black')
-    // .attr('stroke-width', 1);
-    
+    // Draw the circle for throughput value
     svg_result.append('g').append('circle')
         .attr('cx', margin_result.left + 5)
         .attr('cy', linearScale(data_received['Mean Thp']))
