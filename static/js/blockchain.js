@@ -110,7 +110,7 @@ let y_scale = d3.scaleLinear()
             }
             else{
                 blockchain_draw(data_received['History']);
-                redraw(); // Redraw the bars based on current received information
+                redraw(data_received); // Redraw the bars based on current received information
             }
         })
     })

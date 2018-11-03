@@ -6,6 +6,9 @@ import numpy as np
 from natsort import natsorted
 
 def getRequestedData(on_cols, off_cols, blacklist_cols, filtered_data, data_tosend, switch_received, value_received, column_received, dataframes, history_global, columns):    
+    print(on_cols)
+    print(off_cols)
+    print(blacklist_cols)
     # Remove the off_cols from filtered data
     for col in off_cols:
         cur_var = col.split('_')[0]

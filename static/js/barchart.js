@@ -7,7 +7,7 @@ let result_bar_width = 60; // Bar width of svg in Area2
 let svgHeight = 730, barPadding = 10; // Svg height and bar padding for Area1
 let max_cols = data_imported['Max Cols']; // Get the maximum number of bars that are to be drawn in Area1
 let barWidth = (parseFloat(document.getElementById('area1').offsetWidth-margin.left-120)/(max_cols+column.length)); // Calculate bar width by dividing the width of Area1 by (max cols + number of gaps i.e. number of variables in the dataset)
-let data_received = data_imported; // Data received captures the new data when user clicks on some bar or a button. Initially it is equal to original dataset but later it changes.
+// let data_received = data_imported; // Data received captures the new data when user clicks on some bar or a button. Initially it is equal to original dataset but later it changes.
 let colorScale = d3.scaleOrdinal(d3.schemeCategory10) // To add different colors to bars representing each variable in the dataset
     .domain(column);
 let selection = []; // This array helps keep track of which bar the user clicked
@@ -37,7 +37,7 @@ function tempAlert(msg,duration){ // Function to generate an alert box for confi
      document.body.appendChild(el);
 }
 
-function redraw(){ // Redraws every bar when the user makes a selection
+function redraw(data_received){ // Redraws every bar when the user makes a selection
     $('#area1').empty(); // Delete every object in Area 1 to redraw everything  
     $('#area2').empty(); // Delete every object in Area 2
     
@@ -160,7 +160,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     }
                     else{
                         blockchain_draw(data_received['History']);
-                        redraw(); // Redraw the bars based on current received information
+                        redraw(data_received); // Redraw the bars based on current received information
                     }
                 });
             });
@@ -240,7 +240,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     }
                     else{
                         blockchain_draw(data_received['History']);
-                        redraw(); // Redraw the bars based on current received information
+                        redraw(data_received); // Redraw the bars based on current received information
                     }
                 });
             });
@@ -320,7 +320,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     }
                     else{
                         blockchain_draw(data_received['History']);
-                        redraw(); // Redraw the bars based on current received information
+                        redraw(data_received); // Redraw the bars based on current received information
                     }
                 });
             });
@@ -400,7 +400,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     }
                     else{
                         blockchain_draw(data_received['History']);
-                        redraw(); // Redraw the bars based on current received information
+                        redraw(data_received); // Redraw the bars based on current received information
                     }
                 });
             });    
@@ -481,7 +481,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     }
                     else{
                         blockchain_draw(data_received['History']);
-                        redraw(); // Redraw the bars based on current received information
+                        redraw(data_received); // Redraw the bars based on current received information
                     }
                 });
             });
@@ -561,7 +561,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     }
                     else{
                         blockchain_draw(data_received['History']);
-                        redraw(); // Redraw the bars based on current received information
+                        redraw(data_received); // Redraw the bars based on current received information
                     }
                 });
             });
@@ -672,7 +672,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     }
                     else{
                         blockchain_draw(data_received['History']);
-                        redraw(); // Redraw the bars based on current received information
+                        redraw(data_received); // Redraw the bars based on current received information
                     }
                 });
             });
@@ -749,7 +749,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 $.post("", data_button_tosend, function(data_infunc){
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
                     blockchain_draw(data_received['History']);
-                    redraw(); // Redraw the bars based on current received information
+                    redraw(data_received); // Redraw the bars based on current received information
                 })});
         
         // Add text to the buttons drawn using the above function
@@ -785,7 +785,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                 $.post("", data_button_tosend, function(data_infunc){
                     data_received = data_infunc; // The server returns new throughput values based on current user selection, update data_received with received information
                     blockchain_draw(data_received['History']);
-                    redraw(); // Redraw the bars based on current received information
+                    redraw(data_received); // Redraw the bars based on current received information
                 })});
         // Add the text below each bar
         let text = svg_elem.append('g').selectAll("text") 
@@ -854,7 +854,7 @@ function redraw(){ // Redraws every bar when the user makes a selection
                     }
                     else{
                         blockchain_draw(data_received['History']);
-                        redraw(); // Redraw the bars based on current received information
+                        redraw(data_received); // Redraw the bars based on current received information
                     }
                 });
             });
@@ -1076,5 +1076,5 @@ function redraw(){ // Redraws every bar when the user makes a selection
 
 }
 
-redraw(); // Call the redraw function everytime this script runs
+redraw(data_imported); // Call the redraw function everytime this script runs
 window.addEventListener('resize',redraw); // Bootstrap will run everytime the user tries to resize the window
