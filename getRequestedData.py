@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, redirect, Response, jsonify
 import pandas as pd
 import numpy as np
 from natsort import natsorted
+from getPredictions import getPredictions
 
 import logging
 logging.basicConfig(filename='error.log', level=logging.DEBUG)
@@ -78,6 +79,7 @@ def getRequestedData(on_cols, off_cols, blacklist_cols, filtered_data, data_tose
             chart_df = dataframe_tosend.to_dict(orient='records') # Convert the dataframe to dict
             chart_df = json.dumps(chart_df) # Create a JSON object
             data_tosend[col] = chart_df # Add to the data_tosend dict
+        getPredictions(filtered_data)
     else: # If the filtered data is empty i.e. no such configuration exists
         '''
         Following code undo the operations on on_cols and off_cols done in the upper part of the code

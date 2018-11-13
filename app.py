@@ -98,7 +98,6 @@ def index():
                 off_cols.remove(column_received+'_'+value_received)
         
         data_tosend = getRequestedData(on_cols, off_cols, blacklist_cols, filtered_data, data_tosend, switch_received, value_received, column_received, dataframes, history_global, columns)
-        print(len(json.loads(data_tosend['Workload'])))
         
         return jsonify(data_tosend)
     else:
@@ -203,6 +202,7 @@ def index():
         data_tosend['75 Thp'] = filtered_data.Throughput.quantile(0.75)
         data_tosend['90 Thp'] = filtered_data.Throughput.quantile(0.9)
         data_tosend['Mean Thp'] = filtered_data.Throughput.mean()
+        # Sample the data to display on the frontend (This is to make the app run faster)
         if len(filtered_data.Throughput) > 10000:
             data_tosend['Data Thp'] = list(filtered_data.Throughput.sample(frac=0.2))
         else:
