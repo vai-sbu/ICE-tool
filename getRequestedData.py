@@ -9,10 +9,10 @@ import logging
 logging.basicConfig(filename='error.log', level=logging.DEBUG)
 
 def getRequestedData(on_cols, off_cols, blacklist_cols, filtered_data, data_tosend, switch_received, value_received, column_received, dataframes, history_global, columns):    
-    logging.info('column details')
-    logging.info(on_cols)
-    logging.info(off_cols)
-    logging.info(blacklist_cols)
+    # logging.info('column details')
+    # logging.info(on_cols)
+    # logging.info(off_cols)
+    # logging.info(blacklist_cols)
     # Remove the off_cols from filtered data
     for col in off_cols:
         cur_var = col.split('_')[0]
@@ -33,7 +33,10 @@ def getRequestedData(on_cols, off_cols, blacklist_cols, filtered_data, data_tose
             thp_75 = temp.Throughput.quantile(0.75) # Get 10th percentile
             thp_90 = temp.Throughput.quantile(0.9) # Get 10th percentile
             thp_mean = temp.Throughput.mean() # Get 10th percentile
-            data_thp = list(temp.Throughput)
+            if len(temp.Throughput) > 10000:
+                data_thp = list(temp.Throughput.sample(frac=0.2))
+            else:
+                data_thp = list(temp.Throughput)
             data_tochange = dataframes[cur_var] # Get the dataframe generated from original data to change the values
             data_tochange.set_index(cur_var, inplace=True) # Set the index to categories of the current variable
             data_tochange.at[cur_cat, 'IsPresent'] = 0 # Set the bar to disappear by default. This value is changed in the below if condition in case we get new values of THP for this category.
@@ -60,7 +63,10 @@ def getRequestedData(on_cols, off_cols, blacklist_cols, filtered_data, data_tose
         data_tosend['75 Thp'] = filtered_data.Throughput.quantile(0.75)
         data_tosend['90 Thp'] = filtered_data.Throughput.quantile(0.9)
         data_tosend['Mean Thp'] = filtered_data.Throughput.mean()
-        data_tosend['Data Thp'] = list(filtered_data.Throughput)
+        if len(filtered_data.Throughput) > 10000:
+            data_tosend['Data Thp'] = list(filtered_data.Throughput.sample(frac=0.2))
+        else:
+            data_tosend['Data Thp'] = list(filtered_data.Throughput)
         # History disctionary is added to history_global list to record a state change
         # List parameter is required to prevent the default behaviour of pass by reference in python
         history_list = {"on_cols": list(on_cols), "off_cols": list(off_cols), "blacklist_cols": list(blacklist_cols), "Thp Max": filtered_data.Throughput.max(), "Thp Min": filtered_data.Throughput.min()}

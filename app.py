@@ -5,24 +5,32 @@ import pandas as pd
 import numpy as np
 from natsort import natsorted
 from getRequestedData import getRequestedData
+from getPredictions import getPredictions
 app = Flask(__name__)
 
 import logging
 logging.basicConfig(filename='error.log', level=logging.DEBUG)
 
-@app.route("/blockchain", methods = ['POST'])
+@app.route("/blockchain", methods = ['POST']) # This method is called when the user clicks on a blockchain element
 def getBlockchainData():
+    # Variables that we need to recalculate the dataset are defined as global
     global history_global
     global data_tosend
     global data_dummy
     global dataframes
     global columns
+
+    # Filtered Data to be calculated based on "on_cols, off_cols and blacklist_cols"
     filtered_data = data_dummy
+    # Initially we assume that the configuration user selected exists.
     data_tosend['No Config Exist'] = 'False'
+    # Get the index of the circle user clicked on the blockchain
     history_index = request.form['index']
+    # Get details of "on_cols, off_cols and blacklist_cols" from the history array using the index obtained
     on_cols = history_global[int(history_index)]['on_cols']
     off_cols = history_global[int(history_index)]['off_cols']
     blacklist_cols = history_global[int(history_index)]['blacklist_cols']
+    # Recalculate the data at that stage
     data_tosend = getRequestedData(on_cols, off_cols, blacklist_cols, filtered_data, data_tosend, '', '', '', dataframes, history_global, columns)
     return jsonify(data_tosend)
 
@@ -90,6 +98,8 @@ def index():
                 off_cols.remove(column_received+'_'+value_received)
         
         data_tosend = getRequestedData(on_cols, off_cols, blacklist_cols, filtered_data, data_tosend, switch_received, value_received, column_received, dataframes, history_global, columns)
+        print(len(json.loads(data_tosend['Workload'])))
+        
         return jsonify(data_tosend)
     else:
         history_global = [] # Empty the history global array because the system is refreshed
@@ -118,7 +128,7 @@ def index():
                                                         '75': temp.Throughput.quantile(0.75),
                                                         '90': temp.Throughput.quantile(0.9),
                                                         'Mean': temp.Throughput.mean(), 
-                                                        'Data': list(temp.Throughput)}, ignore_index=True)
+                                                        'Data': list(temp.Throughput.sample(frac=0.2))}, ignore_index=True)
                 # Append a row in the global_temp_df that includes the Min and Max, Lower Quantile, Upper Quantile and Median values for a new category of current variable
             else:
                 '''
@@ -171,7 +181,7 @@ def index():
                                         '75': temp.Throughput.quantile(0.75),
                                         '90': temp.Throughput.quantile(0.9),
                                         'Mean': temp.Throughput.mean(), 
-                                        'Data': list(temp.Throughput)}, ignore_index=True)
+                                        'Data': list(temp.Throughput.sample(frac=0.2))}, ignore_index=True)
                 # Add the Max and Min throughput values to the temp dataframe for current category
                 global_temp_df = temp_df # Change global_temp_df to this new dataframe for a new variable
                 
@@ -193,7 +203,10 @@ def index():
         data_tosend['75 Thp'] = filtered_data.Throughput.quantile(0.75)
         data_tosend['90 Thp'] = filtered_data.Throughput.quantile(0.9)
         data_tosend['Mean Thp'] = filtered_data.Throughput.mean()
-        data_tosend['Data Thp'] = list(filtered_data.Throughput)
+        if len(filtered_data.Throughput) > 10000:
+            data_tosend['Data Thp'] = list(filtered_data.Throughput.sample(frac=0.2))
+        else:
+            data_tosend['Data Thp'] = list(filtered_data.Throughput)
         # History disctionary is added to history_global list to record a state change
         history_list = {"on_cols": list(on_cols), "off_cols": list(off_cols), "blacklist_cols": list(blacklist_cols), "Thp Max": filtered_data.Throughput.max(), "Thp Min": filtered_data.Throughput.min()}
         history_global.append(history_list)
