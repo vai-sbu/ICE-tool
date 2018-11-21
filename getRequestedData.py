@@ -25,15 +25,15 @@ def getRequestedData(on_cols, off_cols, blacklist_cols, filtered_data, data_tose
         for col in on_cols:
             cur_var = col.split('_')[0] # Get the value of the variable from the string
             cur_cat = col.split('_')[1] # Get the value of category from the string
-            temp = filtered_data.loc[filtered_data[col] == 1] # Get the subset dataframe where only the current variable in 1
+            temp = filtered_data.loc[filtered_data[col] == 1] # Get the subset dataframe where only the current variable is 1
             min_thp = temp.Throughput.min() # Get the min thp for this column
             max_thp = temp.Throughput.max() # Get the max thp for this column
             thp_10 = temp.Throughput.quantile(0.1) # Get 10th percentile
-            thp_25 = temp.Throughput.quantile(0.25) # Get 10th percentile
-            thp_50 = temp.Throughput.quantile(0.5) # Get 10th percentile
-            thp_75 = temp.Throughput.quantile(0.75) # Get 10th percentile
-            thp_90 = temp.Throughput.quantile(0.9) # Get 10th percentile
-            thp_mean = temp.Throughput.mean() # Get 10th percentile
+            thp_25 = temp.Throughput.quantile(0.25) # Get 25th percentile
+            thp_50 = temp.Throughput.quantile(0.5) # Get 50th percentile
+            thp_75 = temp.Throughput.quantile(0.75) # Get 75th percentile
+            thp_90 = temp.Throughput.quantile(0.9) # Get 90th percentile
+            thp_mean = temp.Throughput.mean() # Get the mean
             if len(temp.Throughput) > 10000:
                 data_thp = list(temp.Throughput.sample(frac=0.2))
             else:
@@ -79,7 +79,7 @@ def getRequestedData(on_cols, off_cols, blacklist_cols, filtered_data, data_tose
             chart_df = dataframe_tosend.to_dict(orient='records') # Convert the dataframe to dict
             chart_df = json.dumps(chart_df) # Create a JSON object
             data_tosend[col] = chart_df # Add to the data_tosend dict
-        getPredictions(filtered_data)
+        getPredictions(filtered_data, on_cols)
     else: # If the filtered data is empty i.e. no such configuration exists
         '''
         Following code undo the operations on on_cols and off_cols done in the upper part of the code
