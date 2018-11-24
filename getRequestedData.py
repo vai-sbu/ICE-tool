@@ -79,7 +79,8 @@ def getRequestedData(on_cols, off_cols, blacklist_cols, filtered_data, data_tose
             chart_df = dataframe_tosend.to_dict(orient='records') # Convert the dataframe to dict
             chart_df = json.dumps(chart_df) # Create a JSON object
             data_tosend[col] = chart_df # Add to the data_tosend dict
-        getPredictions(filtered_data, on_cols)
+        pred_list = getPredictions(filtered_data, on_cols)
+        data_tosend['Pred List'] = pred_list
     else: # If the filtered data is empty i.e. no such configuration exists
         '''
         Following code undo the operations on on_cols and off_cols done in the upper part of the code

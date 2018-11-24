@@ -27,6 +27,10 @@
                 <div class="col-lg-1" id="area2"></div>
             </div>
             <div class="row">
+                <!-- Area 4 contains the predictions -->
+                <div class="col-lg-12" id="area4"></div>
+            </div>
+            <div class="row">
                 <!-- Area 3 contains blockchain plot -->
                 <div class="col-lg-12" id="area3"></div>
             </div>
@@ -38,6 +42,7 @@
             let data_imported = {{data | safe}}; 
         </script>
         <script src="{{ url_for('static', filename="js/blockchain.js")}}"></script>
+        <script src="{{ url_for('static', filename="js/prediction.js")}}"></script>
         <script src="{{ url_for('static', filename="js/barchart.js")}}"></script>
     </body>
 </html>

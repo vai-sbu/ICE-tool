@@ -43,8 +43,10 @@ function tempAlert(msg,duration){ // Function to generate an alert box for confi
 
 function redraw(data_received){ // Redraws every bar when the user makes a selection
     
-    // Area1 and Area2 are html elements present in Index.html
+    // Call display_predictions(data) function in predictions.js to display the predictions on screen
+    display_predictions(data_received['Pred List'])
 
+    // Area1 and Area2 are html elements present in Index.html
     $('#area1').empty(); // Delete every object in Area 1 to redraw everything  
     $('#area2').empty(); // Delete every object in Area 2
     

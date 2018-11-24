@@ -10,7 +10,7 @@ let y_scale = d3.scaleLinear()
     .range([blkHeight-blkMargin.top-blkMargin.bottom, 0])
 
 
-    function blockchain_draw(data){
+function blockchain_draw(data){
     // Delete the previous blockchain-plot to draw the new one in area3
     $('#area3').empty();
     // Create a new svg element and add it to area3

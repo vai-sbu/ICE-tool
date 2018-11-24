@@ -40,4 +40,4 @@ def getPredictions(filtered_data, on_cols):
         else:
             break
     
-    print(pred_list)
+    return pred_list
