@@ -5,10 +5,10 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        
+
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
+
         <!-- To ensure proper rendering and touch zooming -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,6 +18,11 @@
     <body>
         <div class="container-fluid">
             <h1>Configuration Filter Chart</h1>
+            <h1>Select a dataset</h1>
+            <form action="/">
+                <input type="file" name="dataset"><br><br>
+                <input type="submit">
+            </form>
             <a href=".">
                 <h3>Click to reset</h3>
             </a>
@@ -27,22 +32,17 @@
                 <div class="col-lg-1" id="area2"></div>
             </div>
             <div class="row">
-                <!-- Area 4 contains the predictions -->
-                <div class="col-lg-12" id="area4"></div>
-            </div>
-            <div class="row">
                 <!-- Area 3 contains blockchain plot -->
                 <div class="col-lg-12" id="area3"></div>
             </div>
-            
+
         </div>
         <script src="https://d3js.org/d3.v4.min.js"></script>
         <script type="text/javascript">
         // Passing the data passed from app.py to barchart.js file by creating a global variable named data_imported.
-            let data_imported = {{data | safe}}; 
+            let data_imported = {{data | safe}};
         </script>
         <script src="{{ url_for('static', filename="js/blockchain.js")}}"></script>
-        <script src="{{ url_for('static', filename="js/prediction.js")}}"></script>
         <script src="{{ url_for('static', filename="js/barchart.js")}}"></script>
     </body>
 </html>
