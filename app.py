@@ -226,6 +226,7 @@ def populate_data(filename):
     data = pd.read_csv(filename) # Reading the dataset is done only once when the server is started
     # data = pd.read_csv('dataset/dbserver_short.csv') # Reading the dataset is done only once when the server is started
     columns = list(data.columns) # Crete a list of columns in the dataset
+    columns = [col.strip() for col in columns]
     for col in columns[:-1]: # For all columns except throughput
         data[col] = data[col].apply(str) # Change the datatype for each column to be of type string so that there are no conflicts when performing calculations on each of the columns
     data_dummy = pd.get_dummies(data) #Since all the data in categorical, this creates a boolean dummy dataframe by creating columns of all the categories for each variable. This creates a column for each bar displayed
