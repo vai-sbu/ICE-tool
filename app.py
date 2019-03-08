@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from natsort import natsorted
 from getRequestedData import getRequestedData
-from getPredictions import getPredictions
+# from getPredictions import getPredictions
 app = Flask(__name__)
 
 import logging
@@ -202,8 +202,8 @@ def index():
         data_tosend['75 Thp'] = filtered_data.Throughput.quantile(0.75)
         data_tosend['90 Thp'] = filtered_data.Throughput.quantile(0.9)
         data_tosend['Mean Thp'] = filtered_data.Throughput.mean()
-        pred_list = getPredictions(filtered_data, on_cols)
-        data_tosend['Pred List'] = pred_list
+        # pred_list = getPredictions(filtered_data, on_cols)
+        # data_tosend['Pred List'] = pred_list
         # Sample the data to display on the frontend (This is to make the app run faster)
         if len(filtered_data.Throughput) > 10000:
             data_tosend['Data Thp'] = list(filtered_data.Throughput.sample(frac=0.2))
@@ -221,7 +221,7 @@ if __name__=="__main__":
     '''
         This method is run only once when the server is started
     '''
-    data = pd.read_csv('dataset/systems_data.csv') # Reading the dataset is done only once when the server is started
+    data = pd.read_csv('dataset/systems_data2.csv') # Reading the dataset is done only once when the server is started
     columns = list(data.columns) # Crete a list of columns in the dataset
     for col in columns[:-1]: # For all columns except throughput
         data[col] = data[col].apply(str) # Change the datatype for each column to be of type string so that there are no conflicts when performing calculations on each of the columns

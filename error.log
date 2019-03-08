@@ -1345,3 +1345,35 @@ INFO:werkzeug:127.0.0.1 - - [23/Nov/2018 15:58:54] "POST / HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [23/Nov/2018 15:58:56] "POST / HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [23/Nov/2018 15:58:58] "POST / HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [23/Nov/2018 15:59:05] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 817-068-285
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:34:00] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:34:06] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:34:07] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:34:08] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:34:10] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:34:12] "POST / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/mnt/c/Users/atyag/Documents/boxPlotApp/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 817-068-285
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 817-068-285
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:36:10] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:36:13] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:36:13] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:36:13] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:36:13] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:36:13] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:36:17] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:36:17] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:36:19] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:36:20] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:36:21] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:36:23] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:36:25] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Mar/2019 17:36:25] "POST / HTTP/1.1" 200 -
