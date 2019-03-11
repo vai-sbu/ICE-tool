@@ -136,7 +136,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
             .attr("width", barWidth - barPadding)
             .attr("opacity", function(d, j){
                 let is_present = false;
-                for(let k in selection){  // Check if the element is present in selection array, is yes, then plot if with opacity 0.5, otherwise plot it with opacity 1
+                for(let k in selection){  // Check if the element is present in selection array, is yes, then plot it with opacity 0.5, otherwise plot it with opacity 1
                     if(selection[k] == column[i]+'_'+dataset[j][column[i]]) 
                     is_present = true;
                 }
@@ -872,7 +872,39 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
         .style('text-anchor', 'middle')
         .text('Throughput')
 
-    
+    // Code for the horizontal line with mouse hover to assist in finding maximum throughput 
+    let mouseG = svg_elem.append('g')
+        .attr('class', 'mouse-over-effects') // Append a 'g' element to the main svg
+
+    mouseG.append('path') // Define the line attributes. The class is mouse-line
+        .attr('class', 'mouse-line')
+        .style('stroke', 'black')
+        .style('stroke-width', '1px')
+        .style('opacity', '0');
+
+    mouseG.append('svg:rect') // Append the line attributes to the main svg boundaries
+        .attr('width', '100%')
+        .attr('height', 430)
+        .attr('fill', 'none')
+        .attr('pointer-events', 'all')
+        .on('mouseout', function(){
+            d3.select('.mouse-line')
+                .style('opacity', '0')
+        })
+        .on('mouseover', function(){
+            d3.select('.mouse-line')
+                .style('opacity', '1')
+        })
+        .on('mousemove', function(){
+            let mouse = d3.mouse(this);
+            d3.select('.mouse-line')
+            .attr("d", function() {
+                var d = "M" + 0 + "," + mouse[1];
+                d += " " + ((parseFloat(document.getElementById('area1').offsetWidth))-4*barWidth) + "," + mouse[1];
+                return d;
+            });
+        
+        })
 
 
     // ****************************** Below is 2nd column code ******************************
