@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 from natsort import natsorted
 from getRequestedData import getRequestedData
+import datetime
 # from getPredictions import getPredictions
 app = Flask(__name__)
 
@@ -45,9 +46,11 @@ def index():
         column_received = request.form['column'] # Get the variable selected by the user
         value_received = request.form['value'] # Get the category within the variable selected by the user
         switch_received = request.form['switch'] # "on" or "off"
-        print(column_received)
-        print(value_received)
-        print(switch_received)
+        logging.info(column_received)
+        logging.info(value_received)
+        logging.info(switch_received)
+        now = datetime.datetime.now() # Get current date and time from the user to log in the file for user study
+        logging.info(str(now.hour)+':'+str(now.minute)+':'+str(now.second))
         filtered_data = data_dummy # Create a new dataframe to edit the values
         if value_received == 'all':
             unique_values = list(data[column_received].unique()) # Create a list of categories in the selected variable
@@ -234,6 +237,6 @@ if __name__=="__main__":
     dataframes = {} # This variable stores all variables in the dataset and the statistics of throughput for each of these variables. It is a dict of dataframes
     blacklist_cols = [] # It stores the variables for which the buttons are turned 'off'. 
     history_global = [] # List used to store on_cols, off_cols and blacklist_cols for each state. Used for blockchain plot
-    app.run(debug=True)
+    app.run()
     # app.run(host='0.0.0.0', threaded=True)
 

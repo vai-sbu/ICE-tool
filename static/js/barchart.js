@@ -900,7 +900,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
             d3.select('.mouse-line')
             .attr("d", function() {
                 var d = "M" + 0 + "," + mouse[1];
-                d += " " + ((parseFloat(document.getElementById('area1').offsetWidth))-4*barWidth) + "," + mouse[1];
+                d += " " + barWidth*(max_cols+column.length) + "," + mouse[1];
                 return d;
             });
         
