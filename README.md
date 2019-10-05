@@ -9,7 +9,9 @@ Video preview is available [here](https://www.youtube.com/watch?v=0mD3IEjjq0U&fe
 
 * Set up the virtual env in python 3 <$ virtualenv --python=/usr/bin/python3 env>
  
-* Start the virtualenv <$ source ./env/bin/activate>
+* Start the virtualenv ```$ source ./env/bin/activate```
 
-* Install dependencies <env$ pip install flask>
-<env$ pip install pandas
+* Install dependencies 
+```
+env$ pip install -r requirements.txt
+```
