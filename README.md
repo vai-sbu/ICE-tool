@@ -15,4 +15,4 @@ Video preview is available [here](https://www.youtube.com/watch?v=0mD3IEjjq0U&fe
 
 * Run ```python app.py```
 
-* The ICE can now be accessed at localhost://5000
+* The ICE can now be accessed at ```localhost://5000```
