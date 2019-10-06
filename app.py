@@ -13,19 +13,45 @@ logging.basicConfig(filename='error.log', level=logging.DEBUG)
 
 
 app = Flask(__name__)
+
+# Read_data_again changes the values of the global variables for the newly uploaded file. After this, the tool will display data of the uploaded file
+# The code is same as the main function, we need to do it again so as to read the newly uploaded file
+def read_data_again():
+    global data
+    global columns
+    global data_dummy
+    global column_dummy
+    global on_cols
+    global off_cols
+    global data_tosend
+    global dataframes
+    global blacklist_cols
+    global history_global
+    data = pd.read_csv('dataset/uploaded_file.csv') # Reading the dataset is done only once when the server is started
+    columns = list(data.columns) # Crete a list of columns in the dataset
+    for col in columns[:-1]: # For all columns except throughput
+        data[col] = data[col].apply(str) # Change the datatype for each column to be of type string so that there are no conflicts when performing calculations on each of the columns
+    data_dummy = pd.get_dummies(data) #Since all the data in categorical, this creates a boolean dummy dataframe by creating columns of all the categories for each variable. This creates a column for each bar displayed
+    column_dummy = list(data_dummy.columns)
+    on_cols = [] # List of bars that are turned on. Initially, all the bars are on. We start from 1st index because column_dummy[0] = Throughput
+    off_cols = [] # No bars are turned off initially
+    data_tosend = {'columns': columns[:-1]}
+    data_tosend['Max Cols'] = len(column_dummy)-1 # Total number of bars to display i.e. all columns in the dummy dataframe except throughput
+    dataframes = {} # This variable stores all variables in the dataset and the statistics of throughput for each of these variables. It is a dict of dataframes
+    blacklist_cols = [] # It stores the variables for which the buttons are turned 'off'. 
+    history_global = [] # List used to store on_cols, off_cols and blacklist_cols for each state. Used for blockchain plot
+
 UPLOAD_FOLDER = os.path.join(app.root_path, "dataset") # Path to the folder where the uploaded dataste would be saved
 ALLOWED_EXTENSIONS = ['csv'] # Extensions allowed for the datasets to be uploaded to ICE server
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 # function to check whether the uploaded dataset is valid
 def allowed_file(filename):
     return '.' in filename and \
     filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # Function to handle uploaded file
-@app.route('/', methods=['GET', 'POST'])
-def upload_file():
-    print("here")
+@app.route('/upload', methods=['POST'])
+def upload():
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -39,24 +65,15 @@ def upload_file():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            print(filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploaded_file',
-                                    filename=filename))
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type=submit value=Upload>
-    </form>
-    '''
+            # The file is saved with the name "uploaded_file.csv" inside the dataset folder
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'uploaded_file.csv'))
+            read_data_again()
+            return redirect(url_for('index'))
 
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],
-                               filename)
+# @app.route('/uploads/<filename>')
+# def uploaded_file(filename):
+#     return send_from_directory(app.config['UPLOAD_FOLDER'],
+#                                filename)
 
 @app.route("/blockchain", methods = ['POST']) # This method is called when the user clicks on a blockchain element
 def getBlockchainData():
@@ -150,6 +167,7 @@ def index():
         
         return jsonify(data_tosend)
     else:
+        print("here")
         history_global = [] # Empty the history global array because the system is refreshed
         filtered_data = data_dummy # Create a new dataframe to edit the values
         on_cols = list(column_dummy[1:]) # List of bars that are turned on. Initially, all the bars are on. We start from 1st index because column_dummy[0] = Throughput
@@ -270,7 +288,7 @@ if __name__=="__main__":
     '''
         This method is run only once when the server is started
     '''
-    data = pd.read_csv('dataset/systems_data2.csv') # Reading the dataset is done only once when the server is started
+    data = pd.read_csv('dataset/uploaded_file.csv') # Reading the dataset is done only once when the server is started
     columns = list(data.columns) # Crete a list of columns in the dataset
     for col in columns[:-1]: # For all columns except throughput
         data[col] = data[col].apply(str) # Change the datatype for each column to be of type string so that there are no conflicts when performing calculations on each of the columns

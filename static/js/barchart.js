@@ -803,7 +803,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
             .attr("transform", function (d, j) {
                 let translate = [barWidth * global_text_translate+10, 460]
                 global_text_translate++
-                return "translate("+ translate +")rotate(60)";
+                return "translate("+ translate +")rotate(90)";
             })
             .attr("fill", function(d, j){
                 let is_present = false;

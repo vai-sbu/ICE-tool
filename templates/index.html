@@ -18,9 +18,22 @@
     <body>
         <div class="container-fluid">
             <h1>Interactive Configuration Explorer</h1>
-            <a href=".">
-                <h3>Click to reset</h3>
-            </a>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 text-center">
+                <a href=".">
+                    <h3>Click to reset</h3>
+                </a>
+            </div>
+            <div class="col-lg-4 text-center">
+                <h3>Upload dataset in csv format</h1>
+            </div>
+            <div class="col-lg-5">
+                <form method="POST" enctype="multipart/form-data" action="{{url_for('upload')}}">
+                    <input type="file" name="file">
+                    <input type="submit" value="Upload">
+                </form>
+            </div>
             <div class="row">
                 <!-- Area 1 contains the bars for all variables in the dataset. Area 2 contains the result bar showing the Max and Min thp for complete dataset -->
                 <div class="col-lg-11 text-center" id="area1"></div>
