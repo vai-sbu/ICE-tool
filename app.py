@@ -1,16 +1,62 @@
 import json
-
-from flask import Flask, render_template, request, redirect, Response, jsonify
+import os
+from flask import Flask, render_template, request, redirect, Response, jsonify, send_from_directory, flash, url_for
 import pandas as pd
 import numpy as np
 from natsort import natsorted
 from getRequestedData import getRequestedData
 import datetime
-# from getPredictions import getPredictions
-app = Flask(__name__)
-
+from werkzeug.utils import secure_filename
 import logging
 logging.basicConfig(filename='error.log', level=logging.DEBUG)
+# from getPredictions import getPredictions
+
+
+app = Flask(__name__)
+UPLOAD_FOLDER = os.path.join(app.root_path, "dataset") # Path to the folder where the uploaded dataste would be saved
+ALLOWED_EXTENSIONS = ['csv'] # Extensions allowed for the datasets to be uploaded to ICE server
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# function to check whether the uploaded dataset is valid
+def allowed_file(filename):
+    return '.' in filename and \
+    filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+# Function to handle uploaded file
+@app.route('/', methods=['GET', 'POST'])
+def upload_file():
+    print("here")
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            print(filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('uploaded_file',
+                                    filename=filename))
+    return '''
+    <!doctype html>
+    <title>Upload new File</title>
+    <h1>Upload new File</h1>
+    <form method=post enctype=multipart/form-data>
+      <input type=file name=file>
+      <input type=submit value=Upload>
+    </form>
+    '''
+
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
 
 @app.route("/blockchain", methods = ['POST']) # This method is called when the user clicks on a blockchain element
 def getBlockchainData():
@@ -237,6 +283,6 @@ if __name__=="__main__":
     dataframes = {} # This variable stores all variables in the dataset and the statistics of throughput for each of these variables. It is a dict of dataframes
     blacklist_cols = [] # It stores the variables for which the buttons are turned 'off'. 
     history_global = [] # List used to store on_cols, off_cols and blacklist_cols for each state. Used for blockchain plot
-    app.run()
+    app.run(debug=True)
     # app.run(host='0.0.0.0', threaded=True)
 

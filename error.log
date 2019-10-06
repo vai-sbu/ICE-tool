@@ -47,3 +47,169 @@ INFO:root:all
 INFO:root:on
 INFO:root:22:2:48
 INFO:werkzeug:127.0.0.1 - - [11/Mar/2019 22:02:48] "POST / HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 18:55:12] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 18:55:12] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 18:55:13] "GET /static/js/prediction.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 18:55:13] "GET /static/js/blockchain.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 18:55:13] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 18:55:14] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:root:Workload
+INFO:root:all
+INFO:root:off
+INFO:root:18:55:26
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 18:55:28] "POST / HTTP/1.1" 200 -
+INFO:root:Workload
+INFO:root:dbsrvr
+INFO:root:on
+INFO:root:18:55:30
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 18:55:31] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 18:55:39] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 19:19:11] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 19:19:12] "GET /static/js/blockchain.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 19:19:12] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 19:19:12] "GET /static/js/prediction.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 19:19:12] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 19:19:12] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:13] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:13] "GET /static/js/blockchain.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:13] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:13] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:13] "GET /static/js/prediction.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:14] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:16] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:16] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:16] "GET /static/js/barchart.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:16] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:29] "GET /uploader HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:29] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:38] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:38] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:38] "GET /static/js/blockchain.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:38] "GET /static/js/prediction.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:03:38] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:04:11] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:04:11] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:04:11] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:04:11] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:04:11] "GET /static/js/barchart.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:04:11] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug: * Detected change in '/mnt/c/Users/anjul/OneDrive/Documents/ICE-tool/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug: * Detected change in '/mnt/c/Users/anjul/OneDrive/Documents/ICE-tool/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug: * Detected change in '/mnt/c/Users/anjul/OneDrive/Documents/ICE-tool/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug: * Detected change in '/mnt/c/Users/anjul/OneDrive/Documents/ICE-tool/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug: * Detected change in '/mnt/c/Users/anjul/OneDrive/Documents/ICE-tool/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug: * Detected change in '/mnt/c/Users/anjul/OneDrive/Documents/ICE-tool/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug: * Detected change in '/mnt/c/Users/anjul/OneDrive/Documents/ICE-tool/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:50:10] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:50:10] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:50:12] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:50:44] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:51:15] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:51:17] "POST / HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:51:17] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:51:17] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:51:17] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:51:17] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:51:17] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:51:17] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/mnt/c/Users/anjul/OneDrive/Documents/ICE-tool/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:01] "POST / HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:01] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:01] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:01] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:01] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:01] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:04] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:04] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:08] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:09] "POST / HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:09] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:09] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:09] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:10] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:52:10] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:53:08] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/mnt/c/Users/anjul/OneDrive/Documents/ICE-tool/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:56:12] "POST / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/mnt/c/Users/anjul/OneDrive/Documents/ICE-tool/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:09] "POST / HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:09] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:09] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:09] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:09] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:09] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:09] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:12] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:12] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:21] "POST / HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:21] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:21] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:21] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:21] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/mnt/c/Users/anjul/OneDrive/Documents/ICE-tool/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 208-722-865
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:58:57] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:59:01] "POST / HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [05/Oct/2019 20:59:01] "GET /uploads/systems_data2.csv HTTP/1.1" 200 -
