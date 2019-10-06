@@ -7,6 +7,8 @@ Video preview is available [here](https://www.youtube.com/watch?v=0mD3IEjjq0U&fe
 
 # Run ICE locally
 
+* Clone this repo
+
 * Set up the virtual env in python 3 ```$ virtualenv --python=/usr/bin/python3 env```
  
 * Start the virtualenv ```$ source ./env/bin/activate```
