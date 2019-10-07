@@ -26,7 +26,9 @@
                 </a>
             </div>
             <div class="col-lg-4 text-center">
-                <h3>Upload dataset in csv format</h1>
+                <h4>Upload dataset in csv format</h4>
+                <h6>The last column in the dataset has to be the dependent numerical variable</h6>
+                <h6>We assume the data is preprocessed so as to infer correct datatypes for each column</h6>
             </div>
             <div class="col-lg-5">
                 <form method="POST" enctype="multipart/form-data" action="{{url_for('upload')}}">
