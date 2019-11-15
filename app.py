@@ -50,11 +50,11 @@ def read_data_again():
     global blacklist_cols
     global history_global
     data = pd.read_csv('dataset/uploaded_file.csv') # Reading the dataset is done only once when the server is started
-    columns = list(data.columns) # Crete a list of columns in the dataset
     # Removing special characters from column names
     for col in data.columns:
         str = ''.join(e for e in col if e.isalnum())
         data.rename(columns={col:str}, inplace=True)
+    columns = list(data.columns) # Crete a list of columns in the dataset
     temp_data = data
     data = data[columns[:-1]]
     # List numerical and categorical variables
