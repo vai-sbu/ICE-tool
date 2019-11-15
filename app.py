@@ -7,12 +7,34 @@ from natsort import natsorted
 from getRequestedData import getRequestedData
 import datetime
 from werkzeug.utils import secure_filename
+from collections import defaultdict
 import logging
 logging.basicConfig(filename='error.log', level=logging.DEBUG)
 # from getPredictions import getPredictions
 
 
 app = Flask(__name__)
+
+# Function to reverse a dummy (one-hot encoded) dataframe
+def reverse_dummy(df_dummies):
+    pos = defaultdict(list)
+    vals = defaultdict(list)
+
+    for i, c in enumerate(df_dummies.columns):
+        if "_" in c:
+            k, v = c.split("_", 1)
+            pos[k].append(i)
+            vals[k].append(v)
+        else:
+            pos["_"].append(i)
+
+    df = pd.DataFrame({k: pd.Categorical.from_codes(
+                              np.argmax(df_dummies.iloc[:, pos[k]].values, axis=1),
+                              vals[k])
+                      for k in vals})
+
+    df[df_dummies.columns[pos["_"]]] = df_dummies.iloc[:, pos["_"]]
+    return df
 
 # Read_data_again changes the values of the global variables for the newly uploaded file. After this, the tool will display data of the uploaded file
 # The code is same as the main function, we need to do it again so as to read the newly uploaded file
@@ -29,12 +51,45 @@ def read_data_again():
     global history_global
     data = pd.read_csv('dataset/uploaded_file.csv') # Reading the dataset is done only once when the server is started
     columns = list(data.columns) # Crete a list of columns in the dataset
-    for col in columns[:-1]: # For all columns except throughput
-        data[col] = data[col].apply(str) # Change the datatype for each column to be of type string so that there are no conflicts when performing calculations on each of the columns
+    # Removing special characters from column names
+    for col in data.columns:
+        str = ''.join(e for e in col if e.isalnum())
+        data.rename(columns={col:str}, inplace=True)
+    temp_data = data
+    data = data[columns[:-1]]
+    # List numerical and categorical variables
+    num_cols = list(data._get_numeric_data().columns)
+    cat_cols = list(set(data.columns) - set(num_cols))
+    # Converting the numerical variables to categorical
+    data = data.dropna()
+    for col in num_cols:
+        data[col] = pd.cut(data[col], 5, labels=['low', 'midlow', 'mid', 'midhigh', 'high'])
+    # Sort columns based on number of categories
+    num_cat = {}
+    for col in list(data.columns):
+        if len(data[col].value_counts()) in num_cat.keys():
+            num_cat[len(data[col].value_counts())].append(col)
+        else:
+            num_cat[len(data[col].value_counts())] = [col]
+    # Reorder the dataframe based on ranked variables
+    cols = []
+    for key in sorted(num_cat.keys()):
+        cols += num_cat[key]
+    data = data[cols]
+    data['Throughput'] = temp_data[columns[-1]]
+    # for col in columns[:-1]: # For all columns except throughput
+    #     print(col)
+    #     data[col] = data[col].apply(str) # Change the datatype for each column to be of type string so that there are no conflicts when performing calculations on each of the columns
     data_dummy = pd.get_dummies(data) #Since all the data in categorical, this creates a boolean dummy dataframe by creating columns of all the categories for each variable. This creates a column for each bar displayed
+    data_dummy = data_dummy.loc[:, (data_dummy != 0).any(axis=0)]
     column_dummy = list(data_dummy.columns)
+    if len(column_dummy) > 35:
+        column_dummy = column_dummy[:35]
+    data_dummy = data_dummy[column_dummy]
+    data = reverse_dummy(data_dummy)
     on_cols = [] # List of bars that are turned on. Initially, all the bars are on. We start from 1st index because column_dummy[0] = Throughput
     off_cols = [] # No bars are turned off initially
+    columns = list(data.columns)
     data_tosend = {'columns': columns[:-1]}
     data_tosend['Max Cols'] = len(column_dummy)-1 # Total number of bars to display i.e. all columns in the dummy dataframe except throughput
     dataframes = {} # This variable stores all variables in the dataset and the statistics of throughput for each of these variables. It is a dict of dataframes
@@ -167,7 +222,6 @@ def index():
         
         return jsonify(data_tosend)
     else:
-        print("here")
         history_global = [] # Empty the history global array because the system is refreshed
         filtered_data = data_dummy # Create a new dataframe to edit the values
         on_cols = list(column_dummy[1:]) # List of bars that are turned on. Initially, all the bars are on. We start from 1st index because column_dummy[0] = Throughput
@@ -288,7 +342,7 @@ if __name__=="__main__":
     '''
         This method is run only once when the server is started
     '''
-    data = pd.read_csv('dataset/uploaded_file.csv') # Reading the dataset is done only once when the server is started
+    data = pd.read_csv('dataset/systems_data2.csv') # Reading the dataset is done only once when the server is started
     columns = list(data.columns) # Crete a list of columns in the dataset
     for col in columns[:-1]: # For all columns except throughput
         data[col] = data[col].apply(str) # Change the datatype for each column to be of type string so that there are no conflicts when performing calculations on each of the columns

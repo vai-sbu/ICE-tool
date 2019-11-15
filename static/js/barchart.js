@@ -870,7 +870,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
         .attr('x', 0 - 200)
         .attr('dy', '1em')
         .style('text-anchor', 'middle')
-        .text('Throughput')
+        // .text('Throughput')
 
     // Code for the horizontal line with mouse hover to assist in finding maximum throughput 
     let mouseG = svg_elem.append('g')
