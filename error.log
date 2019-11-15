@@ -1917,3 +1917,15 @@ INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:58:52] "GET /static/css/index.css HT
 INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:58:53] "GET /static/js/prediction.js HTTP/1.1" 304 -
 INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:58:53] "GET /static/js/blockchain.js HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:58:53] "GET /static/js/barchart.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 08:00:22] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 08:00:39] "POST /upload HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 08:00:39] "GET /upload?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 08:00:39] "GET /upload?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 08:00:39] "GET /upload?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 08:00:39] "GET /upload?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 08:00:39] "GET /upload?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 08:01:53] "POST /upload HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 08:01:53] "GET /upload?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 08:01:53] "GET /upload?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 08:01:53] "GET /upload?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 08:01:53] "GET /upload?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -

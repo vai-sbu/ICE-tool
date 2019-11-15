@@ -18,3 +18,11 @@ Video preview is available [here](https://www.youtube.com/watch?v=0mD3IEjjq0U&fe
 * Run ```python app.py```
 
 * The ICE can now be accessed at ```localhost://5000```
+
+# Before uploading your custom dataset, please note
+
+* If you get a **KeyError not in index**, it means you'll have to remove special characters like underscores, starting spaces etc. from the column names of the dataset. 
+
+* Remember, the last column of the uploaded dataset has to be the dependent numerical variable. Just move the numerical variable to the end of all the columns. 
+
+* Presently, ICE only supports analysis of one numerical variable (last variable in the uploaded dataset). In case you want to analyze multiple numerical variables, you'll have to combine them into one numerical variable (take weighted mean, average etc.)
