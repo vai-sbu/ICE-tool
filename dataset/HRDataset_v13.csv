@@ -1,0 +1,311 @@
+MarriedID,MaritalStatusID,GenderID,EmpStatusID,DeptID,PerfScoreID,FromDiversityJobFairID,Termd,PositionID,Position,State,Zip,Sex,MaritalDesc,CitizenDesc,HispanicLatino,RaceDesc,EmploymentStatus,Department,RecruitmentSource,PerformanceScore,EngagementSurvey,EmpSatisfaction,SpecialProjectsCount,PayRate
+1,1,0,1,1,3,1,0,1,Accountant I,MA,1450,F,Married,US Citizen,No,Black or African American,Active,Admin Offices,Diversity Job Fair,Fully Meets,2.04,2,6,28.5
+0,2,1,1,1,3,0,0,1,Accountant I,MA,1460,M ,Divorced,US Citizen,No,Black or African American,Active,Admin Offices,Website Banner Ads,Fully Meets,5,4,4,23
+0,0,1,1,1,3,0,0,1,Accountant I,MA,2703,M ,Single,US Citizen,No,White,Active,Admin Offices,Internet Search,Fully Meets,3.9,5,5,29
+1,1,0,1,1,3,0,1,2,Administrative Assistant,MA,2170,F,Married,US Citizen,No,White,Terminated for Cause,Admin Offices,Pay Per Click - Google,Fully Meets,3.24,3,4,21.5
+0,0,0,1,1,3,0,0,2,Administrative Assistant,MA,2330,F,Single,US Citizen,No,White,Active,Admin Offices,Website Banner Ads,Fully Meets,5,3,5,16.56
+1,1,0,5,1,3,1,1,2,Administrative Assistant,MA,1844,F,Married,US Citizen,No,Asian,Voluntarily Terminated,Admin Offices,Diversity Job Fair,Fully Meets,3.8,4,4,20.5
+1,1,0,5,6,3,0,1,3,Area Sales Manager,VA,21851,F,Married,Eligible NonCitizen,No,Black or African American,Voluntarily Terminated,Sales,Social Networks - Facebook Twitter etc,Fully Meets,3.14,5,0,55
+0,0,0,1,6,3,0,0,3,Area Sales Manager,VT,5664,F,Single,US Citizen,No,White,Active,Sales,Billboard,Fully Meets,5,5,0,55
+0,0,0,1,6,1,0,0,3,Area Sales Manager,WA,98052,F,Single,US Citizen,Yes,White,Active,Sales,Website Banner Ads,PIP,2.3,1,0,55
+1,1,1,1,6,3,0,0,3,Area Sales Manager,NH,3062,M ,Married,US Citizen,No,American Indian or Alaska Native,Active,Sales,Pay Per Click - Google,Fully Meets,3.6,5,0,56
+0,0,1,1,6,3,1,0,3,Area Sales Manager,NY,10171,M ,Single,US Citizen,Yes,Two or more races,Active,Sales,Diversity Job Fair,Fully Meets,3.65,5,0,55.5
+0,4,0,4,6,3,0,1,3,Area Sales Manager,OH,43050,F,Widowed,US Citizen,No,Black or African American,Terminated for Cause,Sales,Monster.com,Fully Meets,3.97,4,0,55
+1,1,1,1,6,3,0,0,3,Area Sales Manager,ID,83706,M ,Married,US Citizen,No,White,Active,Sales,Monster.com,Fully Meets,3.98,3,0,55.5
+0,0,1,5,6,3,0,1,3,Area Sales Manager,TN,37129,M ,Single,US Citizen,No,Two or more races,Voluntarily Terminated,Sales,Newspager/Magazine,Fully Meets,4.5,5,0,55
+0,3,1,1,6,3,0,0,3,Area Sales Manager,UT,84111,M ,Separated,US Citizen,No,Black or African American,Active,Sales,Website Banner Ads,Fully Meets,4.53,3,0,55
+0,0,1,1,6,1,0,0,3,Area Sales Manager,AL,36006,M ,Single,US Citizen,No,Two or more races,Active,Sales,Internet Search,PIP,1.93,3,0,55
+0,0,1,1,6,3,0,0,3,Area Sales Manager,NC,27229,M ,Single,US Citizen,No,White,Active,Sales,Website Banner Ads,Fully Meets,5,5,0,55
+1,1,0,1,6,3,0,0,3,Area Sales Manager,MT,59102,F,Married,US Citizen,No,Black or African American,Active,Sales,Professional Society,Fully Meets,2,4,0,54
+1,1,0,1,6,3,0,0,3,Area Sales Manager,AZ,85006,F,Married,US Citizen,No,Two or more races,Active,Sales,Other,Fully Meets,2.81,3,0,55
+0,0,1,1,6,3,0,0,3,Area Sales Manager,ME,4063,M ,Single,US Citizen,No,Asian,Active,Sales,Website Banner Ads,Fully Meets,1.77,4,0,56
+1,1,1,1,6,3,0,0,3,Area Sales Manager,MA,2330,M ,Married,US Citizen,No,White,Active,Sales,Employee Referral,Fully Meets,3.31,5,0,55
+0,0,0,1,6,4,0,0,3,Area Sales Manager,CA,90007,F,Single,US Citizen,No,White,Active,Sales,Other,Exceeds,4.77,5,0,55
+0,0,1,1,6,3,0,0,3,Area Sales Manager,CT,6050,M ,Single,US Citizen,No,Black or African American,Active,Sales,Monster.com,Fully Meets,1.64,3,0,55
+0,0,0,1,6,3,0,0,3,Area Sales Manager,IN,46204,F,Single,US Citizen,No,White,Active,Sales,Pay Per Click - Google,Fully Meets,1.72,5,0,55
+1,1,1,1,6,1,0,0,3,Area Sales Manager,NV,89139,M ,Married,US Citizen,No,White,Active,Sales,Website Banner Ads,PIP,1.81,2,0,56
+0,0,1,1,6,3,0,0,3,Area Sales Manager,CO,80820,M ,Single,US Citizen,No,White,Active,Sales,Pay Per Click - Google,Fully Meets,2.19,5,0,55
+0,0,1,1,6,3,0,0,3,Area Sales Manager,TX,78207,M ,Single,Eligible NonCitizen,No,Black or African American,Active,Sales,Employee Referral,Fully Meets,2.94,5,0,56
+1,1,1,2,6,3,0,0,3,Area Sales Manager,TX,78789,M ,Married,US Citizen,No,Two or more races,Future Start,Sales,Website Banner Ads,Fully Meets,2.91,4,0,55
+0,0,0,1,6,3,0,0,3,Area Sales Manager,GA,30428,F,Single,US Citizen,No,Two or more races,Active,Sales,Pay Per Click - Google,Fully Meets,5,5,0,55
+0,0,0,1,6,3,0,0,3,Area Sales Manager,FL,33174,F,Single,US Citizen,Yes,White,Active,Sales,Pay Per Click - Google,Fully Meets,4.28,3,0,57
+1,1,0,1,6,3,0,0,3,Area Sales Manager,KY,40220,F,Married,US Citizen,No,Black or African American,Active,Sales,Website Banner Ads,Fully Meets,4.2,5,0,55
+0,3,1,1,6,4,0,0,3,Area Sales Manager,ND,58782,M ,Separated,US Citizen,No,White,Active,Sales,Billboard,Exceeds,4.1,3,0,55
+0,0,0,1,6,3,0,0,3,Area Sales Manager,OR,97756,F,Single,US Citizen,No,Black or African American,Active,Sales,Monster.com,Fully Meets,3.69,3,0,55
+1,1,0,1,3,3,0,0,4,BI Developer,MA,2110,F,Married,US Citizen,No,Black or African American,Active,IT/IS,Indeed,Fully Meets,2.02,4,6,45
+0,0,1,1,3,3,0,0,4,BI Developer,MA,2045,M ,Single,US Citizen,No,White,Active,IT/IS,Indeed,Fully Meets,3.01,5,7,46
+1,1,1,1,3,3,0,0,4,BI Developer,MA,2134,M ,Married,US Citizen,No,White,Active,IT/IS,Indeed,Fully Meets,1.82,3,6,45
+1,1,1,1,3,3,0,0,4,BI Developer,MA,2134,M ,Married,US Citizen,No,Black or African American,Active,IT/IS,Indeed,Fully Meets,2.06,5,5,45
+1,1,1,1,3,3,0,0,5,BI Director,MA,2045,M ,Married,US Citizen,No,White,Active,IT/IS,Professional Society,Fully Meets,4.5,5,7,63.5
+0,0,0,1,3,4,0,0,6,CIO,MA,2067,F,Single,US Citizen,No,White,Active,IT/IS,Employee Referral,Exceeds,1.12,5,6,65
+0,0,0,1,3,3,0,0,7,Data Architect,MA,2056,F,Single,US Citizen,No,Black or African American,Active,IT/IS,Indeed,Fully Meets,4.94,3,5,55
+0,0,0,4,3,3,0,1,8,Database Administrator,MA,2026,F,Single,US Citizen,Yes,White,Terminated for Cause,IT/IS,Search Engine - Google Bing Yahoo,Fully Meets,1.87,4,5,43
+0,0,0,4,3,3,0,1,8,Database Administrator,MA,2127,F,Single,US Citizen,No,White,Terminated for Cause,IT/IS,Glassdoor,Fully Meets,1.87,4,4,48.5
+1,1,1,4,3,3,0,1,8,Database Administrator,MA,1960,M ,Married,US Citizen,No,Black or African American,Terminated for Cause,IT/IS,Employee Referral,Fully Meets,4.33,3,7,40.1
+0,0,0,1,3,3,0,0,8,Database Administrator,MA,2493,F,Single,US Citizen,No,White,Active,IT/IS,Glassdoor,Fully Meets,4.48,5,6,34
+1,1,0,3,3,3,0,0,8,Database Administrator,MA,2301,F,Married,US Citizen,No,Asian,Leave of Absence,IT/IS,Glassdoor,Fully Meets,3.75,3,5,40
+0,2,1,1,3,4,1,0,9,Data Analyst,TX,78230,M ,Divorced,US Citizen,No,Black or African American,Active,IT/IS,Diversity Job Fair,Exceeds,4.28,4,5,35.5
+1,1,1,5,3,3,0,1,9,Data Analyst,MA,2747,M ,Married,US Citizen,No,White,Voluntarily Terminated,IT/IS,Employee Referral,Fully Meets,1.62,4,5,41
+1,1,0,1,3,4,0,0,9,Data Analyst,MA,1886,F,Married,US Citizen,No,Asian,Active,IT/IS,Employee Referral,Exceeds,3.71,5,7,42.75
+1,1,0,1,3,3,0,0,9,Data Analyst,MA,1886,F,Married,US Citizen,No,White,Active,IT/IS,Employee Referral,Fully Meets,3.69,5,6,39.55
+1,1,1,1,3,3,0,0,9,Data Analyst,MA,1810,M ,Married,US Citizen,No,White,Active,IT/IS,Pay Per Click - Google,Fully Meets,3.04,3,6,42.2
+0,2,1,5,3,3,0,1,9,Data Analyst ,MA,2452,M ,Divorced,US Citizen,No,Black or African American,Voluntarily Terminated,IT/IS,Vendor Referral,Fully Meets,2.19,3,5,45
+1,1,1,1,3,3,0,0,9,Data Analyst,MA,2110,M ,Married,US Citizen,Yes,White,Active,IT/IS,Employee Referral,Fully Meets,3.32,3,7,30.2
+0,0,0,1,3,3,0,0,9,Data Analyst,MA,2148,F,Single,US Citizen,No,White,Active,IT/IS,Employee Referral,Fully Meets,5,3,5,31.4
+0,0,0,1,5,4,0,0,10,Director of Operations,MA,2030,F,Single,US Citizen,No,Black or African American,Active,Production       ,Other,Exceeds,3.02,5,0,60
+1,1,0,1,6,3,0,0,11,Director of Sales,RI,2908,F,Married,US Citizen,No,White,Active,Sales,MBTA ads,Fully Meets,1.22,4,0,60
+0,0,1,1,3,4,0,0,12,IT Director,MA,1460,M ,Single,US Citizen,No,Black or African American,Active,IT/IS,Professional Society,Exceeds,3.76,5,5,65
+0,0,1,1,3,3,0,0,13,IT Manager - DB,MA,2481,M ,Single,US Citizen,No,White,Active,IT/IS,Professional Society,Fully Meets,2.96,5,7,62
+0,2,1,5,3,3,1,1,13,IT Manager - DB,MA,1915,M ,Divorced,US Citizen,No,Two or more races,Voluntarily Terminated,IT/IS,Diversity Job Fair,Fully Meets,2.51,4,6,21
+1,1,1,1,3,2,1,0,13,IT Manager - Infra,MA,2134,M ,Married,Eligible NonCitizen,Yes,Hispanic,Active,IT/IS,Diversity Job Fair,Needs Improvement,2.39,3,6,63
+0,0,1,1,3,4,0,0,13,IT Manager - Support,MA,1886,M ,Single,US Citizen,No,White,Active,IT/IS,Professional Society,Exceeds,1.99,5,5,64
+0,0,1,1,3,3,0,0,14,IT Support,MA,2170,M ,Single,US Citizen,No,White,Active,IT/IS,Glassdoor,Fully Meets,2.55,3,6,28.99
+0,0,0,1,3,3,0,0,14,IT Support,CT,6040,F,Single,US Citizen,No,White,Active,IT/IS,Vendor Referral,Fully Meets,1.21,4,5,31.4
+0,0,0,1,3,4,1,0,14,IT Support,CT,6070,F,Single,US Citizen,Yes,Two or more races,Active,IT/IS,Diversity Job Fair,Exceeds,4.64,4,5,26
+1,1,0,1,3,3,0,0,14,IT Support,MA,2360,F,Married,US Citizen,No,Black or African American,Active,IT/IS,Information Session,Fully Meets,4.3,3,5,27.49
+0,2,1,1,3,3,0,0,14,IT Support,MA,1886,M ,Divorced,US Citizen,No,White,Active,IT/IS,Glassdoor,Fully Meets,1.84,5,6,45
+1,1,1,1,3,3,0,0,14,IT Support,MA,2135,M ,Married,US Citizen,Yes,White,Active,IT/IS,Information Session,Fully Meets,2.21,5,7,42
+1,1,0,1,3,3,0,0,14,IT Support,MA,2119,F,Married,US Citizen,No,White,Active,IT/IS,Employee Referral,Fully Meets,4.11,4,6,37
+0,3,0,1,3,3,0,0,14,IT Support,MA,2472,F,Separated,US Citizen,Yes,White,Active,IT/IS,Employee Referral,Fully Meets,4.61,4,5,39
+0,0,1,1,3,1,0,0,15,Network Engineer,MA,2138,M ,Single,US Citizen,No,White,Active,IT/IS,Vendor Referral,PIP,1.2,3,6,43
+1,1,0,1,3,3,0,0,15,Network Engineer,MA,2048,F,Married,US Citizen,No,White,Active,IT/IS,Monster.com,Fully Meets,3.81,3,6,27
+1,1,0,1,3,3,0,0,15,Network Engineer,MA,1773,F,Married,US Citizen,No,White,Active,IT/IS,Vendor Referral,Fully Meets,3.31,3,6,47
+1,1,1,5,3,3,0,1,15,Network Engineer,MA,1420,M ,Married,US Citizen,No,White,Voluntarily Terminated,IT/IS,Monster.com,Fully Meets,5,3,5,28
+1,1,1,1,3,3,0,0,15,Network Engineer,MA,2343,M ,Married,Eligible NonCitizen,No,White,Active,IT/IS,Employee Referral,Fully Meets,5,4,7,49.1
+1,1,0,1,2,3,0,0,16,President & CEO,MA,1902,F,Married,US Citizen,Yes,White,Active,Executive Office,Pay Per Click - Google,Fully Meets,4.83,3,0,80
+0,2,1,1,5,3,0,0,17,Production Manager,MA,2169,M ,Divorced,US Citizen,No,White,Active,Production       ,Employee Referral,Fully Meets,3.93,3,0,54.5
+0,0,1,5,5,3,0,1,18,Production Manager,MA,1901,M ,Single,US Citizen,No,Asian,Voluntarily Terminated,Production       ,Billboard,Fully Meets,3.39,3,0,50.5
+0,0,1,1,5,4,0,0,18,Production Manager,MA,2169,M ,Single,US Citizen,No,White,Active,Production       ,Pay Per Click - Google,Exceeds,5,3,0,55
+0,0,0,1,5,3,0,0,18,Production Manager,MA,1731,F,Single,US Citizen,No,White,Active,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,4.52,4,0,51
+0,2,1,1,5,3,0,0,18,Production Manager,MA,1752,M ,Divorced,US Citizen,No,White,Active,Production       ,Employee Referral,Fully Meets,4.63,3,0,54
+1,1,1,4,5,3,0,1,18,Production Manager,MA,1890,M ,Married,US Citizen,No,White,Terminated for Cause,Production       ,Employee Referral,Fully Meets,4.78,4,0,48.5
+1,1,1,5,5,2,0,1,18,Production Manager,MA,2128,M ,Married,US Citizen,No,Asian,Voluntarily Terminated,Production       ,Other,Needs Improvement,2.34,2,0,42
+1,1,0,1,5,4,0,0,18,Production Manager,MA,2110,F,Married,US Citizen,No,White,Active,Production       ,Website Banner Ads,Exceeds,3.66,3,0,55
+0,0,1,1,5,3,0,0,18,Production Manager,MA,2045,M ,Single,US Citizen,yes,Hispanic,Active,Production       ,Internet Search,Fully Meets,4.37,3,0,53
+1,1,0,5,5,3,0,1,18,Production Manager,MA,2030,F,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Internet Search,Fully Meets,4.16,5,0,38.5
+1,1,0,1,5,3,0,0,18,Production Manager,MA,2451,F,Married,US Citizen,No,White,Active,Production       ,Vendor Referral,Fully Meets,4.83,5,0,52
+0,2,1,1,5,2,0,0,18,Production Manager,MA,1803,M ,Divorced,US Citizen,No,White,Active,Production       ,Monster.com,Needs Improvement,4.13,2,0,53
+1,1,0,1,5,3,0,0,18,Production Manager,MA,1776,F,Married,US Citizen,No,Black or African American,Active,Production       ,Billboard,Fully Meets,3.73,4,0,55
+1,1,0,5,5,3,1,1,18,Production Manager,MA,2478,F,Married,US Citizen,No,Black or African American,Voluntarily Terminated,Production       ,Diversity Job Fair,Fully Meets,1.18,3,0,33.5
+0,0,0,1,5,4,0,0,19,Production Technician I,MA,1844,F,Single,US Citizen,No,White,Active,Production       ,MBTA ads,Exceeds,5,5,0,23
+0,0,1,1,5,3,0,0,19,Production Technician I,MA,2072,M ,Single,US Citizen,Yes,White,Active,Production       ,Word of Mouth,Fully Meets,5,3,0,16
+0,0,0,5,5,3,0,1,19,Production Technician I,MA,1775,F,Single,US Citizen,No,White,Voluntarily Terminated,Production       ,Other,Fully Meets,2,4,0,21
+1,1,1,1,5,1,0,0,19,Production Technician I,MA,2061,M ,Married,US Citizen,No,White,Active,Production       ,Professional Society,PIP,1.12,2,0,20
+1,1,1,1,5,1,0,0,19,Production Technician I,MA,2132,M ,Married,US Citizen,No,White,Active,Production       ,Professional Society,PIP,1.56,5,0,18
+0,0,0,1,5,4,0,0,19,Production Technician I,MA,2451,F,Single,US Citizen,Yes,Two or more races,Active,Production       ,Professional Society,Exceeds,3.39,4,0,16
+1,1,0,1,5,4,0,0,19,Production Technician I,MA,1886,F,Married,US Citizen,No,White,Active,Production       ,Monster.com,Exceeds,4.76,4,0,20
+1,1,0,5,5,3,0,1,19,Production Technician I,MA,2127,F,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,3.49,4,0,24
+0,4,1,5,5,3,0,1,19,Production Technician I,MA,1938,M ,Widowed,US Citizen,No,White,Voluntarily Terminated,Production       ,Pay Per Click,Fully Meets,3.08,4,0,15
+1,1,1,5,5,3,0,1,19,Production Technician I,MA,2421,M ,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Employee Referral,Fully Meets,3.18,3,0,22
+0,0,0,5,5,3,0,1,19,Production Technician I,MA,2176,F,Single,US Citizen,No,White,Voluntarily Terminated,Production       ,MBTA ads,Fully Meets,3.45,4,0,22
+1,1,1,5,5,3,0,1,19,Production Technician I,MA,1420,M ,Married,US Citizen,No,Black or African American,Voluntarily Terminated,Production       ,Glassdoor,Fully Meets,5,3,0,24
+1,1,0,1,5,3,0,0,19,Production Technician I,MA,2149,F,Married,US Citizen,No,White,Active,Production       ,Newspager/Magazine,Fully Meets,4.81,4,0,15
+0,0,0,5,5,3,0,1,19,Production Technician I,MA,2066,F,Single,US Citizen,No,White,Voluntarily Terminated,Production       ,Billboard,Fully Meets,3.98,4,0,20
+1,1,1,5,5,3,0,1,19,Production Technician I,MA,2324,M ,Married,Eligible NonCitizen,No,White,Voluntarily Terminated,Production       ,Website Banner Ads,Fully Meets,5,3,0,21
+0,0,0,3,5,3,1,0,19,Production Technician I,MA,1902,F,Single,US Citizen,No,Two or more races,Leave of Absence,Production       ,Diversity Job Fair,Fully Meets,4.46,3,0,22
+1,1,0,1,5,4,0,0,19,Production Technician I,MA,2031,F,Married,US Citizen,No,White,Active,Production       ,Professional Society,Exceeds,5,3,0,16
+1,1,1,2,5,4,0,0,19,Production Technician I,MA,2134,M ,Married,US Citizen,No,White,Future Start,Production       ,Employee Referral,Exceeds,1.97,4,0,24.75
+1,1,0,1,5,2,0,0,19,Production Technician I,MA,2351,F,Married,US Citizen,No,Black or African American,Active,Production       ,Pay Per Click - Google,Needs Improvement,3.88,4,0,22
+1,1,0,1,5,3,0,0,19,Production Technician I,MA,2155,F,Married,US Citizen,No,White,Active,Production       ,Social Networks - Facebook Twitter etc,Fully Meets,5,5,0,24
+0,2,1,1,5,4,1,0,19,Production Technician I,MA,2108,M ,Divorced,US Citizen,No,American Indian or Alaska Native,Active,Production       ,Diversity Job Fair,Exceeds,1.83,4,0,16
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,1775,F,Single,US Citizen,No,White,Active,Production       ,Professional Society,Fully Meets,3.99,3,0,16
+1,1,1,1,5,3,0,0,19,Production Technician I,MA,1801,M ,Married,US Citizen,No,Asian,Active,Production       ,Pay Per Click - Google,Fully Meets,3.38,3,0,21
+1,1,0,1,5,3,0,0,19,Production Technician I,MA,2451,F,Married,US Citizen,No,White,Active,Production       ,On-campus Recruiting,Fully Meets,1.04,3,0,23
+0,3,0,1,5,4,1,0,19,Production Technician I,MA,1810,F,Separated,US Citizen,No,Asian,Active,Production       ,Diversity Job Fair,Exceeds,1.12,3,0,15
+1,1,1,5,5,3,0,1,19,Production Technician I,MA,2451,M ,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,5,3,0,18
+0,4,1,1,5,4,0,0,19,Production Technician I,MA,1730,M ,Widowed,US Citizen,No,White,Active,Production       ,Employee Referral,Exceeds,3.02,5,0,17
+1,1,0,1,5,1,0,0,19,Production Technician I,MA,2093,F,Married,US Citizen,No,White,Active,Production       ,Billboard,PIP,4.11,2,0,16
+0,2,0,1,5,3,0,0,19,Production Technician I,MA,2093,F,Divorced,US Citizen,No,Black or African American,Active,Production       ,Billboard,Fully Meets,4.21,5,0,24
+0,0,0,5,5,1,0,1,19,Production Technician I,MA,2458,F,Single,US Citizen,No,Asian,Voluntarily Terminated,Production       ,Search Engine - Google Bing Yahoo,PIP,4.29,2,0,22
+1,1,0,5,5,3,1,1,19,Production Technician I,MA,1902,F,Married,US Citizen,Yes,Hispanic,Voluntarily Terminated,Production       ,Diversity Job Fair,Fully Meets,1.79,4,0,17
+1,1,0,5,5,3,0,1,19,Production Technician I,MA,1701,F,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,3.35,4,0,20
+0,0,1,1,5,3,0,0,19,Production Technician I,MA,2452,M ,Single,US Citizen,No,White,Active,Production       ,Employee Referral,Fully Meets,1.51,5,0,15
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,2125,F,Single,US Citizen,Yes,White,Active,Production       ,Monster.com,Fully Meets,2.79,5,0,16.75
+0,0,1,1,5,3,0,0,19,Production Technician I,MA,1905,M ,Single,US Citizen,Yes,White,Active,Production       ,Employee Referral,Fully Meets,4.5,3,0,19
+1,1,1,1,5,3,0,0,19,Production Technician I,MA,2169,M ,Married,US Citizen,No,White,Active,Production       ,MBTA ads,Fully Meets,5,3,0,15
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,2081,F,Single,US Citizen,No,White,Active,Production       ,Newspager/Magazine,Fully Meets,2.32,3,0,20
+1,1,1,1,5,3,0,0,19,Production Technician I,MA,2048,M ,Married,US Citizen,No,White,Active,Production       ,Newspager/Magazine,Fully Meets,5,5,0,17
+1,1,0,1,5,3,0,0,19,Production Technician I,MA,2330,F,Married,US Citizen,No,White,Active,Production       ,Other,Fully Meets,5,4,0,20
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,2132,F,Single,US Citizen,No,White,Active,Production       ,Vendor Referral,Fully Meets,2.79,5,0,19
+0,0,1,1,5,3,0,0,19,Production Technician I,MA,2451,M ,Single,US Citizen,No,Black or African American,Active,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,3.66,3,0,17
+0,3,0,1,5,3,0,0,19,Production Technician I,MA,1886,F,Separated,US Citizen,No,White,Active,Production       ,Website Banner Ads,Fully Meets,5,4,0,17
+0,2,0,5,5,4,0,1,19,Production Technician I,MA,2359,F,Divorced,US Citizen,No,White,Voluntarily Terminated,Production       ,MBTA ads,Exceeds,1.97,4,0,21
+0,0,0,1,5,2,0,0,19,Production Technician I,MA,2021,F,Single,US Citizen,No,White,Active,Production       ,Professional Society,Needs Improvement,2.44,5,0,22
+0,4,0,1,5,3,0,0,19,Production Technician I,MA,1730,F,Widowed,US Citizen,No,Asian,Active,Production       ,On-campus Recruiting,Fully Meets,1.24,5,0,15
+1,1,0,1,5,3,0,0,19,Production Technician I,MA,1886,F,Married,US Citizen,No,White,Active,Production       ,Billboard,Fully Meets,4.84,5,0,21
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,1915,F,Single,Eligible NonCitizen,No,White,Active,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,5,5,0,22
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,2170,F,Single,US Citizen,No,White,Active,Production       ,Internet Search,Fully Meets,2.73,4,0,19.5
+1,1,0,1,5,3,0,0,19,Production Technician I,MA,2110,F,Married,US Citizen,No,White,Active,Production       ,Billboard,Fully Meets,5,3,0,15
+0,0,0,4,5,2,0,1,19,Production Technician I,MA,2458,F,Single,US Citizen,No,White,Terminated for Cause,Production       ,Word of Mouth,Needs Improvement,1.04,3,0,18
+0,2,0,5,5,3,1,1,19,Production Technician I,MA,2330,F,Divorced,US Citizen,No,White,Voluntarily Terminated,Production       ,Diversity Job Fair,Fully Meets,4.24,4,0,22
+1,1,1,1,5,3,0,0,19,Production Technician I,MA,1776,M ,Married,US Citizen,No,Asian,Active,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,1.83,3,0,21
+1,1,0,5,5,3,0,1,19,Production Technician I,MA,2446,F,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Monster.com,Fully Meets,4,4,0,21
+1,1,0,3,5,3,0,0,19,Production Technician I,MA,2122,F,Married,US Citizen,No,Black or African American,Leave of Absence,Production       ,Website Banner Ads,Fully Meets,5,3,0,20
+0,2,0,1,5,3,0,0,19,Production Technician I,MA,2453,F,Divorced,US Citizen,No,White,Active,Production       ,MBTA ads,Fully Meets,1.76,4,0,15
+1,1,0,5,5,3,0,1,19,Production Technician I,MA,2351,F,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Social Networks - Facebook Twitter etc,Fully Meets,3.89,4,0,18
+0,2,1,5,5,3,0,1,19,Production Technician I,MA,2176,M ,Divorced,US Citizen,Yes,White,Voluntarily Terminated,Production       ,Professional Society,Fully Meets,5,4,0,20
+1,1,0,1,5,3,0,0,19,Production Technician I,MA,2154,F,Married,US Citizen,No,Black or African American,Active,Production       ,On-campus Recruiting,Fully Meets,3.51,3,0,21
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,2718,F,Single,Eligible NonCitizen,No,Asian,Active,Production       ,Glassdoor,Fully Meets,2.77,5,0,14
+0,0,0,5,5,2,0,1,19,Production Technician I,MA,1887,F,Single,US Citizen,No,White,Voluntarily Terminated,Production       ,Monster.com,Needs Improvement,1.27,3,0,15
+0,0,1,1,5,3,0,0,19,Production Technician I,MA,1810,M ,Single,US Citizen,No,Two or more races,Active,Production       ,Social Networks - Facebook Twitter etc,Fully Meets,1.41,4,0,16.76
+0,0,1,1,5,3,0,0,19,Production Technician I,MA,1701,M ,Single,US Citizen,No,Black or African American,Active,Production       ,MBTA ads,Fully Meets,4.43,3,0,20
+1,1,0,1,5,3,0,0,19,Production Technician I,MA,2189,F,Married,US Citizen,Yes,White,Active,Production       ,Billboard,Fully Meets,4.73,5,0,15.75
+0,0,1,1,5,3,0,0,19,Production Technician I,MA,2026,M ,Single,US Citizen,No,White,Active,Production       ,MBTA ads,Fully Meets,1.86,5,0,21.25
+1,1,1,1,5,3,0,0,19,Production Technician I,MA,2045,M ,Married,US Citizen,No,White,Active,Production       ,Employee Referral,Fully Meets,2.05,3,0,21
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,2121,F,Single,US Citizen,Yes,Black or African American,Active,Production       ,MBTA ads,Fully Meets,1.66,4,0,24
+0,2,0,5,5,3,0,1,19,Production Technician I,MA,2176,F,Divorced,US Citizen,No,White,Voluntarily Terminated,Production       ,Monster.com,Fully Meets,5,5,0,14
+0,3,0,1,5,3,0,0,19,Production Technician I,MA,2109,F,Separated,US Citizen,No,White,Active,Production       ,On-campus Recruiting,Fully Meets,5,5,0,19
+0,0,1,4,5,3,0,1,19,Production Technician I,MA,2050,M ,Single,US Citizen,No,White,Terminated for Cause,Production       ,Social Networks - Facebook Twitter etc,Fully Meets,5,4,0,15
+0,0,0,5,5,3,1,1,19,Production Technician I,MA,1760,F,Single,US Citizen,No,Black or African American,Voluntarily Terminated,Production       ,Diversity Job Fair,Fully Meets,4.18,4,0,14
+1,1,1,1,5,4,0,0,19,Production Technician I,MA,2478,M ,Married,US Citizen,No,White,Active,Production       ,On-campus Recruiting,Exceeds,2.86,3,0,16
+0,0,1,1,5,3,0,0,19,Production Technician I,MA,2109,M ,Single,US Citizen,No,White,Active,Production       ,Employee Referral,Fully Meets,2.45,3,0,16
+0,0,0,2,5,2,1,0,19,Production Technician I,MA,1801,F,Single,US Citizen,No,Black or African American,Future Start,Production       ,Diversity Job Fair,Needs Improvement,1.12,4,0,20
+1,1,1,1,5,3,0,0,19,Production Technician I,MA,2301,M ,Married,US Citizen,No,Asian,Active,Production       ,On-campus Recruiting,Fully Meets,1.39,3,0,22
+1,1,0,4,5,4,0,1,19,Production Technician I,MA,2747,F,Married,US Citizen,No,White,Terminated for Cause,Production       ,Social Networks - Facebook Twitter etc,Exceeds,2.79,5,0,21
+0,4,1,1,5,3,0,0,19,Production Technician I,MA,2199,M ,Widowed,US Citizen,No,White,Active,Production       ,Employee Referral,Fully Meets,5,4,0,22
+0,2,0,1,5,3,0,0,19,Production Technician I,MA,2027,F,Divorced,US Citizen,No,Asian,Active,Production       ,Billboard,Fully Meets,2.39,3,0,22
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,2044,F,Single,Non-Citizen,No,Black or African American,Active,Production       ,Pay Per Click - Google,Fully Meets,3.58,5,0,22
+0,0,1,1,5,3,0,0,19,Production Technician I,MA,2180,M ,Single,US Citizen,No,White,Active,Production       ,Pay Per Click - Google,Fully Meets,1.13,4,0,21
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,2176,F,Single,US Citizen,No,White,Active,Production       ,Newspager/Magazine,Fully Meets,1.85,4,0,23
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,2451,F,Single,US Citizen,Yes,White,Active,Production       ,Glassdoor,Fully Meets,1.94,5,0,17
+0,0,1,1,5,3,0,0,19,Production Technician I,MA,2149,M ,Single,US Citizen,No,White,Active,Production       ,Social Networks - Facebook Twitter etc,Fully Meets,4.17,4,0,19
+0,0,1,1,5,3,0,0,19,Production Technician I,MA,1721,M ,Single,US Citizen,No,Black or African American,Active,Production       ,On-campus Recruiting,Fully Meets,2.79,3,0,14
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,2189,F,Single,US Citizen,No,White,Active,Production       ,Newspager/Magazine,Fully Meets,2.55,4,0,17
+1,1,1,3,5,3,0,0,19,Production Technician I,MA,2136,M ,Married,US Citizen,No,White,Leave of Absence,Production       ,On-campus Recruiting,Fully Meets,5,5,0,21
+1,1,0,1,5,3,0,0,19,Production Technician I,MA,1749,F,Married,US Citizen,No,White,Active,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,2.72,3,0,17
+1,1,0,4,5,2,0,1,19,Production Technician I,MA,1460,F,Married,US Citizen,No,White,Terminated for Cause,Production       ,Glassdoor,Needs Improvement,3.6,3,0,16
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,2130,F,Single,US Citizen,No,White,Active,Production       ,Employee Referral,Fully Meets,3.73,3,0,24.5
+0,2,0,5,5,3,0,1,19,Production Technician I,MA,1876,F,Divorced,US Citizen,No,White,Voluntarily Terminated,Production       ,Social Networks - Facebook Twitter etc,Fully Meets,2.81,5,0,20
+0,0,0,5,5,3,1,1,19,Production Technician I,MA,2109,F,Single,US Citizen,Yes,Two or more races,Voluntarily Terminated,Production       ,Diversity Job Fair,Fully Meets,1.44,4,0,16
+1,1,1,5,5,3,1,1,19,Production Technician I,MA,2062,M ,Married,US Citizen,Yes,Asian,Voluntarily Terminated,Production       ,Diversity Job Fair,Fully Meets,1.98,3,0,22
+0,3,0,3,5,3,1,0,19,Production Technician I,MA,2043,F,Separated,US Citizen,No,Black or African American,Leave of Absence,Production       ,Diversity Job Fair,Fully Meets,2.83,5,0,20
+0,0,1,4,5,2,0,1,19,Production Technician I,MA,1880,M ,Single,US Citizen,No,Black or African American,Terminated for Cause,Production       ,MBTA ads,Needs Improvement,1.42,3,0,15
+1,1,0,5,5,3,0,1,19,Production Technician I,MA,2343,F,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,5,3,0,17
+0,0,1,1,5,3,0,0,19,Production Technician I,MA,1550,M ,Single,US Citizen,No,Asian,Active,Production       ,Professional Society,Fully Meets,2.61,4,0,18
+1,1,0,3,5,3,0,0,19,Production Technician I,MA,1864,F,Married,US Citizen,No,Asian,Leave of Absence,Production       ,On-campus Recruiting,Fully Meets,1.71,5,0,24
+0,2,0,1,5,3,0,0,19,Production Technician I,MA,1778,F,Divorced,US Citizen,No,White,Active,Production       ,Employee Referral,Fully Meets,2.05,5,0,21
+0,0,0,5,5,3,0,1,19,Production Technician I,MA,1810,F,Single,US Citizen,No,Asian,Voluntarily Terminated,Production       ,Monster.com,Fully Meets,4.88,3,0,19
+1,1,0,1,5,3,0,0,19,Production Technician I,MA,2184,F,Married,US Citizen,No,Black or African American,Active,Production       ,Monster.com,Fully Meets,3.93,3,0,24
+0,0,0,4,5,1,0,1,19,Production Technician I,MA,2152,F,Single,US Citizen,No,Two or more races,Terminated for Cause,Production       ,Professional Society,PIP,3.09,2,0,18.5
+0,2,0,5,5,3,0,1,19,Production Technician I,MA,1742,F,Divorced,Eligible NonCitizen,No,Asian,Voluntarily Terminated,Production       ,Social Networks - Facebook Twitter etc,Fully Meets,3.17,4,0,19
+0,2,0,5,5,3,0,1,19,Production Technician I,MA,2474,F,Divorced,US Citizen,No,White,Voluntarily Terminated,Production       ,Billboard,Fully Meets,1.5,5,0,16
+0,0,1,5,5,3,0,1,19,Production Technician I,MA,2155,M ,Single,US Citizen,No,White,Voluntarily Terminated,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,5,5,0,18
+0,2,0,1,5,3,0,0,19,Production Technician I,MA,2050,F,Divorced,US Citizen,No,Two or more races,Active,Production       ,Word of Mouth,Fully Meets,1.05,4,0,14
+0,2,1,5,5,4,0,1,19,Production Technician I,MA,2171,M ,Divorced,US Citizen,No,White,Voluntarily Terminated,Production       ,Information Session,Exceeds,3.84,5,0,19
+0,0,1,1,5,4,0,0,19,Production Technician I,MA,1960,M ,Single,US Citizen,No,White,Active,Production       ,MBTA ads,Exceeds,2.51,5,0,20
+0,2,1,5,5,3,0,1,19,Production Technician I,MA,2747,M ,Divorced,US Citizen,No,White,Voluntarily Terminated,Production       ,On-line Web application,Fully Meets,5,5,0,18
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,2763,F,Single,US Citizen,No,White,Active,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,5,4,0,16
+0,0,0,2,5,3,0,0,19,Production Technician I,MA,1821,F,Single,US Citizen,No,White,Future Start,Production       ,Newspager/Magazine,Fully Meets,4.12,5,0,19.75
+0,0,1,4,5,2,0,1,19,Production Technician I,MA,2129,M ,Single,US Citizen,No,White,Terminated for Cause,Production       ,Word of Mouth,Needs Improvement,5,4,0,17
+1,1,0,1,5,3,0,0,19,Production Technician I,MA,2145,F,Married,US Citizen,No,Black or African American,Active,Production       ,Professional Society,Fully Meets,3.73,3,0,19
+1,1,0,1,5,3,0,0,19,Production Technician I,MA,2127,F,Married,US Citizen,No,White,Active,Production       ,Word of Mouth,Fully Meets,4.2,4,0,24
+1,1,1,5,5,4,0,1,19,Production Technician I,MA,2445,M ,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Monster.com,Exceeds,1.65,4,0,17
+0,0,1,1,5,3,0,0,19,Production Technician I,MA,1887,M ,Single,US Citizen,No,White,Active,Production       ,Billboard,Fully Meets,3.07,4,0,19
+1,1,0,5,5,3,0,1,19,Production Technician I,MA,1886,F,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Internet Search,Fully Meets,3.18,4,0,15.25
+0,0,0,1,5,3,0,0,19,Production Technician I,MA,2346,F,Single,US Citizen,No,White,Active,Production       ,Monster.com,Fully Meets,5,4,0,20
+0,0,1,1,5,2,0,0,19,Production Technician I,MA,1760,M ,Single,US Citizen,No,Black or African American,Active,Production       ,MBTA ads,Needs Improvement,4.25,3,0,22
+0,2,1,5,5,3,0,1,19,Production Technician I,MA,2478,M ,Divorced,US Citizen,No,White,Voluntarily Terminated,Production       ,Pay Per Click - Google,Fully Meets,3.8,5,0,21
+0,0,1,5,5,3,0,1,19,Production Technician I,MA,2148,M ,Single,US Citizen,No,White,Voluntarily Terminated,Production       ,Word of Mouth,Fully Meets,1.53,5,0,21
+1,1,1,1,5,3,0,0,19,Production Technician I,MA,2747,M ,Married,US Citizen,Yes,White,Active,Production       ,Word of Mouth,Fully Meets,4.36,5,0,19
+0,0,0,2,5,3,0,0,19,Production Technician I,MA,2124,F,Single,US Citizen,No,White,Future Start,Production       ,Newspager/Magazine,Fully Meets,3.21,3,0,20
+0,2,0,5,5,3,0,1,19,Production Technician I,MA,2169,F,Divorced,US Citizen,No,White,Voluntarily Terminated,Production       ,Word of Mouth,Fully Meets,5,4,0,16
+0,0,1,3,5,3,0,0,19,Production Technician I,MA,2452,M ,Single,US Citizen,No,Asian,Leave of Absence,Production       ,MBTA ads,Fully Meets,1.09,4,0,17
+0,0,1,1,5,3,0,0,19,Production Technician I,MA,1845,M ,Single,US Citizen,No,White,Active,Production       ,Newspager/Magazine,Fully Meets,3.8,5,0,22
+1,1,1,5,5,3,0,1,19,Production Technician I,MA,1810,M ,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Billboard,Fully Meets,5,4,0,23.5
+1,1,0,5,5,3,0,1,19,Production Technician I,MA,2176,F,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,3.13,3,0,20
+1,1,1,5,5,2,1,1,19,Production Technician I,MA,2062,M ,Married,US Citizen,No,Black or African American,Voluntarily Terminated,Production       ,Diversity Job Fair,Needs Improvement,3.97,4,0,15
+0,0,0,5,5,3,0,1,19,Production Technician I,MA,2324,F,Single,US Citizen,No,White,Voluntarily Terminated,Production       ,Monster.com,Fully Meets,4.64,4,0,19.75
+1,1,0,5,5,3,0,1,19,Production Technician I,MA,2170,F,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,3.6,5,0,22
+0,0,0,5,5,4,1,1,19,Production Technician I,MA,1844,F,Single,US Citizen,Yes,Two or more races,Voluntarily Terminated,Production       ,Diversity Job Fair,Exceeds,5,4,0,19
+0,0,1,5,5,3,1,1,19,Production Technician I,MA,2110,M ,Single,US Citizen,No,Black or African American,Voluntarily Terminated,Production       ,Diversity Job Fair,Fully Meets,2.61,3,0,18
+0,0,1,5,5,2,0,1,19,Production Technician I,MA,2458,M ,Single,US Citizen,No,Black or African American,Voluntarily Terminated,Production       ,Search Engine - Google Bing Yahoo,Needs Improvement,3.54,5,0,24
+1,1,0,1,5,4,0,0,19,Production Technician I,MA,2171,F,Married,US Citizen,No,Asian,Active,Production       ,Search Engine - Google Bing Yahoo,Exceeds,4.36,5,0,22
+0,0,0,3,5,3,0,0,19,Production Technician I,MA,2191,F,Single,US Citizen,No,Asian,Leave of Absence,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,5,5,0,15.2
+1,1,0,5,5,3,1,1,19,Production Technician I,MA,1801,F,Married,Non-Citizen,No,Two or more races,Voluntarily Terminated,Production       ,Diversity Job Fair,Fully Meets,2.52,5,0,15
+0,0,1,5,5,3,0,1,19,Production Technician I,MA,2030,M ,Single,US Citizen,Yes,White,Voluntarily Terminated,Production       ,Newspager/Magazine,Fully Meets,5,5,0,23
+0,0,0,1,5,3,0,0,20,Production Technician II,MA,2148,F,Single,US Citizen,No,Black or African American,Active,Production       ,Employee Referral,Fully Meets,4.51,4,0,25
+0,0,1,5,5,3,0,1,20,Production Technician II,MA,2143,M ,Single,US Citizen,Yes,White,Voluntarily Terminated,Production       ,Social Networks - Facebook Twitter etc,Fully Meets,4.76,5,0,29
+0,2,0,5,5,3,0,1,20,Production Technician II,MA,1742,F,Divorced,US Citizen,No,White,Voluntarily Terminated,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,3.72,3,0,23
+1,1,0,5,5,3,0,1,20,Production Technician II,MA,2176,F,Married,US Citizen,No,Two or more races,Voluntarily Terminated,Production       ,Newspager/Magazine,Fully Meets,5,4,0,23
+1,1,0,5,5,2,0,1,20,Production Technician II,MA,2472,F,Married,US Citizen,No,Asian,Voluntarily Terminated,Production       ,Monster.com,Needs Improvement,1.03,5,0,28
+0,0,0,5,5,3,0,1,20,Production Technician II,MA,1778,F,Single,US Citizen,No,White,Voluntarily Terminated,Production       ,Vendor Referral,Fully Meets,1.3,3,0,22
+1,1,0,5,5,3,0,1,20,Production Technician II,MA,1752,F,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Word of Mouth,Fully Meets,1.16,5,0,25
+1,1,1,5,5,1,1,1,20,Production Technician II,MA,2128,M ,Married,US Citizen,No,Black or African American,Voluntarily Terminated,Production       ,Diversity Job Fair,PIP,4.35,3,0,29
+0,0,0,1,5,4,0,0,20,Production Technician II,MA,2128,F,Single,US Citizen,No,White,Active,Production       ,Professional Society,Exceeds,1.51,3,0,25
+0,0,1,5,5,1,0,1,20,Production Technician II,MA,2472,M ,Single,US Citizen,No,White,Voluntarily Terminated,Production       ,MBTA ads,PIP,5,2,0,25
+1,1,0,1,5,3,0,0,20,Production Technician II,MA,2050,F,Married,Eligible NonCitizen,No,Asian,Active,Production       ,MBTA ads,Fully Meets,2.61,3,0,26
+0,0,1,5,5,4,0,1,20,Production Technician II,MA,2045,M ,Single,US Citizen,No,White,Voluntarily Terminated,Production       ,Professional Society,Exceeds,1.67,3,0,29
+1,1,1,5,5,3,0,1,20,Production Technician II,MA,2169,M ,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Other,Fully Meets,1.3,4,0,26
+1,1,0,3,5,3,0,0,20,Production Technician II,MA,1886,F,Married,US Citizen,No,White,Leave of Absence,Production       ,Professional Society,Fully Meets,2.04,3,0,24.25
+0,2,0,5,5,3,0,1,20,Production Technician II,MA,2090,F,Divorced,US Citizen,No,Asian,Voluntarily Terminated,Production       ,Glassdoor,Fully Meets,4.52,3,0,22
+1,1,1,1,5,3,0,0,20,Production Technician II,MA,1450,M ,Married,US Citizen,No,White,Active,Production       ,Professional Society,Fully Meets,2.67,3,0,27
+0,2,0,5,5,3,0,1,20,Production Technician II,MA,1902,F,Divorced,Eligible NonCitizen,No,White,Voluntarily Terminated,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,2.19,4,0,26
+0,0,0,1,5,3,0,0,20,Production Technician II,MA,2302,F,Single,US Citizen,No,White,Active,Production       ,Newspager/Magazine,Fully Meets,3.4,4,0,22
+0,0,0,5,5,3,0,1,20,Production Technician II,MA,2210,F,Single,US Citizen,No,White,Voluntarily Terminated,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,1.38,5,0,26
+1,1,0,1,5,3,0,0,20,Production Technician II,MA,1824,F,Married,US Citizen,No,Black or African American,Active,Production       ,Professional Society,Fully Meets,1.49,5,0,27
+0,0,0,2,5,3,0,0,20,Production Technician II,MA,2021,F,Single,US Citizen,No,White,Future Start,Production       ,Vendor Referral,Fully Meets,2.92,5,0,25
+0,0,0,1,5,4,0,0,20,Production Technician II,MA,2324,F,Single,US Citizen,No,Black or African American,Active,Production       ,Glassdoor,Exceeds,1.64,4,0,26.1
+0,0,0,1,5,3,0,0,20,Production Technician II,MA,1040,F,Single,US Citizen,No,White,Active,Production       ,Glassdoor,Fully Meets,4.53,5,0,26.39
+0,0,1,1,5,4,0,0,20,Production Technician II,MA,2045,M ,Single,US Citizen,No,White,Active,Production       ,Pay Per Click - Google,Exceeds,2.41,3,0,22
+1,1,0,5,5,3,0,1,20,Production Technician II,MA,2129,F,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,3.93,3,0,28.75
+1,1,0,2,5,4,0,0,20,Production Technician II,MA,2145,F,Married,US Citizen,No,White,Future Start,Production       ,Employee Referral,Exceeds,2.7,3,0,27
+0,3,0,5,5,3,0,1,20,Production Technician II,MA,2343,F,Separated,US Citizen,No,Black or African American,Voluntarily Terminated,Production       ,Search Engine - Google Bing Yahoo,Fully Meets,4.62,5,0,29
+0,0,1,1,5,3,0,0,20,Production Technician II,MA,2155,M ,Single,US Citizen,Yes,White,Active,Production       ,Newspager/Magazine,Fully Meets,5,3,0,24
+0,0,0,5,5,3,0,1,20,Production Technician II,MA,2021,F,Single,US Citizen,No,White,Voluntarily Terminated,Production       ,Monster.com,Fully Meets,5,3,0,24
+1,1,1,3,5,3,0,0,20,Production Technician II,MA,1770,M ,Married,US Citizen,No,White,Leave of Absence,Production       ,Information Session,Fully Meets,4,3,0,22
+0,0,1,3,5,3,1,0,20,Production Technician II,MA,2127,M ,Single,US Citizen,No,Hispanic,Leave of Absence,Production       ,Diversity Job Fair,Fully Meets,2.5,4,0,26
+1,1,1,1,5,3,0,0,20,Production Technician II,MA,2062,M ,Married,US Citizen,No,White,Active,Production       ,Monster.com,Fully Meets,2.08,3,0,29
+1,1,1,1,5,3,0,0,20,Production Technician II,MA,1890,M ,Married,US Citizen,No,White,Active,Production       ,Careerbuilder,Fully Meets,3.25,5,0,26
+1,1,0,5,5,3,0,1,20,Production Technician II,MA,2170,F,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Word of Mouth,Fully Meets,3.66,3,0,24
+0,2,0,1,5,4,0,0,20,Production Technician II,MA,1821,F,Divorced,US Citizen,No,American Indian or Alaska Native,Active,Production       ,MBTA ads,Exceeds,4.6,4,0,22.5
+0,0,0,1,5,3,0,0,20,Production Technician II,MA,2149,F,Single,US Citizen,No,White,Active,Production       ,Newspager/Magazine,Fully Meets,5,5,0,26
+1,1,0,5,5,4,0,1,20,Production Technician II,MA,1886,F,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Pay Per Click - Google,Exceeds,1.79,5,0,29
+0,0,1,1,5,3,0,0,20,Production Technician II,MA,2459,M ,Single,US Citizen,No,Black or African American,Active,Production       ,Employee Referral,Fully Meets,3.11,5,0,22
+1,1,0,5,5,3,0,1,20,Production Technician II,MA,1810,F,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Newspager/Magazine,Fully Meets,3.02,3,0,29
+0,0,1,1,5,3,0,0,20,Production Technician II,MA,2458,M ,Single,Eligible NonCitizen,No,Two or more races,Active,Production       ,Newspager/Magazine,Fully Meets,3.96,4,0,25
+0,3,0,3,5,3,0,0,20,Production Technician II,MA,1824,F,Separated,US Citizen,No,American Indian or Alaska Native,Leave of Absence,Production       ,Word of Mouth,Fully Meets,2.57,5,0,27
+1,1,1,5,5,3,0,1,20,Production Technician II,MA,2126,M ,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Word of Mouth,Fully Meets,1.84,3,0,28
+0,0,0,1,5,4,0,0,20,Production Technician II,MA,2126,F,Single,US Citizen,No,Black or African American,Active,Production       ,Billboard,Exceeds,2.55,3,0,25
+1,1,1,5,5,3,0,1,20,Production Technician II,MA,2138,M ,Married,US Citizen,No,White,Voluntarily Terminated,Production       ,Glassdoor,Fully Meets,2.48,5,0,22
+0,0,1,1,5,3,0,0,20,Production Technician II,MA,1810,M ,Single,US Citizen,No,White,Active,Production       ,Vendor Referral,Fully Meets,4.07,4,0,24.25
+0,0,0,1,5,2,0,0,20,Production Technician II,MA,2171,F,Single,US Citizen,No,White,Active,Production       ,Monster.com,Needs Improvement,1.16,3,0,27
+0,3,0,1,5,1,0,0,20,Production Technician II,MA,2133,F,Separated,US Citizen,No,White,Active,Production       ,Pay Per Click - Google,PIP,4.59,1,0,24
+1,1,0,5,5,3,0,1,20,Production Technician II,MA,2445,F,Married,Non-Citizen,No,White,Voluntarily Terminated,Production       ,Glassdoor,Fully Meets,3.03,5,0,28
+0,4,0,5,5,3,0,1,20,Production Technician II,MA,2122,F,Widowed,US Citizen,No,White,Voluntarily Terminated,Production       ,On-campus Recruiting,Fully Meets,4.65,4,0,24
+0,3,1,1,5,3,0,0,20,Production Technician II,MA,1460,M ,Separated,US Citizen,No,Black or African American,Active,Production       ,On-campus Recruiting,Fully Meets,4.29,5,0,29
+0,0,0,5,5,3,0,1,20,Production Technician II,MA,1851,F,Single,US Citizen,No,White,Voluntarily Terminated,Production       ,Monster.com,Fully Meets,4.68,4,0,23
+0,0,1,1,5,3,0,0,20,Production Technician II,MA,1013,M ,Single,US Citizen,No,White,Active,Production       ,Word of Mouth,Fully Meets,3.19,3,0,22
+0,0,0,1,5,3,0,0,20,Production Technician II,MA,2324,F,Single,US Citizen,No,Black or African American,Active,Production       ,Newspager/Magazine,Fully Meets,4,4,0,24
+0,3,0,2,5,3,0,0,20,Production Technician II,MA,2351,F,Separated,US Citizen,No,White,Future Start,Production       ,Other,Fully Meets,2.63,3,0,28
+1,1,0,2,5,3,0,0,20,Production Technician II,MA,2324,F,Married,US Citizen,No,White,Future Start,Production       ,Vendor Referral,Fully Meets,5,3,0,23
+1,1,0,5,5,3,0,1,20,Production Technician II,MA,2492,F,Married,US Citizen,No,Asian,Voluntarily Terminated,Production       ,Newspager/Magazine,Fully Meets,5,3,0,25
+0,4,1,5,5,3,0,1,20,Production Technician II,MA,2472,M ,Widowed,US Citizen,No,White,Voluntarily Terminated,Production       ,Pay Per Click - Google,Fully Meets,1.37,4,0,23
+0,0,0,1,6,3,0,0,21,Sales Manager,VT,5473,F,Single,US Citizen,No,White,Active,Sales,Pay Per Click - Google,Fully Meets,4.62,4,0,54
+0,0,0,5,6,3,0,1,21,Sales Manager,PA,19444,F,Single,US Citizen,No,White,Voluntarily Terminated,Sales,Social Networks - Facebook Twitter etc,Fully Meets,1.9,5,0,60.25
+0,2,1,1,6,2,1,0,21,Sales Manager,MA,1886,M ,Divorced,US Citizen,No,Black or African American,Active,Sales,Diversity Job Fair,Needs Improvement,1.62,4,0,56
+0,0,0,1,3,3,0,0,22,Senior BI Developer,MA,1886,F,Single,US Citizen,No,Asian,Active,IT/IS,Indeed,Fully Meets,2.09,5,7,50.25
+0,0,1,1,3,3,0,0,22,Senior BI Developer,MA,2056,M ,Single,US Citizen,No,Asian,Active,IT/IS,Indeed,Fully Meets,5,3,6,52.25
+0,0,1,1,3,3,0,0,22,Senior BI Developer,MA,1887,M ,Single,US Citizen,No,Asian,Active,IT/IS,Indeed,Fully Meets,3.42,4,7,51
+1,1,1,1,1,3,0,0,23,Shared Services Manager,MA,1460,M ,Married,US Citizen,No,White,Active,Admin Offices,Monster.com,Fully Meets,1.95,4,0,55
+1,1,1,5,1,3,1,1,23,Shared Services Manager,MA,2045,M ,Married,Eligible NonCitizen,No,Black or African American,Voluntarily Terminated,Admin Offices,Diversity Job Fair,Fully Meets,4.15,4,0,55
+0,0,0,1,4,3,0,0,24,Software Engineer,MA,2110,F,Single,US Citizen,No,White,Active,Software Engineering,Vendor Referral,Fully Meets,3.04,3,4,47.6
+0,0,0,1,4,3,0,0,24,Software Engineer,MA,2132,F,Single,US Citizen,No,White,Active,Software Engineering,Pay Per Click - Google,Fully Meets,4.96,4,6,56
+0,0,0,1,4,3,0,0,24,Software Engineer,MA,2176,F,Single,US Citizen,No,Black or African American,Active,Software Engineering,Monster.com,Fully Meets,3.79,5,5,57.12
+1,1,0,4,4,2,0,1,24,Software Engineer,MA,1749,F,Married,US Citizen,No,Black or African American,Terminated for Cause,Software Engineering,Billboard,Needs Improvement,2.55,5,4,48.5
+0,0,0,1,4,3,0,0,24,Software Engineer,MA,2135,F,Single,US Citizen,No,Asian,Active,Software Engineering,Search Engine - Google Bing Yahoo,Fully Meets,1.53,5,4,55.51
+0,0,1,5,4,4,1,1,24,Software Engineer,MA,1844,M ,Single,US Citizen,No,Asian,Voluntarily Terminated,Software Engineering,Diversity Job Fair,Exceeds,1.1,5,3,52.25
+1,1,0,1,4,3,0,0,24,Software Engineer,MA,2132,F,Married,US Citizen,No,White,Active,Software Engineering,Pay Per Click - Google,Fully Meets,1.74,3,6,49.25
+0,0,1,1,4,4,0,0,24,Software Engineer,MA,2140,M ,Single,US Citizen,No,White,Active,Software Engineering,MBTA ads,Exceeds,2.61,5,5,48
+0,0,1,5,4,3,1,1,24,Software Engineer,MA,2451,M ,Single,Non-Citizen,No,Black or African American,Voluntarily Terminated,Software Engineering,Diversity Job Fair,Fully Meets,1.11,3,4,45.42
+0,0,1,1,4,3,0,0,25,Software Engineering Manager,MA,2184,M ,Single,US Citizen,No,White,Active,Software Engineering,Search Engine - Google Bing Yahoo,Fully Meets,3.84,3,5,27
+1,1,0,1,1,3,0,0,26,Sr. Accountant,MA,2050,F,Married,US Citizen,no,White,Active,Admin Offices,Other,Fully Meets,5,3,2,34.95
+1,1,0,1,1,3,1,0,26,Sr. Accountant,MA,2468,F,Married,US Citizen,No,Asian,Active,Admin Offices,Diversity Job Fair,Fully Meets,5,4,3,34.95
+1,1,1,5,3,3,0,1,27,Sr. DBA,MA,2148,M ,Married,US Citizen,No,White,Voluntarily Terminated,IT/IS,Company Intranet - Partner,Fully Meets,4.96,3,6,62
+0,0,0,2,3,3,0,0,27,Sr. DBA,MA,1886,F,Single,US Citizen,No,Black or African American,Future Start,IT/IS,Vendor Referral,Fully Meets,5,5,6,61.3
+0,0,1,4,3,3,0,1,30,Enterprise Architect,CT,6033,M ,Single,US Citizen,No,Black or African American,Terminated for Cause,IT/IS,Vendor Referral,Fully Meets,2.94,5,7,58.2
+0,0,0,5,3,3,0,1,29,Principal Data Architect,MA,2703,F,Single,US Citizen,Yes,White,Voluntarily Terminated,IT/IS,Vendor Referral,Fully Meets,3.88,3,7,58.5
+1,1,0,3,3,3,0,0,28,Sr. Network Engineer,CT,6033,F,Married,US Citizen,No,White,Leave of Absence,IT/IS,Vendor Referral,Fully Meets,1.55,5,8,54.1
+1,1,1,3,3,3,0,0,28,Sr. Network Engineer,MA,2169,M ,Married,US Citizen,No,White,Leave of Absence,IT/IS,Employee Referral,Fully Meets,4.46,5,6,56.2
+1,1,1,2,3,3,0,0,28,Sr. Network Engineer,MA,1545,M ,Married,US Citizen,No,Asian,Future Start,IT/IS,On-campus Recruiting,Fully Meets,3.27,4,5,53.8
+0,0,1,1,3,3,0,0,28,Sr. Network Engineer,CT,6278,M ,Single,US Citizen,No,White,Active,IT/IS,Employee Referral,Fully Meets,5,3,4,53
+0,4,0,1,3,3,0,0,28,Sr. Network Engineer,MA,2453,F,Widowed,US Citizen,No,Asian,Active,IT/IS,Employee Referral,Fully Meets,1.06,4,8,55.2

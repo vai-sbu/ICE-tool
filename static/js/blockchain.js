@@ -6,7 +6,7 @@ let blkMargin = {top: 20, right: 300, left: 300, bottom: 10}
 
 // The scale for the y axis is defined below. 
 let y_scale = d3.scaleLinear()
-    .domain([0, data_imported['Max Thp']+3000])
+    .domain([data_imported['Min Thp'], data_imported['Max Thp']])
     .range([blkHeight-blkMargin.top-blkMargin.bottom, 0])
 
 

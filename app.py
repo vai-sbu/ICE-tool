@@ -323,10 +323,15 @@ def index():
         data_tosend['75 Thp'] = filtered_data.Throughput.quantile(0.75)
         data_tosend['90 Thp'] = filtered_data.Throughput.quantile(0.9)
         data_tosend['Mean Thp'] = filtered_data.Throughput.mean()
+        max_var_len = 0
+        for col in columns:
+            if len(col) > max_var_len:
+                max_var_len = len(col)
+        data_tosend['Max Var Len'] = max_var_len
         # pred_list = getPredictions(filtered_data, on_cols)
         # data_tosend['Pred List'] = pred_list
         # Sample the data to display on the frontend (This is to make the app run faster)
-        if len(filtered_data.Throughput) > 10000:
+        if len(filtered_data.Throughput) > 20000:
             data_tosend['Data Thp'] = list(filtered_data.Throughput.sample(frac=0.2))
         else:
             data_tosend['Data Thp'] = list(filtered_data.Throughput)

@@ -1310,3 +1310,610 @@ INFO:root: US.
 INFO:root:on
 INFO:root:7:4:44
 INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:04:44] "POST / HTTP/1.1" 200 -
+INFO:root:cubicinches
+INFO:root:all
+INFO:root:on
+INFO:root:7:5:53
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:05:53] "POST / HTTP/1.1" 200 -
+INFO:root:brand
+INFO:root:all
+INFO:root:off
+INFO:root:7:5:57
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:05:57] "POST / HTTP/1.1" 200 -
+INFO:root:brand
+INFO:root: Japan.
+INFO:root:on
+INFO:root:7:5:58
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:05:58] "POST / HTTP/1.1" 200 -
+INFO:root:brand
+INFO:root:all
+INFO:root:off
+INFO:root:7:5:59
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:05:59] "POST / HTTP/1.1" 200 -
+INFO:root:brand
+INFO:root:all
+INFO:root:on
+INFO:root:7:6:0
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:06:00] "POST / HTTP/1.1" 200 -
+INFO:root:cubicinches
+INFO:root:all
+INFO:root:off
+INFO:root:7:6:2
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:06:02] "POST / HTTP/1.1" 200 -
+INFO:root:cubicinches
+INFO:root:all
+INFO:root:on
+INFO:root:7:6:2
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:06:02] "POST / HTTP/1.1" 200 -
+INFO:root:cylinders
+INFO:root:all
+INFO:root:off
+INFO:root:7:6:4
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:06:04] "POST / HTTP/1.1" 200 -
+INFO:root:cylinders
+INFO:root:all
+INFO:root:on
+INFO:root:7:6:5
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:06:05] "POST / HTTP/1.1" 200 -
+INFO:root:cylinders
+INFO:root:all
+INFO:root:off
+INFO:root:7:6:9
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:06:09] "POST / HTTP/1.1" 200 -
+INFO:root:cylinders
+INFO:root:mid
+INFO:root:on
+INFO:root:7:6:9
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:06:09] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:21] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:21] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:21] "GET /static/js/blockchain.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:21] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:21] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:root:brand
+INFO:root:all
+INFO:root:off
+INFO:root:7:8:24
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:24] "POST / HTTP/1.1" 200 -
+INFO:root:brand
+INFO:root: Japan.
+INFO:root:on
+INFO:root:7:8:25
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:25] "POST / HTTP/1.1" 200 -
+INFO:root:cubicinches
+INFO:root:all
+INFO:root:off
+INFO:root:7:8:30
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:30] "POST / HTTP/1.1" 200 -
+INFO:root:cubicinches
+INFO:root:113
+INFO:root:on
+INFO:root:7:8:31
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:31] "POST / HTTP/1.1" 200 -
+INFO:root:brand
+INFO:root:all
+INFO:root:off
+INFO:root:7:8:37
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:37] "POST / HTTP/1.1" 200 -
+INFO:root:brand
+INFO:root:all
+INFO:root:on
+INFO:root:7:8:39
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:39] "POST / HTTP/1.1" 200 -
+INFO:root:cylinders
+INFO:root:all
+INFO:root:off
+INFO:root:7:8:41
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:41] "POST / HTTP/1.1" 200 -
+INFO:root:cylinders
+INFO:root:mid
+INFO:root:on
+INFO:root:7:8:41
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:41] "POST / HTTP/1.1" 200 -
+INFO:root:timeto60
+INFO:root:all
+INFO:root:off
+INFO:root:7:8:43
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:43] "POST / HTTP/1.1" 200 -
+INFO:root:timeto60
+INFO:root:midhigh
+INFO:root:on
+INFO:root:7:8:43
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:43] "POST / HTTP/1.1" 200 -
+INFO:root:year
+INFO:root:all
+INFO:root:off
+INFO:root:7:8:44
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:44] "POST / HTTP/1.1" 200 -
+INFO:root:year
+INFO:root:high
+INFO:root:on
+INFO:root:7:8:45
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:45] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:48] "POST /blockchain HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:08:53] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:09:27] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:09:27] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:10:40] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:10:41] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:10:53] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:10:53] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:10:53] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:10:53] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:10:53] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:10:55] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:10:55] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:10:55] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:10:55] "GET /static/js/barchart.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:10:55] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:02] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:02] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:02] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:02] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:02] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:09] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:09] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:09] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:09] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:09] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:22] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:22] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:22] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:22] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:11:22] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:12:34] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:12:34] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:12:34] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:12:34] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:12:34] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:01] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:01] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:01] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:01] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:01] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:46] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:46] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:46] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:46] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:46] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:47] "POST /upload HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:47] "GET /upload?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:47] "GET /upload?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:47] "GET /upload?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:47] "GET /upload?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:47] "GET /upload?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:47] "GET /upload?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:56] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:56] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:13:56] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:14:19] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:14:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:14:31] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:14:31] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:15:40] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:15:40] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:15:40] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:15:40] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:15:40] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:root:cubicinches
+INFO:root:all
+INFO:root:off
+INFO:root:7:15:52
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:15:52] "POST / HTTP/1.1" 200 -
+INFO:root:cubicinches
+INFO:root:110
+INFO:root:on
+INFO:root:7:15:53
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:15:53] "POST / HTTP/1.1" 200 -
+INFO:root:year
+INFO:root:all
+INFO:root:off
+INFO:root:7:19:12
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:19:13] "POST / HTTP/1.1" 200 -
+INFO:root:year
+INFO:root:mid
+INFO:root:on
+INFO:root:7:19:14
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:19:14] "POST / HTTP/1.1" 200 -
+INFO:root:year
+INFO:root:all
+INFO:root:off
+INFO:root:7:19:15
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:19:15] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:19:17] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:19:32] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:19:32] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:19:58] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:19:59] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:19:59] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:22:46] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:22:46] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:22:46] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:22:46] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:22:46] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:22:46] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:22:53] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:22:53] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:22:53] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:22:53] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:22:53] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:01] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:01] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:01] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:01] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:01] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:root:SpecialOp
+INFO:root:nodatasum
+INFO:root:off
+INFO:root:7:23:4
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:04] "POST / HTTP/1.1" 200 -
+INFO:root:SpecialOp
+INFO:root:nodatasum
+INFO:root:on
+INFO:root:7:23:6
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:06] "POST / HTTP/1.1" 200 -
+INFO:root:SpecialOp
+INFO:root:all
+INFO:root:off
+INFO:root:7:23:9
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:09] "POST / HTTP/1.1" 200 -
+INFO:root:SpecialOp
+INFO:root:nodatacow
+INFO:root:on
+INFO:root:7:23:10
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:10] "POST / HTTP/1.1" 200 -
+INFO:root:SpecialOp
+INFO:root:nodatacow
+INFO:root:off
+INFO:root:7:23:11
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:11] "POST / HTTP/1.1" 200 -
+INFO:root:SpecialOp
+INFO:root:all
+INFO:root:off
+INFO:root:7:23:14
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:14] "POST / HTTP/1.1" 200 -
+INFO:root:SpecialOp
+INFO:root:all
+INFO:root:on
+INFO:root:7:23:16
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:16] "POST / HTTP/1.1" 200 -
+INFO:root:Atime
+INFO:root:noatime
+INFO:root:off
+INFO:root:7:23:31
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:31] "POST / HTTP/1.1" 200 -
+INFO:root:Atime
+INFO:root:noatime
+INFO:root:on
+INFO:root:7:23:33
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:34] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:39] "POST /blockchain HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:42] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:48] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:48] "GET / HTTP/1.1" 200 -
+INFO:root:cubicinches
+INFO:root:all
+INFO:root:off
+INFO:root:7:23:50
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:50] "POST / HTTP/1.1" 200 -
+INFO:root:cubicinches
+INFO:root:112
+INFO:root:on
+INFO:root:7:23:50
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:51] "POST / HTTP/1.1" 200 -
+INFO:root:cubicinches
+INFO:root:all
+INFO:root:off
+INFO:root:7:23:52
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:52] "POST / HTTP/1.1" 200 -
+INFO:root:cubicinches
+INFO:root:119
+INFO:root:on
+INFO:root:7:23:53
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:53] "POST / HTTP/1.1" 200 -
+INFO:root:cubicinches
+INFO:root:all
+INFO:root:off
+INFO:root:7:23:54
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:54] "POST / HTTP/1.1" 200 -
+INFO:root:cubicinches
+INFO:root:all
+INFO:root:on
+INFO:root:7:23:54
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:54] "POST / HTTP/1.1" 200 -
+INFO:root:cylinders
+INFO:root:all
+INFO:root:off
+INFO:root:7:23:55
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:55] "POST / HTTP/1.1" 200 -
+INFO:root:cylinders
+INFO:root:mid
+INFO:root:on
+INFO:root:7:23:56
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:56] "POST / HTTP/1.1" 200 -
+INFO:root:timeto60
+INFO:root:all
+INFO:root:off
+INFO:root:7:23:58
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:58] "POST / HTTP/1.1" 200 -
+INFO:root:timeto60
+INFO:root:midhigh
+INFO:root:on
+INFO:root:7:23:59
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:23:59] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:24:02] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:24:14] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:24:55] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:24:55] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:24:55] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:24:55] "GET /static/js/barchart.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:24:55] "GET /static/js/blockchain.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:34:06] "POST /upload HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:34:06] "GET /upload?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:34:06] "GET /upload?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:34:06] "GET /upload?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:34:06] "GET /upload?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:34:59] "POST /upload HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:34:59] "GET /upload?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:34:59] "GET /upload?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:34:59] "GET /upload?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:34:59] "GET /upload?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:35:03] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:35:10] "POST /upload HTTP/1.1" 500 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:35:10] "GET /upload?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:35:10] "GET /upload?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:35:10] "GET /upload?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:35:10] "GET /upload?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:38:38] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:38:38] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:38:38] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:38:38] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:38:38] "GET /static/js/blockchain.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:38:38] "GET /static/js/barchart.js HTTP/1.1" 304 -
+INFO:root:CitizenDesc
+INFO:root:all
+INFO:root:off
+INFO:root:7:39:1
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:01] "POST / HTTP/1.1" 200 -
+INFO:root:CitizenDesc
+INFO:root:Eligible NonCitizen
+INFO:root:on
+INFO:root:7:39:2
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:02] "POST / HTTP/1.1" 200 -
+INFO:root:HispanicLatino
+INFO:root:all
+INFO:root:off
+INFO:root:7:39:15
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:16] "POST / HTTP/1.1" 200 -
+INFO:root:HispanicLatino
+INFO:root:No
+INFO:root:on
+INFO:root:7:39:16
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:16] "POST / HTTP/1.1" 200 -
+INFO:root:HispanicLatino
+INFO:root:all
+INFO:root:off
+INFO:root:7:39:19
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:19] "POST / HTTP/1.1" 200 -
+INFO:root:HispanicLatino
+INFO:root:Yes
+INFO:root:on
+INFO:root:7:39:19
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:19] "POST / HTTP/1.1" 200 -
+INFO:root:HispanicLatino
+INFO:root:No
+INFO:root:on
+INFO:root:7:39:20
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:20] "POST / HTTP/1.1" 200 -
+INFO:root:DeptID
+INFO:root:all
+INFO:root:off
+INFO:root:7:39:25
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:25] "POST / HTTP/1.1" 200 -
+INFO:root:DeptID
+INFO:root:midhigh
+INFO:root:on
+INFO:root:7:39:25
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:25] "POST / HTTP/1.1" 200 -
+INFO:root:PerformanceScore
+INFO:root:all
+INFO:root:off
+INFO:root:7:39:34
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:34] "POST / HTTP/1.1" 200 -
+INFO:root:PerformanceScore
+INFO:root:Fully Meets
+INFO:root:on
+INFO:root:7:39:34
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:35] "POST / HTTP/1.1" 200 -
+INFO:root:DeptID
+INFO:root:high
+INFO:root:on
+INFO:root:7:39:38
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:38] "POST / HTTP/1.1" 200 -
+INFO:root:DeptID
+INFO:root:all
+INFO:root:off
+INFO:root:7:39:40
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:40] "POST / HTTP/1.1" 200 -
+INFO:root:DeptID
+INFO:root:midlow
+INFO:root:on
+INFO:root:7:39:40
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:41] "POST / HTTP/1.1" 200 -
+INFO:root:DeptID
+INFO:root:low
+INFO:root:on
+INFO:root:7:39:41
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:41] "POST / HTTP/1.1" 200 -
+INFO:root:DeptID
+INFO:root:midhigh
+INFO:root:on
+INFO:root:7:39:42
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:42] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:39:58] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/mnt/c/Users/atyag/Documents/boxPlotApp/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 817-068-285
+INFO:werkzeug: * Detected change in '/mnt/c/Users/atyag/Documents/boxPlotApp/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 817-068-285
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:41:05] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:41:05] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:41:05] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:41:05] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:41:05] "GET /static/js/barchart.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:41:14] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:41:14] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/mnt/c/Users/atyag/Documents/boxPlotApp/app.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 817-068-285
+INFO:werkzeug: * Detected change in '/mnt/c/Users/atyag/Documents/boxPlotApp/getRequestedData.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 817-068-285
+INFO:werkzeug: * Detected change in '/mnt/c/Users/atyag/Documents/boxPlotApp/getRequestedData.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 817-068-285
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:08] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:08] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:08] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:08] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:08] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:root:Device
+INFO:root:all
+INFO:root:off
+INFO:root:7:50:12
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:12] "POST / HTTP/1.1" 200 -
+INFO:root:Device
+INFO:root:all
+INFO:root:on
+INFO:root:7:50:13
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:14] "POST / HTTP/1.1" 200 -
+INFO:root:Device
+INFO:root:all
+INFO:root:off
+INFO:root:7:50:17
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:18] "POST / HTTP/1.1" 200 -
+INFO:root:Device
+INFO:root:all
+INFO:root:on
+INFO:root:7:50:18
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:19] "POST / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:49] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:49] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:49] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:49] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:49] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:57] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:57] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:57] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:57] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:57] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:50:57] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:07] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:07] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:07] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:07] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:07] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:07] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:18] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:18] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:18] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:18] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:18] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:32] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:32] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:32] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:32] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:32] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:37] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:37] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:51:38] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:52:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:52:15] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:52:15] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:52:15] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:52:15] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:52:34] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:52:34] "GET /static/css/index.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:52:34] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:52:44] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:52:44] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:53:19] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:53:19] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:53:19] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:53:19] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:53:19] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:53:23] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:53:35] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:53:35] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:53:49] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:53:49] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:53:49] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:53:49] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:53:49] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:16] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:16] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:16] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:16] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:24] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:24] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:24] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:24] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:24] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:30] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:30] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:30] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:30] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:54:30] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:01] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:01] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:01] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:01] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:01] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:11] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:11] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:11] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:11] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:11] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:18] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:18] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:18] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:18] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:18] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:28] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:28] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:38] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:38] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:58] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:58] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:58] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:58] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:55:58] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:56:07] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:56:07] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:56:07] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:56:07] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:56:07] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:56:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:56:15] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:56:15] "GET /static/js/blockchain.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:56:15] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:56:15] "GET /static/js/barchart.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:56:27] "POST /upload HTTP/1.1" 302 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:56:27] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:58:34] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:58:34] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:58:34] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:58:34] "GET /static/js/barchart.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:58:34] "GET /static/js/blockchain.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:58:52] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:58:52] "GET /static/css/index.css HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:58:53] "GET /static/js/prediction.js HTTP/1.1" 304 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:58:53] "GET /static/js/blockchain.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [15/Nov/2019 07:58:53] "GET /static/js/barchart.js HTTP/1.1" 304 -

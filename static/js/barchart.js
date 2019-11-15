@@ -624,7 +624,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
                 // Max bins is used to store the value of maximum number of values in a bucket after the data is passed to histoChart
                 let max_bins = 0;
                 // Create the buckets with 500 units throughput range
-                let thresholds = d3.range(d.Min, d.Max, 500)
+                let thresholds = d3.range(d.Min, d.Max, (d.Max-d.Min)/80)
                 // Create the bins and fill the bins with the number of values lying in respective bins
                 histoChart
                     .domain([d.Min, d.Max])
@@ -737,7 +737,8 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
             .attr("transform", function () {
                 let translate_start = barWidth*global_text_translate;
                 let translate_end = barWidth*global_bar_translate;
-                let translate = [(translate_start + translate_end)/2-(column[i].length*5), 580]
+                let translate = [(translate_start + translate_end)/2-(column[i].length*5), 450 + data_received['Max Var Len']*10]
+                console.log(data_received['Max Var Len'])
                 return "translate("+ translate +")"
             })
             .attr('width', 12*column[i].length)
@@ -770,7 +771,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
             .attr("transform", function () {
                 let translate_start = barWidth*global_text_translate;
                 let translate_end = barWidth*global_bar_translate;
-                let translate = [(translate_start + translate_end)/2-(column[i].length*4), 595];
+                let translate = [(translate_start + translate_end)/2-(column[i].length*4), 465 + data_received['Max Var Len']*10];
                 return "translate("+ translate +")"
             })
             .text(column[i])
@@ -793,7 +794,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
             .data(dataset)
             .enter()
             .append("text")
-            .attr('class', 'heavy')
+            .attr('font-size', '15px')
             .text(function(d,j) {
                 if(d.IsPresent == 1)
                     return dataset[j][column[i]];
@@ -1010,7 +1011,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
             // Max bins is used to store the value of maximum number of values in a bucket after the data is passed to histoChart
             let max_bins = 0;
             // Create the buckets with 500 units throughput range
-            let thresholds = d3.range(data_received['Min Thp'], data_received['Max Thp'], 500)
+            let thresholds = d3.range(data_received['Min Thp'], data_received['Max Thp'], (data_received['Max Thp']-data_received['Min Thp'])/80)
             // Create the bins and fill the bins with the number of values lying in respective bins
             histoChart
                 .domain([data_received['Min Thp'], data_received['Max Thp']])
