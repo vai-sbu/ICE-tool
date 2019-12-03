@@ -70,7 +70,7 @@ def getRequestedData(on_cols, off_cols, blacklist_cols, filtered_data, data_tose
                 max_var_len = len(col)
         data_tosend['Max Var Len'] = max_var_len
         if len(filtered_data.Throughput) > 20000:
-            data_tosend['Data Thp'] = list(filtered_data.Throughput.sample(frac=0.2))
+            data_tosend['Data Thp'] = list(filtered_data.Throughput.sample(frac=0.3))
         else:
             data_tosend['Data Thp'] = list(filtered_data.Throughput)
         # History disctionary is added to history_global list to record a state change

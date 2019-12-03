@@ -859,19 +859,20 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
     }
     svg_elem.append('g') // Put scale on the left side of the plot
         .attr('class', 'axis')
-        .call(d3.axisLeft(linearScale).tickFormat(d3.format('.2s')))
+        .attr('transform', 'translate('+10+',0)')
+        .call(d3.axisLeft(linearScale).tickFormat(d3.format('.1s')))
     svg_elem.append('g') // Put scale on the right side of the plot
         .attr('class', 'axis')
-        .attr('transform', 'translate('+(document.getElementById('area1').offsetWidth-150)+',0)')
-        .call(d3.axisRight(linearScale).tickFormat(d3.format('.2s')))
-    svg_elem.append('g').append('text') // Create the label for left y axis
-        .attr('class', 'thp_text')
-        .attr('transform', 'rotate(-90)')
-        .attr('y', 0 - margin.left)
-        .attr('x', 0 - 200)
-        .attr('dy', '1em')
-        .style('text-anchor', 'middle')
-        // .text('Throughput')
+        .attr('transform', 'translate('+(document.getElementById('area1').offsetWidth-165)+',0)')
+        .call(d3.axisRight(linearScale).tickFormat(d3.format('.1s')))
+    // svg_elem.append('g').append('text') // Create the label for left y axis
+    //     .attr('class', 'thp_text')
+    //     .attr('transform', 'rotate(-90)')
+    //     .attr('y', 0 - margin.left)
+    //     .attr('x', 0 - 200)
+    //     .attr('dy', '1em')
+    //     .style('text-anchor', 'middle')
+    //     .text('Throughput')
 
     // Code for the horizontal line with mouse hover to assist in finding maximum throughput 
     let mouseG = svg_elem.append('g')
@@ -900,7 +901,7 @@ function redraw(data_received){ // Redraws every bar when the user makes a selec
             let mouse = d3.mouse(this);
             d3.select('.mouse-line')
             .attr("d", function() {
-                var d = "M" + 0 + "," + mouse[1];
+                var d = "M" + 10 + "," + mouse[1];
                 d += " " + barWidth*(max_cols+column.length) + "," + mouse[1];
                 return d;
             });

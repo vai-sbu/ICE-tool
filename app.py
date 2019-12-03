@@ -49,7 +49,21 @@ def read_data_again():
     global dataframes
     global blacklist_cols
     global history_global
-    data = pd.read_csv('dataset/uploaded_file.csv') # Reading the dataset is done only once when the server is started
+    
+    # Sampling data and read in chunks in case of a large file
+    chunks = pd.read_csv('dataset/uploaded_file.csv', chunksize=100000)
+    # Initialize an empty dataframe with columns from the file
+    data = pd.DataFrame(columns=list(chunks.get_chunk(0)))
+    # Iterate over the chunks and append every 10k rows sampled form a 100k chunk 10 times max
+    for i,chunk in enumerate(chunks):
+        if i==10:
+            break # We have a dataframe with 100k rows already
+        if chunk.shape[0] >= 10000:
+            data = data.append(chunk.sample(10000))
+        else:
+            data = data.append(chunk)
+            break
+    # print(data.shape)
     # Removing special characters from column names
     for col in data.columns:
         str = ''.join(e for e in col if e.isalnum())
@@ -83,8 +97,8 @@ def read_data_again():
     data_dummy = pd.get_dummies(data) #Since all the data in categorical, this creates a boolean dummy dataframe by creating columns of all the categories for each variable. This creates a column for each bar displayed
     data_dummy = data_dummy.loc[:, (data_dummy != 0).any(axis=0)]
     column_dummy = list(data_dummy.columns)
-    if len(column_dummy) > 35:
-        column_dummy = column_dummy[:35]
+    if len(column_dummy) > 50:
+        column_dummy = column_dummy[:50]
     data_dummy = data_dummy[column_dummy]
     data = reverse_dummy(data_dummy)
     on_cols = [] # List of bars that are turned on. Initially, all the bars are on. We start from 1st index because column_dummy[0] = Throughput
@@ -248,7 +262,7 @@ def index():
                                                         '75': temp.Throughput.quantile(0.75),
                                                         '90': temp.Throughput.quantile(0.9),
                                                         'Mean': temp.Throughput.mean(), 
-                                                        'Data': list(temp.Throughput.sample(frac=0.2))}, ignore_index=True)
+                                                        'Data': list(temp.Throughput)}, ignore_index=True)
                 # Append a row in the global_temp_df that includes the Min and Max, Lower Quantile, Upper Quantile and Median values for a new category of current variable
             else:
                 '''
@@ -301,7 +315,7 @@ def index():
                                         '75': temp.Throughput.quantile(0.75),
                                         '90': temp.Throughput.quantile(0.9),
                                         'Mean': temp.Throughput.mean(), 
-                                        'Data': list(temp.Throughput.sample(frac=0.2))}, ignore_index=True)
+                                        'Data': list(temp.Throughput)}, ignore_index=True)
                 # Add the Max and Min throughput values to the temp dataframe for current category
                 global_temp_df = temp_df # Change global_temp_df to this new dataframe for a new variable
                 
@@ -332,7 +346,7 @@ def index():
         # data_tosend['Pred List'] = pred_list
         # Sample the data to display on the frontend (This is to make the app run faster)
         if len(filtered_data.Throughput) > 20000:
-            data_tosend['Data Thp'] = list(filtered_data.Throughput.sample(frac=0.2))
+            data_tosend['Data Thp'] = list(filtered_data.Throughput.sample(frac=0.3))
         else:
             data_tosend['Data Thp'] = list(filtered_data.Throughput)
         # History disctionary is added to history_global list to record a state change
