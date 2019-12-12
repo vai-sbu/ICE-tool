@@ -28,3 +28,5 @@ Video preview is available [here](https://www.youtube.com/watch?v=0mD3IEjjq0U&fe
 * Presently, ICE only supports analysis of one numerical variable (last variable in the uploaded dataset). In case you want to analyze multiple numerical variables, you'll have to combine them into one numerical variable (take weighted mean, average etc.)
 
 # Citation 
+
+If you use this code for your research, please cite our paper ICE: An Interactive Configuration Explorer for High Dimensional Categorical Parameter Spaces
