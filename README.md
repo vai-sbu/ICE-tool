@@ -29,4 +29,4 @@ Video preview is available [here](https://www.youtube.com/watch?v=0mD3IEjjq0U&fe
 
 # Citation 
 
-If you use this code for your research, please cite our paper: A Tyagi, Z. Cao, T. Estro, E. Zadok, K. Mueller, "ICE: An Interactive Configuration Explorer for High Dimensional Parameter Spaces,", IEEE Visual Analytcs Science and Technology (VAST), Vancouver, Canada, October 2019. For more information see see also https://www3.cs.stonybrook.edu/~mueller/research/pages/ICE/
+If you use this code for your research, please cite our paper: A Tyagi, Z. Cao, T. Estro, E. Zadok, K. Mueller, "ICE: An Interactive Configuration Explorer for High Dimensional Parameter Spaces,", IEEE Visual Analytcs Science and Technology (VAST), Vancouver, Canada, October 2019. For more information see also https://www3.cs.stonybrook.edu/~mueller/research/pages/ICE/
